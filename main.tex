@@ -23,6 +23,7 @@
 
 % Esto sirve para poner ecuaciones
 \usepackage{mathtools}
+\usepackage{cancel}
 
 % Esto sirve para poner imágenes{{{
 \usepackage{graphicx}
@@ -58,14 +59,14 @@
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\chead{ \textbf{\normalsize{<++>} }}
+\chead{ \textbf{\normalsize{Estructuras discretas II} }}
 %\fancyhf[HL]{\includesvg[height=0.8\headheight]{Utec.svg}}
 \fancyhf[FL]{\textbf{\thepage}}
 \setlength{\headheight}{20pt}
 \setlength{\textheight}{675pt}
 %}}}
 % Título {{{
-\title{\textbf{<++>}}
+\title{\textbf{MMMMMMMMMMMMMMMMMMM}}
 % Aqui hay que poner a los autores
 \author{
 		Alberto Oporto Ames\\
@@ -80,7 +81,137 @@
 \maketitle
 \thispagestyle{fancy}
 
-<++>
 
+\begin{itemize}
+	\item $A$ un conjunto.
+
+		$R$ una relación de orden parcial.
+
+		$(A,R)$ es un CPO (Conjunto parcialmente ordenado)
+
+	\item Un CPO con $|A| < \infty$ tiene un diagrama de Hasse.
+
+	\item $B \sqsubseteq A$
+		$x\in A$ es una cota superior \textcolor{red}{cota inferior} para $B$.
+
+		si $yRx \forall y\in B$
+		\textcolor{red}{si $xRy \forall y\in B$}
+
+	\item $x\in B$ es MAXIMAL \textcolor{red}{MINIMAL} si no existe $y\in B$
+		tal que $xRy$ \textcolor{red}{$yRx$}
+
+	\item $x\in B$ es un máximo \textcolor{red}{mínimo} si $x\in B$, es MAXIMAL
+		\textcolor{red}{MINIMAL} y es único.
+
+	\item R es un \underline{orden total} si $R$ es un orden parcial y
+		$\forall x \vee y\ xRy \vee yRx$
+
+	\item Dado $B \sqsubseteq A$ $X$ es la menor cota superior
+		\textcolor{red}{la mayor cota inferior} de $B$ si $x$
+		es el mínimo \textcolor{red}{máximo} de las cotas superiores
+		\textcolor{red}{inferiores } de $B$.
+\end{itemize}
+\begin{enumerate}
+	\item Cota superior: :v
+	\item Cota inferior: :o
+	\item Maximales: +
+	\item Minimales: -
+	\item Máximo: M
+	\item Mínimo: m
+	\item Menor cota superior: mcs
+	\item Mayor cota superior: MCI
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+\begin{itemize}
+	\item Obs:\\
+		La menor cota superior \textcolor{red}{mayor cota inferior}, cuando existe es única.
+	\item Obs:\\
+		Cuando la menor cota superior \textcolor{red}{mayor cota inferior} está
+		dentro del conjunto, es el máximo \textcolor{red}{mínimo} del conjunto.
+	\item Obs:\\
+		Si $|B|=1$ el elemento de $B$ es la cota superior, cota inferior, maximal, minimal,
+		máximo, mínimo, mcs, MCI \underline{trivialmente}.
+	\item Obs:\\
+		El primer \underline{caso interesante} es si $|B|=2$
+	\item Dfinición:\\
+		Si $\forall V \sqsubseteq A, |B|=2$ podemos definir $mcs(B)$ y $MCI(B)$
+		entonces estamos en un \underline{retículo}.
+\end{itemize}
+\textcolor{red}{\section{¿Cuántas relaciones de orden parcial podemos establecer sobre [2]?}}
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo2}
+\end{figure}
+
+No es retículo. No es semiretículo
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.2\linewidth]{dibujo3}
+\end{figure}
+
+No es retículo. No es semiretículo
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.2\linewidth]{dibujo4}
+\end{figure}
+
+Es un retículo acotado complementado distributivo
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.2\linewidth]{dibujo5}
+\end{figure}
+
+Es un retículo acotado \textcolor{red}{no es complementario}
+\textcolor{blue}{¿Es distributivo?}
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo6}
+\end{figure}
+
+Es un retículo acotado \textcolor{red}{no es complementario}
+\textcolor{blue}{¿Es distributivo?}
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.1\linewidth]{dibujo7}
+\end{figure}
+
+No es retículo. No es semiretículo
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.2\linewidth]{dibujo8}
+\end{figure}
+
+\begin{itemize}
+	\item D.S:\\
+		$(A,R)$ es un retículo definimos
+		\begin{align*}
+			x\vee y &= mcs(x,y)(join)\\
+			x\wedge y &= MCI(x,y)(meet)
+		\end{align*}
+	\item Un retículo $(A,R)$ es
+		\begin{itemize}
+			\item \underline{\underline{DISTRIBUTIVO:}}\\
+			Si
+			\begin{align*}
+				\forall x \forall y \forall z x \wedge (y \vee z ) &= (x \wedge y) \vee (x \wedge z)
+					&& \text{y}\\
+				\forall x \forall y \forall z x \vee (y \wedge z ) &= (x \vee y) \wedge (x \vee z)
+			\end{align*}
+		\item \underline{\underline{ACOTADO:}}\\
+			Si existen $\top \in A$ y $\bot \in A$
+			tales que $(\bot Rx)\wedge (xR\top)$
+			para todo $x\in A$\\
+			\textcolor{blue}{Hay un máximo $(\top)$ y un mínimo $(\bot )$ en $A$}
+		\item \underline{\underline{COMPLEMENTADO:}}\\
+			Si $\forall x \in A \exists ! y \in A$ tal que
+			\begin{center}
+				$x \vee y = \top$ \ y \ $x \wedge y = \bot$
+			\end{center}
+		\end{itemize}
+\end{itemize}
 \end{document}
 %}}}
