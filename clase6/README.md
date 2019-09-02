@@ -1,7 +1,7 @@
-# A template
+# Clase 6 de discretas 2
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 
-## Dependencies
+## Dependencias
 
 * `biber` [![Arch Linux package](https://img.shields.io/archlinux/v/community/any/biber.svg?style=flat-square&logo=arch-linux)](https://www.archlinux.org/packages/community/any/biber/)
 * `inkscape` [![Arch Linux package](https://img.shields.io/archlinux/v/extra/x86_64/inkscape.svg?style=flat-square&logo=arch-linux)](https://www.archlinux.org/packages/extra/x86_64/inkscape/)
@@ -13,8 +13,8 @@
 ## Build
 
 ```sh
-$ git clone https://github.com/otreblan/1def
-$ cd 1def
+$ git clone https://github.com/otreblan/discre2
+$ cd discre2/clase6
 $ make
 ```
 

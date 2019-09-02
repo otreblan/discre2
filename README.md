@@ -5,6 +5,3 @@
 * [Clase 5](./clase5)
 * [Clase 6](./clase6)
 
-Por cierto uso estos [dotfiles](https://github.com/otreblan/dotfiles) cuando escribo esto.
-
-BTW I use arch
