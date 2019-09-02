@@ -23,6 +23,7 @@
 
 % Esto sirve para poner ecuaciones
 \usepackage{mathtools}
+\usepackage{amssymb}
 \usepackage{cancel}
 \allowdisplaybreaks
 
@@ -82,7 +83,95 @@
 \maketitle
 \thispagestyle{fancy}
 
-<++>
+\begin{align*}
+	\vee &\longleftarrow\text{ Join}\\
+	\wedge &\longleftarrow\text{ Meet}
+\end{align*}
+\textbf{Un retículo $\mathbf{(A,R)}$ es un $\mathbf{CPO}$ tal que:}
+\begin{align*}
+	mcs&(\{x,y\}) && \text{Están bien definidas}\\
+	MCI&(\{x,y\}) && \text{para todo $x\in A$, $y \in B$}
+\end{align*}
+\textbf{Abuso: Escribiremos}
+$mcs(x,y)$, $MCI(x,y)$ en vez de $mcs(\{x,y\})$, $MCI(\{x,y\})$
+y entederemos que si $|\{x,y\}|=1$ la función retorna el valor de la entrada,
+es decir se comporta como la identidad sobre conjuntos de tamaño 1.
+%\begin{tikzpicture}
+	%\draw (0,1) -- (1,0) -- (0,-1) -- (-1,0) -- (0,1);
+	%\text{aaaa}(0,1);
+%\end{tikzpicture}
+\begin{align*}
+	D_6 &= \{1,2,3,6\}\\
+	%\mathbb{P}_6 &= \{\}\\
+\end{align*}
+$\Big{\{}\{1\},\{2\},\{3\},\{6\},\{1,2\},\{1,3\},\{2,3\},\{2,6\},\{3,6\}\Big{\}}
+=\mathbb{P}_1(A)U\mathbb{P}_2(A)$
+Debería ser obvio que $mcs(X)$ cuando $X\in \mathbb{P}_1(A)$
+está bien definido.
+$mcs(X)=X$
+
+Si $(A,R)$ es un retículo eso quiere decir que $mcs(X)\in \mathbb{P}_1(A)\forall X \in
+\mathbb{P}_2(A)$
+
+\textbf{Un retículo es acotado}
+si existen $\bot , \top \in A$ tales que
+\begin{align*}
+	\bot Rx \ &\forall x \in A\wedge\\
+	xR\top \  &\forall x \in A
+\end{align*}
+
+\begin{align*}
+	x\vee y &:=mcs(x,y)\\
+	x\wedge y &:=MCI(x,y)
+\end{align*}
+Un retículo es distributivo:
+\begin{align*}
+	x\vee(y\wedge z) &= (x\vee y)\wedge(x\vee z) \text{\textbf{\ y}}\\
+	x\wedge(y\vee z) &= (x\wedge y)\vee (x\wedge z)
+\end{align*}
+
+\textbf{Un \underline{retículo es complementado} si:}\\
+Para todo $x\in A$ existe (y es único) $y\in A$ tal que
+\begin{align*}
+	x\wedge y &= \bot\\
+	x\vee y &= \top\\
+	\Aboxed{y &= \overline{x}} \text{ Complemento de $x$}
+\end{align*}
+
+Un $CPO(A,R)$ es una \underline{álgebra booleana}\\
+si es un retículo acotado, \underline{distributivo y complementado.}
+
+\textbf{Veamos que } $\Big{(}D_{30},\Big{|}\Big{)}$ es una álgebra booleana.
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo}
+\end{figure}
+
+Vean que $mcs(x,y)=mcm(x,y)$ $MCI(x,y)=MCD(x,y)$\\
+Por lo que $\Big{(}D_{30},\Big{|}\Big{)}$
+es un retículo, acotado, distributivo, complementado.
+$\overline{x} = \frac{30}{x}$ $\Big{(}D_{30},\Big{|}\Big{)}$ es una
+algebra booleana.
+\begin{align*}
+	mcm(x,MCD(y,z)) &= mcm(MCD(x,y),MCS(x,z)) \text{ \textbf{y}}\\
+	MCD(x,mcm(y,z)) &= MCD(mcm(x,y),mcm(x,z))
+\end{align*}
+
+\begin{align*}
+	\forall x,y,z && x \neq y\\
+	&& x \neq z\\
+	&& y \neq z
+\end{align*}
+\textbf{Dos caminos:}
+\begin{itemize}
+	\item Analizar la reacción
+	\item Demostrar por fuerza bruta que funciona
+		\begin{align*}
+			\intertext{¿Es distributivo?:}
+			2 \vee (2\wedge 5 ) &= 2 \vee 1 = 2\\
+			(2\vee 3) \wedge(2\vee 5) &= 6 \wedge 10 = 2...........
+		\end{align*}
+\end{itemize}
 
 \end{document}
 %}}}
