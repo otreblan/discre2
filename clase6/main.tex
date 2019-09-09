@@ -84,8 +84,8 @@
 \thispagestyle{fancy}
 
 \begin{align*}
-	\vee &\longleftarrow\text{ Join}\\
-	\wedge &\longleftarrow\text{ Meet}
+	\vee &\longleftarrow\text{ Join (Menor cota superior)}\\
+	\wedge &\longleftarrow\text{ Meet (Mayor cota inferior)}
 \end{align*}
 \textbf{Un retículo $\mathbf{(A,R)}$ es un $\mathbf{CPO}$ tal que:}
 \begin{align*}
@@ -105,7 +105,7 @@ es decir se comporta como la identidad sobre conjuntos de tamaño 1.
 	%\mathbb{P}_6 &= \{\}\\
 \end{align*}
 $\Big{\{}\{1\},\{2\},\{3\},\{6\},\{1,2\},\{1,3\},\{2,3\},\{2,6\},\{3,6\}\Big{\}}
-=\mathbb{P}_1(A)U\mathbb{P}_2(A)$
+=\mathbb{P}_1(A)\cup\mathbb{P}_2(A)$
 Debería ser obvio que $mcs(X)$ cuando $X\in \mathbb{P}_1(A)$
 está bien definido.
 $mcs(X)=X$
@@ -172,6 +172,55 @@ algebra booleana.
 			(2\vee 3) \wedge(2\vee 5) &= 6 \wedge 10 = 2...........
 		\end{align*}
 \end{itemize}
+\textbf{Es $\mathbf{\Big{(}}D_8,\Big{|}\Big){}$ una álgebra booleana}\\
+$D_8 = \{1,2,4,8\}$
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo2}
+\end{figure}
+Claramente tenemos un retículo\textcolor{red}{, acotado}\textcolor{blue}{, distributivo}
+\textcolor{green}{no es complementario}
+\begin{align*}
+	4\vee(2\wedge 1) &= 4\vee 1 =4\\
+	(4\vee 2)\wedge(4\vee1) &= 4\wedge4\\
+	2\vee(4\wedge1) &= 1\vee 1 = 2\\
+	(2\vee4)\wedge(2\vee1) &= 4\wedge2 = 2\\
+	1\vee(4\wedge2) &= 1\vee2 = 2\\
+	(1\vee4)\wedge(1\vee2) &= 4\wedge2=2
+\end{align*}
+\textcolor{green}
+{
+	\begin{align*}
+		2 \vee 8 &= 8 \text{ Único complemento}\\
+		\intertext{pero} \cancel{ 2\wedge 8 = 2 }\neq 1\\
+		\text{2 no tiene complemento}
+	\end{align*}
+}
+\textbf{¿Es $\mathbf{\Big{(}}\mathbb{P}([3]),\sqsubseteq\Big{)}$ una álgebra booleana?}
+( $\sqsubseteq\ \longleftarrow$ subconjunto )\\
+\textbf{¿Es $\mathbf{\Big{(}}D_{12},\Big{|}\Big{)}$ una álgebra booleana?}
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo3}
+\end{figure}
+\begin{align*}
+	mcs(x,y) &= x\cup y\\
+	MCI(x,y) &= x\cap y\\
+\end{align*}
+Es un retículo\textcolor{red}{, acotado}\textcolor{blue}{, distributivo}
+\textcolor{green}{, complementado $\overline{x}=[3]-x$}
+\textcolor{blue}
+{
+	\begin{align*}
+		\forall x,y,z\\
+		x\cap(y\cup z) &= (x\cap y)\cup(x\cap z)\ \text{y}\\
+		x\cup(y\cap z) &= (x\cup y )\cap(x\cup z)
+	\end{align*}
+}
+\section*{Tarea}%
+\label{sec:Tarea}
+
+¿Qué propiedades hereda meet y join cuando es álgebra booleana?
 
 \end{document}
 %}}}

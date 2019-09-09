@@ -1,0 +1,86 @@
+\documentclass[12pt, twoside]{article}
+\usepackage{main}
+
+% Aquí empieza el documento{{{
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+Una función total \underline{booleana} con $n$ parámetros:
+\[f:\mathbb{B}^n\longrightarrow\mathbb{B}\]
+\[\mathbb{B}=\{0,1\}\]
+
+Podemos pensar que $f$ es un operador $n$-ario (o con aridad $n$)
+
+Si $n=2$ tenemos un operador \underline{binario}, $n>1$ \underline{unario}
+
+\teorema
+Toda función booleana se puede describir mediante las operaciones $+$ (join), $\cdot$ (meet) y $\overline{x}$ (complemento)
+
+\definicion
+$f:\mathbb{B}^n\longrightarrow\mathbb{B}$ es una \dobledef{conjunción}{disyunción} fundamental si es \dobledef{un producto}{una suma}
+de $n$ literales correspondientes a los $n$ parámetros de $f$
+
+Un literal es un parámetro o su complemento
+\begin{align*}
+	\intertext{Es una conjunción fundamental:}
+	&f:\mathbb{B}^4\longrightarrow\mathbb{B}\\
+	&f(x_1,x_2,x_3,x_4) = x_1\overline{x_2}x_3x_4
+	\intertext{No es una conjunción fundamental:}
+	&g:\mathbb{B}^4\longrightarrow\mathbb{B}\\
+	&g(x_1,x_2,x_3,x_4) = x_1\overline{x_2}
+\end{align*}
+
+\observacion
+\dobledef{Conjunción}{Disyunción} fundamental
+
+Es una etiqueta que se asocia a la regla de asignación de la función y no a la función misma.
+
+\noindent No es una conjunción fundamental:
+\begin{align*}
+	&h:\mathbb{B}^3\longrightarrow\mathbb{B}\\
+	&h:(x_1,x_2,x_3)=x_1x_2x_3+(x_1x_2x_3)(x_1\overline{x_2}x_3)
+\end{align*}
+A pesar de:
+\begin{align*}
+	x_1x_2x_3+(x_1x_2x_3)(x_1\overline{x_2}x_3) &= x_1x_2x_3+x_1\overline{x_2}x_2x_3\\
+	x_1x_2x_3+(x_1x_2x_3)(x_1\overline{x_2}x_3) &= x_1x_2x_3+0\\
+	x_1x_2x_3+(x_1x_2x_3)(x_1\overline{x_2}x_3) &= x_1x_2x_3
+\end{align*}
+Es una disyunción fundamental:
+\begin{align*}
+	&g:\mathbb{B}^5\longrightarrow\mathbb{B}\\
+	&g(x,y,z,w,t) = x+y+z+\overline{t}+\overline{w}
+\end{align*}
+
+\definicion
+Una función \underline{está} en forma normal \dobledef{disyuntiva}{conjuntiva} si su regla de asignación
+es \dobledef{una suma}{un producto} de \dobledef{conjunciones}{disyunciones} fundamentales.
+\textcolor{red}{(Creo que están hechos de mintérminos)}
+\begin{align*}
+	\intertext{Forma normal disyuntiva (FND):}
+	&f:\mathbb{B}^3\longrightarrow\mathbb{B}\\
+	&f(x_1,x_2,x_3)=\overbrace{x_1x_2x_3}^{\substack{\text{Conjunción}\\ fundamental}}
+	+\overbrace{x_1x_2\overline{x_3}}^{\substack{\text{Conjunción}\\ fundamental}}
+	+\overbrace{\overline{x_1}x_2\overline{x_3}}^{\substack{\text{Conjunción}\\ fundamental}}
+\end{align*}
+\begin{align*}
+	\intertext{Forma normal conjuntiva(FNC):}
+	&g:\mathbb{B}^3\longrightarrow\mathbb{B}\\
+	&g(x,y,z)=\overbrace{(x+y+\overline{z})}^{\substack{\text{Disyunción}\\ fundamental}}
+	+\overbrace{(\overline{x}+\overline{y}+z)}^{\substack{\text{Disyunción}\\ fundamental}}
+\end{align*}
+\subsection*{Funciones de un parámetro:}%
+\begin{center}
+	\begin{tabular}{*{4}{c|}c}
+		$x$ & $0$ & $x$ & $\overline{x}$ & $1$\\
+		\hline
+		0 & 0 & 0 & 1 & 1\\
+		1 & 0 & 1 & 0 & 1\\
+	\end{tabular}
+\end{center}
+\subsection*{Funciones de 2 parámetros:}%
+
+\end{document}
+%}}}
