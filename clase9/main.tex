@@ -107,5 +107,96 @@ Esto tiene que ver con la representación de la función y no con la función en
 	(x_1+\overline{x_2}+x_3)
 	(x_1+x_2+\overline{x_3})
 \]
+\section*{Mapas de Karnaugh}%
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|}
+		$x_1$|$x_2x_3$ & $00$ & $01$ & $11$ & $10$\\
+		\hline
+		$0$ & $0$ & $0$ & $1$ & $1$\\
+		\hline
+		$1$ & $0$ & $0$ & $1$ & $0$\\
+	\end{tabular}
+\end{center}
+\begin{align*}
+	\overline{x_1}x_2\overline{x_3}+\overline{x_1}x_2x_3+x_1x_2x_3&=
+	( \overline{x_1}x_2\overline{x_3}+\overline{x_1}x_2x_3 )+( \overline{x_1}x_2x_3+x_1x_2x_3 )\\
+	%
+	\overline{x_1}x_2\overline{x_3}+\overline{x_1}x_2x_3+x_1x_2x_3&=
+	\overline{x_1}x_2(\overline{x_3}+x_3)+x_2x_3(\overline{x_1}x_1)\\
+	%
+	\overline{x_1}x_2\overline{x_3}+\overline{x_1}x_2x_3+x_1x_2x_3&=
+	\boxed
+	{
+		\overline{x_1}x_2+x_2x_3
+	}
+\end{align*}
+Simplificación con el objetivo de reducir el número de compuertas lógicas.
+
+\begin{center}
+	\begin{circuitikz}
+		\draw (0,2)
+		node [and port] (and1){}
+		(0,0)
+		node [and port] (and2){}
+		(2,1)
+		node [or port] (or1){}
+		(and1.out) -| (or1.in 1)
+		(and2.out) -| (or1.in 2)
+		(and1.in 1) +(-2,0) node [not port] (not1){}
+		(not1.out)
+		-|
+		(and1.in 1)
+		(and1.in 2)
+		-|
+		(and2.in 1)
+		(and2.in 2) -|
+		+(-2,0)
+		(-1.4,1)
+		-|
+		+(-2,0)
+		;
+	\end{circuitikz}
+\end{center}
+\[H(x,y,z,w)\]
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|}
+		$zw$|$xy$ & $00$ & $01$ & $11$ & $10$\\
+		\hline
+		$00$ & $\prescript{0}{}{0}$ & $\prescript{1}{}{1}$ &
+		$\prescript{3}{}{1}$ & $\prescript{2}{}{0}$\\
+		\hline
+		$01$ & $\prescript{4}{}{1}$ & $\prescript{5}{}{1}$ &
+		$\prescript{7}{}{1}$ & $\prescript{6}{}{1}$\\
+		\hline
+		$11$ & $\prescript{12}{}{1}$ & $\prescript{13}{}{1}$ &
+		$\prescript{15}{}{1}$ & $\prescript{14}{}{1}$\\
+		\hline
+		$10$ & $\prescript{8}{}{0}$ & $\prescript{9}{}{1}$ &
+		$\prescript{11}{}{1}$ & $\prescript{10}{}{0}$\\
+	\end{tabular}
+\end{center}
+FNC H
+{
+	\Huge\[\prod M (0,2,8,10)\]
+}
+\[
+	=(\overline{z}+\overline{w}+\overline{x}+\overline{y})
+	(\overline{z}+\overline{w}+x+\overline{y})
+	(z+\overline{w}+\overline{x}+\overline{y})
+	(z+\overline{w}+x+\overline{y})
+	=\overline{w}\cdot\overline{y}
+	=\overline{(w+y)}
+\]
+\textbf{Tarea:}
+Escribir FNC, FND y simplificar usando mapas de Karnaugh:
+\begin{align*}
+	x_2x_1x_0+y_2y_1y_0 &= z_3z_2z_1z_0 && \text{Suma de números en binario}
+\end{align*}
+\begin{align*}
+	z_0 &= x_0 y_0\\
+	z_1 &= x_1+y_1+C_0
+\end{align*}
+
+
 \end{document}
 %}}}
