@@ -6,3 +6,4 @@
 * [Clase 6](./clase6)
 * [Clase 8](./clase8)
 * [Clase 9](./clase9)
+* [Clase 10](./clase10)
