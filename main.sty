@@ -47,7 +47,11 @@
 \usepackage{pgfplots}
 
 \pgfplotsset{compat=1.16}
-\graphicspath{ {ima/} }
+
+% Por alguna razón es posible definir esto en los sub-archivos
+% sin poner ../ima
+%\graphicspath{ {ima} }
+
 %}}}
 % Colores de los links {{{
 \definecolor{red}{HTML}{F22C40}
