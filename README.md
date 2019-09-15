@@ -1,3 +1,4 @@
+![Travis (.com) branch](https://img.shields.io/travis/com/otreblan/discre2/master?style=flat-square)
 # Cosas discretas parte 2
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 

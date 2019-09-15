@@ -15,3 +15,14 @@ script:
           make;
           sudo mv *.pdf /home/docker/build
           "
+deploy:
+    provider: releases
+# https://github.com/japaric/trust/issues/104
+    api_key:
+        secure: "pMiGfqq2BqE5HFq1ys9UvoVrqzjm1yNKz0S369ax5FGZMQliW5GHDzzvAsMqWs9W7l4UdEAB5meX0iszMn5fWrDq/CxxveFJzSjKrneOvyXfQyomyyRuUUzH6IVClkd727TCq4eHmM6V8sVbsD1uC3+oPmdOaOqbvMgyfTd1pbVraMPNEhPWCHunFV6DAQMJeh7s9ePVJKyHEUC/QvouueYQfZraD0x5mlbSnlfbHKkbVKC6iceTYRu66uVb5KzZCH8H+R5g8ze5djQoxnBG7rqL3kZ50oG027KSRVzOSU4axp1JWGk7UmTH5f9JqwEpTLLd6oGQzd0RRyK6evWYJDMbFaWyJgSrYD3uBDnKzTf4eww8iNOpq62HZWJNJWCeBdk0BTdbUqh5K8WfPxKR2BLHfZ/N39WdafycoGSbyGRVywaEBeVOQTY5qTXhezEBd+PsE1eajNjxDJ2ImPnuqAvg1djL0r8zvUkCUh0GpIgE05TSjJ/8IkcvicnQuwd3x+9a92afWnw2qVXJ5cD8iKB+WJrx6vbENkYZ3VZ3vCq08m2CCkwwGAWGM+Gy3JiaZxHj0Q1wTrzCHxiteRiwwkpJepINHWkb0oPDFyNY7U7GPgQwRPd8Od7v0j2Q4J+nxg9TY+BCvdU4VwU3+I5FY9CeNi51PHTsLUZ3WNFugBA="
+    file_glob: "true"
+    file: "*.pdf"
+    skip_cleanup: true
+    on:
+        repo: otreblan/discre2
+        tags: true
