@@ -13,5 +13,5 @@ script:
           cp -rf . /tmp;
           cd /tmp;
           make;
-          mv *.pdf /home/docker/build
+          sudo mv *.pdf /home/docker/build
           "
