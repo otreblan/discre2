@@ -1,84 +1,11 @@
 \documentclass[12pt, twoside]{article}
-% Opciones {{{
-\usepackage[pdfa, pdfusetitle, unicode=true]{hyperref}
-\usepackage[spanish]{babel}
-\usepackage[margin=2.5cm, a4paper]{geometry}
-\usepackage{luacode}
-\usepackage[shortlabels]{enumitem}
-\usepackage{import}
-\usepackage{xcolor}
-\usepackage{fontspec}
-\usepackage[mark, raisemark=0.02\paperheight, marknotags]{gitinfo2}
-\usepackage{setspace}
 
-\doublespacing
+\graphicspath{{ima/clase05}{ima}}
 
-% Btw I use arch
-\setmonofont{InconsolataGo Nerd Font}
-
-\newcommand{\btw}{{\color{arch}\texttt{}} }
-\newcommand{\git}{{\color{git}\texttt{}} }
-
-\renewcommand{\gitMarkPref}{{\Large\git git}}
-
-% Esto sirve para poner ecuaciones
-\usepackage{mathtools}
-\usepackage{cancel}
-
-% Esto sirve para poner imágenes{{{
-\usepackage{graphicx}
-\usepackage{svg}
-\usepackage{subcaption}
-
-\usepackage{float}
-\usepackage{pgfplots}
-
-\pgfplotsset{compat=1.16}
-\graphicspath{ {ima/} }
-%}}}
-% Colores de los links {{{
-\definecolor{red}{HTML}{F22C40}
-\definecolor{green}{HTML}{5AB738}
-\definecolor{yellow}{HTML}{D5911A}
-\definecolor{blue}{HTML}{407EE7}
-\definecolor{magenta}{HTML}{6666EA}
-\definecolor{cyan}{HTML}{00AD9C}
-\definecolor{arch}{HTML}{1793D1}
-\definecolor{git}{HTML}{F54D27}
-
-\hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	urlcolor=cyan,
-	citecolor=magenta,
-}
-%}}}
-% Esto controla a la cabecera {{{
-\usepackage{fancyhdr}
-
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\chead{ \textbf{\normalsize{Estructuras discretas II} }}
-%\fancyhf[HL]{\includesvg[height=0.8\headheight]{Utec.svg}}
-\fancyhf[FL]{\textbf{\thepage}}
-\setlength{\headheight}{20pt}
-\setlength{\textheight}{675pt}
-%}}}
-% Título {{{
-\title{\textbf{MMMMMMMMMMMMMMMMMMM}}
-% Aqui hay que poner a los autores
-\author{
-		Alberto Oporto Ames\\
-		\texttt{alberto.oporto@utec.edu.pe}\\
-		%\and <++>\\
-		%\texttt{<++>}\\
-		}
-%}}}
-%}}}
 % Aquí empieza el documento{{{
 \begin{document}
-\maketitle
+
+\chapter*{Clase 5}%
 \thispagestyle{fancy}
 
 
