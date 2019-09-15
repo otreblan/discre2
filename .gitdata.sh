@@ -18,7 +18,7 @@ then
 		mkdir .git
 	fi
 	bash $HOOKTMPLT
-else if ! bash $(http://ctan.dcc.uchile.cl/macros/latex/contrib/gitinfo2/post-xxx-sample.txt)
+elif ! bash $(http://ctan.dcc.uchile.cl/macros/latex/contrib/gitinfo2/post-xxx-sample.txt)
 then
 	echo "Git hook not found, please check your latex distribution" >&2
 	exit 1
