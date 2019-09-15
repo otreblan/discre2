@@ -3,7 +3,7 @@ services:
     - docker
 script:
     - docker build . -t arch
-    - docker run  -v $(pwd):/home/docker/build arch -c "yay -S --nodiffmenu --nocleanmenu --noconfirm \
+    - docker run  -v $(pwd):/home/docker/build arch -c "yay --nodiffmenu --nocleanmenu --noconfirm -S\
         nerd-fonts-inconsolata-go \
         texlive-most \
         inkscape;
