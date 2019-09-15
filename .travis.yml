@@ -8,7 +8,6 @@ script:
           --nocleanmenu
           --noconfirm
           -S nerd-fonts-inconsolata-go
-          texlive-most-doc
           texlive-most
           inkscape;
           cp -rf . /tmp;
