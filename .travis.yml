@@ -10,8 +10,8 @@ script:
           -S nerd-fonts-inconsolata-go
           texlive-most
           inkscape;
-          cp -rf . /tmp/latex;
-          cd tmp/latex;
+          cp -rf . /tmp;
+          cd /tmp;
           make;
           mv *.pdf /home/docker/build
           "
