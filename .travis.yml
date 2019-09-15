@@ -4,10 +4,15 @@ services:
 script:
     - docker build . -t arch
     - docker run  -v $(pwd):/home/docker/build arch -c "yay
-      --nodiffmenu
-      --nocleanmenu
-      --noconfirm
-      -S nerd-fonts-inconsolata-go
-      texlive-most-doc
-      texlive-most
-      inkscape; make"
+          --nodiffmenu
+          --nocleanmenu
+          --noconfirm
+          -S nerd-fonts-inconsolata-go
+          texlive-most-doc
+          texlive-most
+          inkscape;
+          cp -rf . /tmp;
+          cd tmp;
+          make;
+          mv *.pdf /home/docker/build
+          "
