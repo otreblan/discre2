@@ -1,0 +1,237 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase11}{ima}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+
+\chapter*{Clase 11}%
+
+\thispagestyle{fancy}
+
+\definicion
+Conteo: Si $A$ y $B$ son finitos:
+\begin{itemize}
+	\item \dobledef{$|A\times B|=|A|*|B|$}{Principio de multiplicación} \textbf{Regla del producto}
+	\item \dobledef
+		{
+			\begin{align*}
+				\text{Si }A\cap B &= \cancel{O}\\
+				|A\cup B| &= |A|+|B|
+			\end{align*}
+		}
+		{Principio de la suma} \textbf{Regla de la suma}
+	\item
+		\begin{align*}
+			f&:A \longrightarrow B && \text{$f$ total sobreyectiva}\\
+			|A| &= k|B| && \text{y $k:1$ $k\in\mathbb{N}$}\\
+			\frac{|A|}{k} &= |B|
+		\end{align*}
+		\dobledef{}{Principio de división}
+		\textbf{Regla del cociente}
+\end{itemize}
+
+¿Qué pasa si $A\cap B \neq \cancel{O}$?
+
+\textcolor{red}
+{
+	\begin{align*}
+		A\cap B \neq \cancel{O} \Rightarrow\\
+		\exists x \in \Omega:x\in A \wedge x \in B
+	\end{align*}
+}
+\begin{align*}
+	|A\cup B| &= \overbrace{|A-B|+|A\cap B|}^{|A|}+|B-A|\\
+	\\
+	|A\cup B| &= |A| + |B-A|\\
+	|A\cup B| &= |A-B|+|B|\\
+	|A\cup B| &= |A|+|B|- |A\cap B|
+\end{align*}
+\textbf{\textcolor{red}{Demostración:}}
+\begin{align*}
+	(A-B)\cup(A\cap B) &= A\\
+	|A| &= |A-B|+||A\cap B|\\
+	|B| &= |B-A|+||B\cap A|\\
+	\\
+	A\cup(B-A) &= A\cup B\\
+	A\cup(B-A) &= \cancel{O}\\
+	\\
+	|A|+|B-A| &= |A\cup B|\\
+	|B|+|A-B| &= |B\cup A|
+\end{align*}
+
+\begin{align*}
+	A\cup B &= A \cup(B-A)\\
+	|A\cup B| &= |A| + |B-A|\\
+	|A\cup B| &= |A| + (|B|-|A\cap B|)\\
+	|A\cup B| &= |A| + |B| - |A\cap B|
+\end{align*}
+
+\definicion
+\textbf{Principio de inclusión-exclusión}\\
+$|A|,|B|<\infty$
+\[
+	|A\cup B| = |A|+|B|-|A\cap B|
+\]
+
+\subsection*{Problema:}%
+
+En el menú \underline{DUOLINGO} el dueño dice que puede comer distinto todos los días
+del años.
+
+El menú tiene:
+\begin{itemize}
+	\item 3 entradas
+	\item 5 fondos
+	\item 7 postres
+	\item 2 bebidas
+\end{itemize}
+\begin{enumerate}
+	\item Si un almuerzo consiste en tomar una entrada, un fondo, un postre,
+y una bebida.
+¿Es verdadera la afirmación del dueño?
+
+\textbf{\textcolor{red}{Regla del producto:\[3*5*7*2=210 < 366\]}}
+
+\textbf{La afirmación es mentira.}
+
+\item Si un almuerzo puede consistir en lo que definimos antes
+o una cosa donde falte alguno de los componentes.
+¿Es verdad la afirmación?
+\[
+	\overbrace{(3+1)+(5+1)+(7+1)+(2+1)-1}^
+	{\substack{\text{Una opción más: nada.}\\
+			\text{Pero $4$ nadas no cuenta como menú}
+	}}=575>366
+\]
+\textbf{Ahora la afirmación es verdadera.}
+
+\item La sunat define \textbf{Almuerzo} como comer
+al menos un fondo y bebida.
+\[
+	(3+1)*(5)*(7+1)*(2) = 320
+\]
+
+\textbf{Preso por falsa publicidad}
+
+\item Si se define que el almuerzo debe tener al menos un fondo
+y una bebida, una o dos entradas y postre o no postre.
+
+\end{enumerate}
+
+Entradas:
+\[
+	\underbrace{3+\Bigg{(}\overbrace{\binom{3}{2}}^{\substack{\text{Entradas}\\\text{distintas}} }
+	+\overbrace{\binom{3}{1}}^{\substack{\text{Entradas}\\\text{iguales}} }\Bigg{)}}_
+	{\text{Entrada}}
+\]
+
+Fondo:
+\[
+	\binom{5}{1}
+\]
+
+Postre:
+\[
+	\Bigg{(}
+	\overbrace{\binom{7}{1}}^{\text{$1$ postre}}+
+	\overbrace{\binom{7}{0}}^{\text{Ningún postre}}
+	\Bigg{)}
+\]
+
+Bebida:
+\[
+	\binom{2}{1}
+\]
+\[
+	\boxed{(3+(3+3))*5*(7+1)*2=720}
+\]
+{\Huge
+	\[
+		\binom{n}{k} = \binom{n}{n-k}
+	\]
+}
+\begin{align}
+	\intertext{Demostración aburrida:}
+	\binom{n}{k} &= \frac{n!}{k!(n-k)!} \\
+	\binom{n}{n-k} &= \frac{n!}{(n-k)!(n-(n-k))!} = \frac{n!}{(n-k)!k!}
+\end{align}
+
+\begin{align*}
+	\Omega \quad &A\subseteq\Omega\\
+	\overline{A} &= \Omega-A\\
+	\overline{(.)}&:\mathbb{P}(\Omega)\rightarrow\mathbb{P}(\Omega)\\
+	\overline{A} &= \Omega -A
+\end{align*}
+$\overline{(.)}$ Es:
+\begin{itemize}
+	\item Total
+	\item Inyectiva
+	\item Sobreyectiva
+\end{itemize}
+Por lo tanto es $|:|$
+
+$\binom{n}{k}=$ número de formas de hacer un conjunto con $k$ elementos
+de un universo con $n$ elemento.
+
+$\binom{n}{n-k}= $ número de formas de hacer un conjunto de $n-k$ elementos
+de un universo de $n$ elementos.
+
+\dobledef{El lado izquierdo selecciona directamente $k$ cosas distintas sin orden
+de un universo con $n$}
+{El lado derecho selecciona $n-k$ cosas del universo de $n$ que serán descartadas
+para formar el conjunto de $k$ cosas.}
+
+\begin{itemize}
+	\item ¿De cuantás formas podemos seleccionar $2$ colores de $5$?
+		\[\binom{5}{2}=10\]
+	\item ¿De cuantás formas podemos seleccionar $5$ colores de $2$?
+		\[\binom{2}{5}=10\]
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo}
+\end{figure}
+\[
+	\binom{n}{k}= 0 \text{ Si } k>n\wedge k<0
+\]
+\[
+	\binom{n+1}{k}=\binom{n}{k}+\binom{n}{k-1}
+\]
+El lado izquierdo cuenta el número de formas de seleccionar
+$k$ de un universo de $n+1$ cosas diferentes.
+\textbf{Puedo decir que una de esas cosas es especial. (EL HUEVO PODRIDO)}
+
+{\Huge
+	\[
+		\underbrace
+		{
+			\underbrace{\binom{n}{k}}_
+			{\substack{\text{Contar conjuntos}\\
+					\text{de tamaño}\\
+					\text{$k$ que no}\\
+					\text{tienen al}\\
+			\text{huevo podrido} }}
+			+\underbrace{\binom{n}{k-1}}_
+			{\substack{\text{Contar conjuntos}\\
+					\text{de tamaño}\\
+					\text{$k$ que \textbf{sí}}\\
+					\text{tienen al}\\
+			\text{huevo podrido} }}
+		}_
+		{\substack{\text{Cualquier conjunto de tamano $k$ extraído}\\
+				\text{del universo de $n+1$ cosas o tiene}\\
+		\text{al huevo podrido o no tiene al huevi podrido.} }}
+	\]
+}
+
+Sabemos que hay $2^n$
+\[
+	f:[n]\longrightarrow\mathbb{B}
+\]
+funciones booleanas \underline{totales} diferentes
+
+\textcolor{red}{ \textbf{¿Cuántas funciones de la forma $\mathbf{g:[n]
+\longrightarrow\mathbb{B}}$ hay?}}
+\end{document}
+%}}}

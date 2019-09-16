@@ -7,4 +7,4 @@ default: $(TARGET)
 	latexmk -pdf $<
 
 clean:
-	git clean -fX
+	git clean -fxd
