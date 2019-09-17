@@ -1,6 +1,6 @@
 \documentclass[../main.tex]{subfiles}
 
-\graphicspath{{../ima/clase10}{../ima}}
+\graphicspath{{ima/clase10}{ima}}
 
 % Aquí empieza el documento{{{
 \begin{document}
@@ -157,31 +157,29 @@ $f$ es $|:|$ si es una biyección total.
 ¿De cuantas formas podemos seleccionar $k$ objetos entre $n$ objetos distintos y
 ordenarlos en una fila de largo $k$?
 \begin{align*}
-	\frac{n!}{(n-k)} = \bigvee^n_k \text{\ variaciones de $n$ en $k$}
+	\frac{n!}{(n-k)!} = \bigvee^n_k \text{\ variaciones de $n$ en $k$}
 \end{align*}
 ¿De cuántas formas podemos seleccionar $k$ objetos de entre $n$ objetos distintos?
 (Creo que es lo anterior pero sin ordenar)
 
 \begin{align*}
 	\frac{\bigvee^n_k}{k!}= C^n_k =
-	\begin{pmatrix}
-		n\\
-		k
-	\end{pmatrix}
+	\binom{n}{k}
 \end{align*}
 
 \textbf{Calcula usando combinaciones }
 \begin{align*}
-	\sum^n_{k=0} \begin{pmatrix}
-		n\\
-		k
-	\end{pmatrix}\\
-	\sum^n_{k=0}(-1)^k
-	\begin{pmatrix}
-		n\\
-		k
-	\end{pmatrix}
+	&\sum^n_{k=0}\binom{n}{k}\\
+	&\sum^n_{k=0}(-1)^k\binom{n}{k}
 \end{align*}
 
+\textbf{Solución:}
+\[
+	\sum_{k=0}^n\binom{n}{k}=2^n
+\]
+El lado izquierdo cuenta el número de subconjunto de tamaño $k$
+de $[n]$ y suma todas las posibilidades para $k$ entre $0$ y $n$
+
+El lado derecho cuenta el número de subconjuntos de $[n]$.
 \end{document}
 %}}}
