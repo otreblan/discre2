@@ -9,6 +9,7 @@
 \usepackage[mark, raisemark=0.02\paperheight, marknotags]{gitinfo2}
 \usepackage{setspace}
 \usepackage{subfiles}
+\usepackage{currfile}
 
 \doublespacing
 
@@ -47,6 +48,11 @@
 \usepackage{pgfplots}
 
 \pgfplotsset{compat=1.16}
+
+% Un pequeño hack para que los nombres de los svg inicien con el nombre
+% del archivo donde son llamados.
+% Línea 283 /usr/share/texmf-dist/tex/latex/svg/svg.sty
+\svgsetup{inkscapename=\currfilebase-\svg@file@name}
 
 % Por alguna razón es posible definir esto en los sub-archivos
 % sin poner ../ima
