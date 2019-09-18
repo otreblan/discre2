@@ -1,0 +1,261 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase12}{ima}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter*{Clase 11}%
+
+\thispagestyle{fancy}
+
+\textbf
+{
+	\textcolor{red}
+	{
+		\[
+			\mathbf{ g:[n]\longrightarrow\mathbb{B} }
+		\]
+		\(3^n\) funciones.
+		Pues para cada valor del conjunto de partida hay que decidir \(1\)
+		de \underline{\underline{tres}} cosas.
+		\begin{itemize}
+			\item No está en el dominio.
+			\item Está en el dominio y su imagen es \(0\)
+		\item Está en el dominio y su imágen es \(1\)
+		\end{itemize}
+	}
+}
+\textbf
+{
+	\textcolor{blue}
+	{
+		\[
+			\mathbf{f:\mathbb{R}\longrightarrow\mathbb{R}\quad f(x)}
+		\]
+		\(Dom_f=\mathbb{R}-\{0\}\)\\
+		\(Rango_f=\mathbb{R}-\{0\}\)
+	}
+}
+\[
+	\text{Considera }k\in\mathbb{N}\quad n \in\mathbb{Z}
+\]
+
+\[
+	\begin{cases}
+		\sum^k_{i=1}x_i=n\\
+		0 \leq x_i\\
+		x_i\in \mathbb{Z}
+	\end{cases}
+\]
+¿Cuantas soluciones tiene este problema? $E_{n,k}$
+\[
+	\begin{cases}
+		x_1+x_2+x_3=2\\
+		0 \leq x_i\\
+		x_i\in \mathbb{Z}
+	\end{cases}
+\]
+\begin{center}
+	\begin{tabular}{c|c|c}
+		$x_1$ & $x_2$ & $x_3$\\
+		\hline
+		$0$ & $0$ & $2$\\
+		$0$ & $2$ & $0$\\
+		$2$ & $0$ & $0$\\
+		\hline
+		$0$ & $1$ & $1$\\
+		$1$ & $0$ & $1$\\
+		$1$ & $1$ & $0$\\
+		\hline
+	\end{tabular}
+\end{center}
+\[
+	\begin{cases}
+		x_1+x_2+x_3+x_4=3\\
+		0 \leq x_i\\
+		x_i\in \mathbb{Z}
+	\end{cases}
+\]
+\begin{center}
+	\begin{tabular}{c|c|c|c}
+		$x_1$ & $x_2$ & $x_3$ & $x_4$\\
+		\hline
+		$0$ & $0$ & $0$ & $3$\\
+		$0$ & $0$ & $3$ & $0$\\
+		$0$ & $3$ & $0$ & $0$\\
+		$3$ & $0$ & $0$ & $0$\\
+		\hline
+		$0$ & $0$ & $2$ & $1$\\
+		$0$ & $0$ & $1$ & $2$\\
+		$0$ & $2$ & $1$ & $0$\\
+		$0$ & $1$ & $2$ & $0$\\
+		$2$ & $1$ & $0$ & $0$\\
+		$1$ & $2$ & $0$ & $0$\\
+		$2$ & $0$ & $0$ & $1$\\
+		$1$ & $0$ & $0$ & $2$\\
+		$2$ & $0$ & $1$ & $0$\\
+		$1$ & $0$ & $2$ & $0$\\
+		$0$ & $2$ & $0$ & $1$\\
+		$0$ & $1$ & $0$ & $2$\\
+		\hline
+		$0$ & $1$ & $1$ & $1$\\
+		$1$ & $0$ & $1$ & $1$\\
+		$1$ & $1$ & $0$ & $1$\\
+		$1$ & $1$ & $1$ & $0$\\
+	\end{tabular}
+\end{center}
+
+Ana, Beto y Carlos se quieren repartir $23$ caramelos y $7$ chocolates
+¿De cuántas formas pueden hacerlo?
+\[
+	E_{23,3}*E_{7,3}
+\]
+\[
+	\begin{cases}
+		x_{Ana}+x_{Beto}+x_{Carlos} = 23\\
+		x_{Ana},x_{Beto},x_{Carlos}\in \mathbb{Z} \text{ y son no negativos}
+	\end{cases}
+\]
+
+Una solución a $E_{n,k}$ se puede representar mediante un vector con $k$ coordenadas
+donde las misma suman $n$ y son no negativas.
+
+Cada vector de esa forma se puede representar usando los símbolos (Separador) y (Dulce)
+como sigue primero usamos (Separador)$[k-1]$ para definir $k$ cajas.
+Luego usamos $[n]$(Dulces) para representar el contenido de cada caja.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-1}
+\end{figure}
+\[
+	E_{n,k}=\binom{n+(k-1)}{k-1} = \binom{n+(k-1)}{n}
+\]
+Ahora algo diferente.
+\[
+	\begin{cases}
+		\sum^k_{i=1}x_i\leq n\\
+		0 \leq x_i\\
+		x_i\in \mathbb{Z}
+	\end{cases}
+\]
+\[
+	\sum^n_{j=0}E_{j,k}=E_{n,k+1}
+\]
+\[
+	\begin{cases}
+		\sum^k_{i=1}x_i+\omega= n\\
+		0 \leq x_i\\
+		x_i\in \mathbb{Z}\\
+		0 \leq \omega\\
+		\omega \in \mathbb{Z}
+	\end{cases}
+\]
+\[
+	\begin{cases}
+		x_1+x_2+x_3\leq 3
+		0 \leq x_i\\
+		x_1 \geq 0
+	\end{cases}
+\]
+\begin{center}
+	\begin{tabular}{c|c|c|c|c|c}
+		$\omega$ & $x_1$ & $x_2$ & $x_3$i & $\sum x_i$\\
+		\hline
+		$3$ &$0$ & $0$ & $0$ & $0$ & $E_{0,3}$\\
+		\hline
+		\multirow{3}{*}{2} & $0$ &$0$ & $1$ & \multirow{3}{*}{1} & \multirow{3}{*}{$E_{1,3}$}\\
+		&$0$ & $0$ & $1$ &\\
+		&$0$ & $1$ & $0$ &\\
+		&$1$ & $0$ & $0$ &\\
+		\hline
+		\multirow{6}{*}{1} & $0$ &$0$ & $1$ & \multirow{6}{*}{2} & \multirow{6}{*}{$E_{2,3}$}\\
+		&$0$ & $0$ & $2$ &\\
+		&$0$ & $2$ & $0$ &\\
+		&$2$ & $0$ & $0$ &\\
+		\cline{2-4}
+		&$0$ & $1$ & $1$ &\\
+		&$1$ & $0$ & $1$ &\\
+		&$1$ & $1$ & $0$ &\\
+		\hline
+		\multirow{10}{*}{0} & $0$ &$0$ & $1$ & \multirow{10}{*}{3} & \multirow{10}{*}{$E_{3,3}$}\\
+		&$0$ & $0$ & $3$ &\\
+		&$0$ & $3$ & $0$ &\\
+		&$3$ & $0$ & $0$ &\\
+		\cline{2-4}
+		&$0$ & $1$ & $2$ &\\
+		&$0$ & $2$ & $1$ &\\
+		&$1$ & $0$ & $2$ &\\
+		&$1$ & $2$ & $0$ &\\
+		&$2$ & $0$ & $1$ &\\
+		&$2$ & $1$ & $0$ &\\
+		\cline{2-4}
+		&$1$ & $1$ & $1$ &\\
+	\end{tabular}
+\end{center}
+\[
+	\sum^3_{j=0}E_{j,3}=E_{3,4}
+\]
+Ana, Beto, Calos y Diana se quieren repartir $17$ manzanas.
+Ana debe recibir al menos $3$.
+Diana debe recibir al menor 5.
+¿De cuántas maneras pueden repartirlas?
+
+\[
+	\begin{cases}
+		x_1+x_2+x_3+x_4=17\\
+		x_1\geq3\\
+		x_2\geq0\\
+		x_3\geq0\\
+		x_4\geq5
+	\end{cases}
+\]
+\[
+	\begin{cases}
+		x_1-3+3+x_2+x_3+x_4-5+5=17\\
+		x_1-3\geq3-3\\
+		x_2\geq0\\
+		x_3\geq0\\
+		x_4-5\geq5-5
+	\end{cases}
+\]
+\[
+	\begin{cases}
+		\overbrace{x_1-3}^{x_1'}
+		+\overbrace{x_2}^{x_2'}
+		+\overbrace{x_3}^{x_3'}
+		+\overbrace{x_4-5}^{x_4'}
+		=17-(3+5)=9
+		\\
+		x_1'\geq0\\
+		x_2'\geq0\\
+		x_3'\geq0\\
+		x_4'\geq0
+	\end{cases}
+\]
+\[
+	E_{9.4}
+	=\binom{9+(4-1)}{4-1}
+	=\binom{12}{3}
+	= \frac{12*11*10}{3*2*1}
+	= 220
+\]
+
+¿De cuántas formas diferentes podemos expresar el número $10$ como suma de $3$ naturales?
+
+¿De cuantas formas diferentes podemos expresar el número $10$
+como suma de naturales?
+
+¿Cuantos \dobledef{tableros}{tableros válidos} de michi hay?
+
+¿Cuántas placas de carro diferentes se pueden hacer en Perú?
+
+\dobledef{¿Cuántos dados de $6$ caras correctos hay?}{Un dado es correcto si sus
+caras opuestas siempre suman lo mismo.}
+
+¿Cuantos dados de $12$ caras correctos hay?
+\textcolor{blue}{ \textbf{Un dodecaedro sirve de dado de $12$ caras}}
+
+¿Cuantos brazaletes de $4$ cuentas negras y $4$ cuentas blancas se pueden hacer?
+\end{document}
+%}}}
