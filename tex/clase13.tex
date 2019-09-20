@@ -1,0 +1,104 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase13}{ima}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter*{Clase 13}%
+
+\thispagestyle{fancy}
+
+$|A|<\infty$\quad
+$|B|<\infty$
+\begin{align*}
+	f&:A\underset{1:1}{\longrightarrow}B\\
+	|A| &= |B|
+\end{align*}
+
+Una ficha de dominó doble-n consiste en un ``Rectángulo'' con un número entre
+0 y n en cada extremo.
+
+\textcolor{red}{El dominó doble-n tiene todas las fichas posibles.}
+
+¿Cuántas fichas tiene el dominó doble-6?
+¿Doble-9?
+\[
+	(\underbrace{6*6}_{\substack{\text{Todos los}\\\text{pares}\\\text{ordenados} }}-
+	\underset{\text{Los dobles}}{6}
+	)\underset{\substack{\text{El orden}\\\text{no importa}} }{/2!}
+	+\underset{\text{dobles}}{6}=
+	\binom{6}{2}
+	+\binom{6}{1}
+\]
+
+\[
+	\underbrace
+	{ \begin{cases}
+			x_1+x_2+x_3=10 \\
+			x_i \geq 1 \quad x_1 \in \mathbb{Z}
+	\end{cases} }_
+	{\text{\btw}}
+	\longleftrightarrow
+	\underset{\binom{7+3-1}{3-1}}
+	{
+		\begin{cases}
+			x_1'+x_2'+x_3'=7\\
+			x_1 \geq 0 \quad x_i \in \mathbb{Z}
+		\end{cases}
+	}
+\]
+\begin{align*}
+	|A| &= \text{Soluciones de \btw}\\
+	|A| &= \binom{7+3-1}{3-1} = \binom{9}{2}=36\\
+	\frac{\binom{9}{2}-4*3}{3!} +4 &= 8
+\end{align*}
+Un mazo de baraja francesa consta de un número de cartas que se forman tomando
+un rango del conjunto $\{A,2,3,4,5,6,7,8,9,10,J,Q,K\}$
+y una pinta del conjunto $\{\heartsuit,\spadesuit,\diamondsuit,\clubsuit\}$
+
+¿Cuántas cartas tiene un mazo de baraja francesa?
+\[
+	(13)*(4)=52
+\]
+
+Una mano de pocker consta de 5 cartas seleccionadas al azar de un mazo de baraja francesa bien mezclado.
+¿Cuántas manos de poker son posibles?
+\[
+	\binom{52}{2}
+\]
+
+Un \underline{Full house} es una mano de poker con $3$ cartas de un rango y $2$
+cartas de otro rango.
+¿Cuántos full-houses son posibles?
+\[
+	\Big{(}
+	\overbrace{13}^{\text{Números}}
+	*
+	\underbrace{ \binom{4}{3} }_{\substack{\text{$3$ cartas de $4$}\\ \text{pintas del mismo}\\
+	\text{número}} }
+	\Big{)}
+	*
+	\Big{(}
+	\overbrace{12}^{\substack{\text{Números}\\\text{diferentes}} }
+	*
+	\underbrace{ \binom{4}{2} }_{\substack{\text{$2$ cartas de $4$}\\ \text{pintas del mismo}} }
+	\Big{)}
+\]
+
+Un doble par consiste de:
+
+$2$ pares de cartas del mismo rango pero distinto entre sí y una carta de un rango
+distint de estos.
+\[
+	2^\heartsuit2^\diamondsuit3^\clubsuit3^\diamondsuit K^\clubsuit
+\]
+¿Cuántos dobles pares hay?
+\[
+	\overbrace{ \binom{13}{2} }^{\substack{\text{Dos números}\\\text{del rango}} }
+	\underbrace{ \binom{4}{2}^2 }_{\text{Dos pares de 2}}
+	\overbrace{ \binom{11}{1} }^{\substack{\text{Un número}\\\text{del rango}\\\text{restante}} }
+	\underbrace{ \binom{4}{1} }_{\text{Una carta}}
+\]
+
+\end{document}
+%}}}
