@@ -1,0 +1,341 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase15}{ima}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Recurrencias}%
+
+\thispagestyle{fancy}
+
+\definicion
+
+Una \underline{Ecuación de recurrencia} tiene una suceción como solución y
+ocasionalmente puede venir de problemas de conteo.
+\[
+	\begin{cases}
+		P_n=nP_{n-1}\quad n \geq 1 \longleftarrow
+		\substack
+		{
+			\text{Factorial}\\
+			\text{o permutaciones}\\
+			\text{de $n$ objetos}
+		}\\
+		P_0=1
+	\end{cases}
+\]
+
+\[
+	\begin{cases}
+		\binom{n+1}{k}
+		=\binom{n}{k}
+		+\binom{n}{k-1}\quad
+		\substack
+		{
+			0\leq k \leq n+1\\
+			0\leq k-1 \leq n\\
+			0\leq k \leq n\\
+		}
+		\\
+		%
+		\binom{0}{0}
+		=1\\
+		\binom{n}{0}
+		=\binom{n}{n}
+		=1
+	\end{cases}
+\]
+\section{Torres de hanoi}%
+\label{sec:Torres de hanoi}
+\begin{itemize}
+	\item Hay que pasar todos los discos del poste $A$ al poste $C$.
+	\item Los discos solo pueden moverse:
+		\begin{itemize}
+			\item Uno a la vez
+			\item A un palo adyacente.
+			\item Encima de un disco de mayor diámetro.
+		\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=1, transform shape]
+	\foreach \x in {0, ..., 2}
+	{
+		\draw (\x*3,0) rectangle +(0.5,5);
+		\draw (\x*3,-0.5) node {\AlphAlph{\x+1}};
+	}
+	\foreach \y in {0, ..., 3}
+	{
+		\filldraw [fill=white](0,\y)+(-2+\y/3,0) rectangle +(2-\y/3,1);
+	}
+\end{tikzpicture}
+\end{center}
+\end{figure}
+Pienses en un ``Algoritmo'' para mover todos los discos.($n$ discos)
+
+¿Cuál es la menor cantidad de pasos en que se puede reolver el problema?
+
+\teorema
+$T_n$: \# de movimiento necesarios para resolver torres de hanoi con $n$ discos.
+
+\begin{center}
+	\begin{tabular}{c|c}
+		$n$ & $T_n$\\
+		\hline
+		$1$ & $2$ \\
+		$2$ & $8$ \\
+		$3$ & $26$ \\
+		$4$ & $80$
+	\end{tabular}
+\end{center}
+
+\[
+	\begin{cases}
+		T_{n+1}=3T_n+2\\
+		T_1=2
+	\end{cases}
+\]
+
+\begin{gather*}
+	\sum^\mathbb{N}_{i=1}i
+	= \frac{n(n+1)}{2} \\
+	S_n =
+	\sum^n_{i=1}i\\
+	\begin{cases}
+		S_{n+1} = S_n+(n+1)\\
+		S_1 = 1
+	\end{cases}
+\end{gather*}
+
+\begin{gather*}
+	Q_n
+	\sum^n_{k=0} r^k\quad r\in\mathbb{R}\quad r\neq 0\\
+	\begin{cases}
+		Q_{n+1}=Q_n+r^{n+1}\\
+		Q_{n+1}=rQ_n+1
+	\end{cases}\\
+	r^0+rQ_n= r^0+r
+	\sum^n_{k=0} r^i\\
+	r^0+rQ_n= r^0+
+	\sum^n_{k=0} r^{i+1}\\
+	r^0+rQ_n= r^0+
+	\underbrace
+	{1}_{j=i+1}+
+	\sum^{n+1}_{j=1}r^j=Q_{n+1}\\
+	\\
+	\begin{cases}
+		Q_{n+1} = Q_n+
+		\underbrace
+		{
+			r^{n+1}
+		}_{
+			\substack
+			{
+				\text{Parte no}\\
+				\text{homogenea}\\
+				\text{de la recurrencia}
+			}
+		}
+		\quad n\geq1\quad r\neq 0\quad r\neq 1\\
+		Q_0=1
+	\end{cases}\\
+	\begin{cases}
+		\underbracket
+		{
+			Q_{n+1} = rQ_n
+		}_
+		{
+			\substack
+			{
+				\text{Grado de la}\\
+				\text{recurrencia, esta}\\
+				\text{es de orden $1$}
+			}
+		}
+		+
+		\underbrace
+		{
+			1
+		}_
+		{
+			\substack
+			{
+				\text{Parte no}\\
+				\text{homogenea}\\
+				\text{de la recurrencia}
+			}
+		}
+		\quad n \geq 1\quad r \neq 0\\
+		\underbrace
+		{
+			Q_0=1
+		}_
+		{
+			\substack
+			{
+				\text{Una condición}\\
+				\text{inicial}
+			}
+		}
+	\end{cases}\\
+	\intertext{Igualando ambas versiones de la serie}
+	Q_n+r^{n+1}=rQ_n+1\\
+	(1-r)Q_n = 1-r^{n+1}\\
+	Q_n =
+	\frac{1-r^{n+1}}{1-r}
+\end{gather*}
+Ecuación característica:
+\begin{gather*}
+	x^{n+1}=rx^n\\
+	x=r
+\end{gather*}
+\section{Fibonacci}%
+\label{sec:Fibonacci}
+
+\begin{gather*}
+	\begin{cases}
+		\overbrace
+		{
+			\underbracket
+			{
+				f_n = f_{n-1}+f_{n-2}
+			}_
+			{
+				\substack
+				{
+					\text{Recurrencia de}\\
+					\text{orden $2$}
+				}
+			}
+		}^
+		{
+			\text{Recurrencia homogenea}
+		}
+		\quad \text{La parte no homogenea es $0$}
+		\\
+		f_0 = 0\quad\text{Dos condiciones}\\
+		f_1 = 1\quad\text{iniciales}
+	\end{cases}
+\end{gather*}
+
+\begin{center}
+	\begin{tabular}{c|c}
+		$n$ & $f_n$\\
+		\hline
+		$0$ & $0$ \\
+		$1$ & $1$ \\
+		$2$ & $1$ \\
+		$3$ & $2$ \\
+		$4$ & $3$ \\
+		$5$ & $5$ \\
+		$6$ & $8$
+	\end{tabular}
+\end{center}
+Esta es una recurrencia \underline{lineal}
+
+Ecuación característica:
+\[
+	x^n= x^{n-1}+x^{n-2}\rightarrow\boxed{x^2=x+1}
+\]
+
+\begin{gather*}
+	\begin{cases}
+		P_n =
+		\underbrace
+		{
+			n
+		}_
+		{
+			\substack
+			{
+				\text{No es}\\
+				\text{\bfseries LINEAL}
+			}
+		}
+		P_{n-1}\quad n \geq 1\\
+		P_0 = 1
+	\end{cases}
+\end{gather*}
+Es recurrencia homogenea de orden $1$
+
+\begin{gather*}
+	\begin{cases}
+		T_{n+3} = T_{n-5} +
+		\underbrace
+		{
+			2
+		}_
+		{
+			\substack
+			{
+				\text{Recurrencia}\\
+				\text{no-homogenea}\\
+				\text{lineal de orden 8}
+			}
+		}
+		-3T_n\quad n \geq 6\\
+		T_i = i\quad 1 \leq i \leq 8
+	\end{cases}
+\end{gather*}
+Ecuación característica:
+\begin{gather*}
+	x^{n+3} = x^{n-5}-3x^n\\
+	x^8 = 1-3x^5
+\end{gather*}
+\definicion
+Si tenemos un $\overbrace{\text{E.R}}^{\substack{\text{Ecuación}\\\text{en recurrencia}} }$,
+lineal, de orden $K$ podemos definir la \underline{ecuación característica}
+de la E.R reemplazando $a_n$ por $x^n$ y simplificando el polinomio.
+\textcolor{red}{\bfseries Debemos ignorar la parte no homogenea}
+
+¿Qué pasa si $r$ satisface la ecuación característica?
+(Supongamos que $r_1$ y $r_2$ son raíces de $x^2=x+1$)
+\begin{gather*}
+	r^2=r+1
+	\intertext{Multiplico por $r^{n-2}$}
+	Ar^n = Ar^{n-1}+ Ar^{n-2}
+\end{gather*}
+Propongo $f_n = Ar^n$
+\[
+	Ar^n?=Ar^{n-1}+Ar^{n-2}
+\]
+
+\begin{align*}
+	x^2 &= x+1\\
+	x^2-x-1 &= 0\\
+	\\
+	r_1 &= x^+=
+	\frac{1+\sqrt{1+4}}{2}=
+	\frac{1+\sqrt{5}}{2}\\
+	r_2 &= x^-=
+	\frac{1-\sqrt{1+4}}{2}=
+	\frac{1-\sqrt{5}}{2}\\
+\end{align*}
+
+Propongo como solución general de fibonacci:
+\begin{gather*}
+	\begin{cases}
+		f_n = Ar_1^n+Br_2^n\\
+		f_0 = 0 = A+B\\
+		f_1 = 1 = Ar_1+Br_2
+	\end{cases}
+	A=-B\\
+	1=-Br_1+Br_2\\
+	1=B(r_2-r_1)\\
+	B= \frac{1}{r_2-r_1}\\
+	\\
+	f_n =
+	\frac{\sqrt{5}}{5}
+	\left(
+		\frac{1+\sqrt{5}}{2}
+	\right)^n
+	-
+	\frac{\sqrt{5}}{5}
+	\left(
+		\frac{1-\sqrt{5}}{2}
+	\right)^n
+\end{gather*}
+
+\end{document}
+%}}}
