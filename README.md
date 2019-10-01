@@ -1,5 +1,6 @@
-[![Travis (.com) branch](https://img.shields.io/travis/com/otreblan/discre2/master?style=flat-square)](https://travis-ci.com/otreblan/discre2)
+[![HitCount](http://hits.dwyl.io/otreblan/discre2.svg)](http://hits.dwyl.io/otreblan/discre2)
 [![GitHub All Releases](https://img.shields.io/github/downloads/otreblan/discre2/total?style=flat-square)](https://github.com/otreblan/discre2/releases/latest)
+[![Travis (.com) branch](https://img.shields.io/travis/com/otreblan/discre2/master?style=flat-square)](https://travis-ci.com/otreblan/discre2)
 # Cosas discretas parte 2
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg?style=flat-square)](https://www.latex-project.org/)
 
