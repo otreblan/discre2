@@ -1,0 +1,293 @@
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase18}{ima}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Aun más conteo}%
+
+\thispagestyle{fancy}
+
+\section{Continuación}%
+\label{sec:continuacion}
+
+De
+\ref{sec:un_problema_con_monedas}
+
+\definicion
+\textbf{Funciones generadoras}
+
+{
+	\Large \textbf{IDEA:}%
+}
+Utilizar una ``función formal'' para llevar la cuenta de cada posibilidad,
+apoyarnos en Álgebra que es algo que sabemos hacer.
+
+\begin{center}
+	\Large $11$ soles
+\end{center}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		%$<++>$ & $<++>$ & $<++>$ & $<++>$\\
+		S/$1$ & S/$2$ & S/$5$ & S/$10$\\
+		\hline
+		$11$ & $0$ & $0$ & $0$\\
+		$9$ & $1$ & $0$ & $0$\\
+		$7$ & $2$ & $0$ & $0$\\
+		$5$ & $3$ & $0$ & $0$\\
+		$3$ & $4$ & $0$ & $0$\\
+		$1$ & $5$ & $0$ & $0$\\
+		\hline
+		$6$ & $0$ & $1$ & $0$\\
+		$4$ & $1$ & $1$ & $0$\\
+		$2$ & $2$ & $1$ & $0$\\
+		$0$ & $3$ & $1$ & $0$\\
+		\hline
+		$1$ & $0$ & $2$ & $0$\\
+		\hline
+		$1$ & $0$ & $0$ & $1$
+	\end{tabular}
+	\caption{Cantidad de monedas}
+\end{table}
+
+\begin{gather*}
+	\overbrace
+	{
+		(
+		x^0
+		+x^1
+		+x^2
+		+x^3
+		+x^4
+		+x^5
+		+x^6
+		+x^7
+		+x^8
+		+x^9
+		+x^{10}
+		+x^{11}
+		)
+	}^
+	{
+		\text{Lleva la cuenta de el $\#$ de monedas de $1$ sol}
+	}
+	*\\
+	\overbrace
+	{
+		(
+		x^0
+		+x^2
+		+x^4
+		+x^6
+		+x^8
+		+x^{10}
+		)
+	}^
+	{
+		\text{Monto en monedas de $2$}
+	}*\\
+	\overbrace
+	{
+		(
+		x^0
+		+x^5
+		+x^{10}
+		)
+	}^
+	{
+		\text{Monto en monedas de $5$}
+	}*\\
+	\overbrace
+	{
+		(
+		x^0
+		+x^{10}
+		)
+	}^
+	{
+		\text{Monto en billetes de $10$}
+	}
+\end{gather*}
+La respuesta es el coeficiente de $x^{11}$
+($\cdots+\overbrace{n}^{\text{Cantidad}}x^{\overbrace{v}^{\substack{\text{Valor de}\\
+\text{la moneda}} }}+\cdots$)
+
+Ahora con 7 soles:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		%$<++>$ & $<++>$ & $<++>$ & $<++>$\\
+		S/$1$ & S/$2$ & S/$5$ & S/$10$\\
+		\hline
+		$7$ & $0$ & $0$ & $0$\\
+		$5$ & $2$ & $0$ & $0$\\
+		$3$ & $4$ & $0$ & $0$\\
+		$1$ & $6$ & $0$ & $0$\\
+		$2$ & $0$ & $5$ & $0$\\
+		$0$ & $2$ & $5$ & $0$\\
+		\hline
+	\end{tabular}
+	\caption{Dinero por tipo de moneda}
+\end{table}
+
+\section{Un problema con generadoras}%
+\label{sec:un_problema_con_generadoras}
+
+Se quieren repartir $11$ caramelos, $17$ chocolates y $14$ frutas.
+Entre Ana, Beto, Carlos, Daniela.
+
+\textbf{¿De cuántas formas se pueden repartir las cosas?}
+\textcolor{red}
+{
+	\bfseries\boldmath\noindent\\
+	Ana es alérgica al chocolate.\\
+	Beto solo come comida en cantidades pares.\\
+	Carlos debe recibir al menos $6$ caramelos y no más de $8$.\\
+	Daniela quisiera al menos dos chocolates y un múltiplo de $3$ frutas.
+}
+
+Vamos a usar la regla del producto y multiplicaremos los resultados de
+asignación de caramelos, chocolates y frutas.
+
+Caramelos:
+\[
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{11}
+			x^k
+		\right)
+	}^
+	{
+		\text{Ana}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{5}
+			x^{2k}
+		\right)
+	}^
+	{
+		\text{Beto}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=6}^{8}
+			x^k
+		\right)
+	}^
+	{
+		\text{Carlos}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{11}
+			x^k
+		\right)
+	}^
+	{
+		\text{Daniela}
+	}
+	x^{11}:27
+\]
+
+Chocolates:
+\[
+	\overbrace
+	{
+		1
+	}^
+	{
+		\text{Ana}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{8}
+			x^{2k}
+		\right)
+	}^
+	{
+		\text{Beto}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{11}
+			x^k
+		\right)
+	}^
+	{
+		\text{Carlos}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=2}^{11}
+			x^k
+		\right)
+	}^
+	{
+		\text{Daniela}
+	}
+	x^{17}:72
+\]
+
+Frutas:
+\[
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{14}
+			x^k
+		\right)
+	}^
+	{
+		\text{Ana}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{7}
+			x^{2k}
+		\right)
+	}^
+	{
+		\text{Beto}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{14}
+			x^k
+		\right)
+	}^
+	{
+		\text{Carlos}
+	}
+	\overbrace
+	{
+		\left(
+			\sum_{k=0}^{4}
+			x^{3k}
+		\right)
+	}^
+	{
+		\text{Daniela}
+	}
+	x^{14}:147
+\]
+\[
+	\boxed
+	{
+		27*72*147
+	}
+\]
+
+\end{document}
+%}}}
