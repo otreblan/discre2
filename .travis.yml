@@ -12,8 +12,8 @@ script:
     - docker build . -t arutex
     - docker run  -v $(pwd):/home/docker/input arutex -c
           "
-          cp -rf . /tmp;
-          cd /tmp;
+          cp -rf . ../tmp;
+          cd ../tmp;
           make;
           sudo cp -rf . /home/docker/input
           "
