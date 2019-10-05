@@ -8,9 +8,8 @@ cache:
     - cache
 script:
     - ./uncache.sh
-
-    - docker build . -t arutex
-    - docker run  -v $(pwd):/home/docker/input arutex -c
+    # Docker image on https://hub.docker.com/r/otreblan/arutex
+    - docker run  -v $(pwd):/home/docker/input otreblan/arutex -c
           "
           cp -rf . ../tmp;
           cd ../tmp;
