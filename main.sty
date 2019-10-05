@@ -51,12 +51,6 @@
 \usepackage{subcaption}
 
 \usepackage{float}
-\usepackage{pgfplots}
-
-\usetikzlibrary{babel}
-\usetikzlibrary{math}
-\usetikzlibrary{arrows.meta}
-\pgfplotsset{compat=1.16}
 
 % Un pequeño hack para que los nombres de los svg inicien con el nombre
 % del archivo donde son llamados.
@@ -67,6 +61,21 @@
 % sin poner ../ima
 %\graphicspath{ {ima} }
 
+% Opciones de PGF/Tikz{{{
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.16}
+
+\usetikzlibrary{external}
+\usetikzlibrary{babel} % Sin esto algunas cosas no funcionan
+\usetikzlibrary{math}
+\usetikzlibrary{arrows.meta}
+
+% Esto crea un caché para las imágenes de tikz (depende del paquete svg)
+\newcommand{\tikzprefix}{tikz/}
+\svg@shell@mkdir{\tikzprefix}
+\tikzexternalize[prefix=\tikzprefix]
+% }}}
 %}}}
 % Colores de los links {{{
 \definecolor{red}{HTML}{F22C40}
