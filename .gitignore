@@ -7,6 +7,7 @@
 *.pdf
 *.synctex.gz
 svg-inkscape
+cache
 tikz
 *.bbl
 *.bcf

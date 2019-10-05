@@ -1,15 +1,24 @@
 sudo: required
+language: minimal
 services:
     - docker
+
+cache:
+    directories:
+    - cache
 script:
-    - docker build . -t arch
-    - docker run  -v $(pwd):/home/docker/input arch -c
+    - ./uncache.sh
+
+    - docker build . -t arutex
+    - docker run  -v $(pwd):/home/docker/input arutex -c
           "
           cp -rf . /tmp;
           cd /tmp;
           make;
-          sudo mv *.pdf /home/docker/input
+          sudo cp -rf . /home/docker/input
           "
+
+    - ./cache.sh
 deploy:
     provider: releases
 # https://github.com/japaric/trust/issues/104
