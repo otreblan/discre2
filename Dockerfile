@@ -20,6 +20,16 @@ WORKDIR /home/docker/build/yay
 
 RUN makepkg -si --noconfirm
 
-WORKDIR /home/docker/build
+# Instalando dependencias
+RUN yay \
+	--nodiffmenu \
+	--nocleanmenu \
+	--noconfirm \
+	-S \
+	nerd-fonts-inconsolata-go \
+	texlive-most \
+	inkscape
+
+WORKDIR /home/docker/input
 
 ENTRYPOINT [ "/bin/bash" ]
