@@ -1,0 +1,530 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase20}{../ima/clase20}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Coeficientes indeterminados}%
+
+\thispagestyle{fancy}
+
+Dada una recurrencia para $a_n$ (Una sucesión (Una función
+de $\{0\}\cup\mathbb{N}\rightarrow\mathbb{R}$)) donde
+
+(Esto es como una plantilla para crear recurrencias)
+\[
+	\begin{cases}
+		a_n =
+		\overbrace
+		{
+			\sum_{j=1}^kc_ja_{n-j}
+		}^
+		{
+			\substack
+			{
+				\text{Una recurrencia de}\\
+				\text{orden $k$ si $c_k\neq 0$}\\
+			}
+		}
+		\underbrace
+		{
+			+ f(n)
+		}_
+		{
+			\substack
+			{
+				\text{Si esto es cero}\\
+				\text{la recurrencia es homogénea}\\
+				\text{en caso contrario}\\
+				\text{no es homogénea}
+			}
+		}
+		\quad \forall n \geq k\\
+		\begin{rcases}
+			a_0 = b_0\\
+			a_1 = b_1\\
+			\vdots\\
+			a_{k-1} = b_{k-1}
+		\end{rcases}
+		\underbrace
+		{
+			\text{Condiciones iniciales}
+		}_
+		{
+			\substack
+			{
+				\text{T. si se tiene una recurrencia lineal de orden $k$ para}\\
+				\text{$a_n$ bastan $k$ condiciones iniciales consecutivas para}\\
+				\text{determinar de manera única a $a_n$}
+			}
+		}
+	\end{cases}
+\]
+
+
+\begin{align*}
+	\text{Con } c_i&\in\mathbb{R} \text{ constantes fijas para } i\in[k]\\
+	b_i&\in\mathbb{R} \text{ constantes fijas para } i\in\{0\}\cup[k-1]\\
+\end{align*}
+y $f(n)$ una combinación lineal de polinomios en $n$ por exponenciales en $n$.
+\[
+	f(x)=\sum_{j=1}^\omega P_j(n)d_j^n \quad
+	d_j\in\mathbb{R} \text{ Fijos para $j\in[\omega]$}
+\]
+
+\[
+	\begin{cases}
+		a_n = 7a_{n-4}+3 \quad n \geq 4\\
+		a_0 = 1\\
+		a_1 = 2\\
+		a_2 = 3\\
+		a_3 = 4
+	\end{cases}
+\]
+Método general para resolver recurencias.
+\begin{enumerate}
+	\item \textcolor{red}
+		{
+			\bfseries\boldmath%
+			Econtrar la ecuación carácterística. ($i=\sqrt{-1}$)
+		}
+		\begin{align*}
+			x^4 &= 7\\
+			r_1 &= \sqrt[4]{7}\\
+			r_2 &= -\sqrt[4]{7}\\
+			r_3 &= \sqrt[4]{7}i\\
+			r_4 &= -\sqrt[4]{7}i\\
+			x^4 &= 7 \Rightarrow (x^4-7) = 0 \Rightarrow\\
+			(x-\sqrt[4]{7})
+			(x+\sqrt[4]{7})
+			(x-\sqrt[4]{7}i)
+			(x+\sqrt[4]{7}i) &= 0
+		\end{align*}
+	\item \textcolor{red}
+		{
+			\bfseries\boldmath%
+			Proponer la solución homogénea.
+			Si las $k$ raíces de la ecuación carácterística son.
+			$r_1,r_2,\cdots,r_s$ con multiplicidades
+			(Las repeticiones de una raiz)
+			$m_1,m_2,\cdots,m_s$ respectivamente.
+			$m_i\in\{0\}\cup\mathbb{N}$ y $\sum_{i=1}^smi=k$
+			proponemos $a_n^h = \sum_{i=1}^sp_i(n)r_i^n$
+			donde $p_i(n)=\sum_{j=0}^{m_i-1}A_{ij}n^j$
+			(Es un polinomio de grado $m_i-1$ y $A_{ij}$
+			(Los $A.B.C$ que había usado para fibonacci)
+			constante)
+		}
+		\[
+			a_n^h =
+			A_{1,0}\sqrt[4]{7}^n
+			+
+			A_{2,0}\left(-\sqrt[4]{7}\right)^n
+			+
+			A_{3,0}\left(\sqrt[4]{7}i\right)^n
+			+
+			A_{4,0}\left(-\sqrt[4]{7}i\right)^n
+		\]
+	\item \textcolor{red}
+		{
+			\bfseries\boldmath%
+			%
+			Considerar la parte no-homogénea para encontrar una
+			relación particular $a_n^p$
+			%
+			Hay que pensar que relación carácterística tendríamos que
+			tener para ``ver'' la $f(n)$
+		}
+		\[
+			f(n) = 3 =
+			\underbrace
+			{
+				3
+			}_
+			{
+				\substack
+				{
+					\text{Está repetida}\\
+					\text{una vez}
+				}
+			}
+			*
+			\underbrace
+			{
+				1^n
+			}_
+			{
+				\substack
+				{
+					\text{La raiz}\\
+					\text{es $1$}
+				}
+			}
+			\rightarrow (r-1)^1 = 0
+		\]
+		Como $1$ no es raíz de la parte homogénea entonces $q_n^p=A\cdot1^n$
+
+		Sustituimos en la recurrencia para encontrar los valores de las
+		constantes.
+		\begin{align*}
+			A*1^n &= 7*A*1^{n-4}+3*1^n\\
+			A &= 7A+3\\
+			-6A &= 3\\
+			\Aboxed
+			{
+			A &= \frac{1}{2}
+			}
+		\end{align*}
+	\item \textcolor{red}
+		{
+			\bfseries\boldmath%
+			%
+			Continuamos la solución general.
+			$a_n = a_n^h+a_n^p$
+		}
+		\[
+			a_n =
+			A_{1,0} \sqrt[4]{7}^n
+			A_{2,0} \left(-\sqrt[4]{7}\right)^n
+			A_{3,0} \left(\sqrt[4]{7}i\right)^n
+			A_{4,0} \left(-\sqrt[4]{7}i\right)^n
+			- \frac{1}{2}
+		\]
+		\begin{align*}
+			1 &= A_{1,0}
+			+
+			A_{2,0}
+			+
+			A_{3,0}
+			+
+			A_{4,0}
+			+
+			\left( \frac{-1}{2} \right)\\
+			2 &= A_{1,0} \sqrt[4]{7}
+			-
+			A_{2,0} \sqrt[4]{7}
+			+
+			A_{3,0} \sqrt[4]{7}i
+			-
+			A_{4,0} \sqrt[4]{7}i
+			-
+			\frac{1}{2}\\
+			3 &= A_{1,0} \sqrt[4]{7}^2
+			+
+			A_{2,0} \sqrt[4]{7}^2
+			-
+			A_{3,0} \left(\sqrt[4]{7}i\right)^2
+			-
+			A_{4,0} \left(\sqrt[4]{7}i\right)^2
+			-
+			\frac{1}{2}\\
+			4 &= A_{1,0} \sqrt[4]{7}^3
+			-
+			A_{2,0} \sqrt[4]{7}^3
+			-
+			A_{3,0} \sqrt[4]{7}^3i
+			-
+			A_{4,0} \sqrt[4]{7}^3i
+			-
+			\frac{1}{2}\\
+		\end{align*}
+		Resuelve $A_{1,0}, A_{2,0}, A_{3,0}, A_{4,0}$
+\end{enumerate}
+\section{Ejercicios random}%
+\label{sec:ejercicios_random}
+
+Un poste con $n$ metros de altura se quiere llenar con banderas de colores.
+Las banderas tienen un metro de alto y pueden ser rojas, verdes o azules.
+\begin{enumerate}
+	\item\label{it:normal} ¿De cuántas formas podemos hacer esto?
+		\[
+			3^n
+		\]
+	\item Plantea una recurrencia
+		\[
+			\begin{cases}
+				f_n = 3f_{n-1} \quad f \geq 1\\
+				f_0 = 1\\
+				f_1 = 3
+			\end{cases}
+		\]
+	\item Resuelve la recurrencia y comparala con \ref{it:normal}
+		\begin{align*}
+			\intertext{Ecuación carácterística}
+			f^n &= 3f^{n-1}\\
+			f^n &= 3 \frac{f^n}{f} \\
+			f &= 3\\
+			\\
+			f_n^h &= A*3^n\\
+			\\
+			f_1 &= 3 = A*3^1 \Rightarrow A=1
+		\end{align*}
+\end{enumerate}
+
+Un poste con $n$ metros de altura se quiere llenar con banderas de colores.
+Las banderas tienen un metro de alto y pueden ser rojas, verdes o azules.
+O de dos metros de alto blancas o negras.
+\begin{enumerate}
+	\item\label{it:normal2} ¿De cuántas formas podemos hacer esto?
+		\[
+			?
+		\]
+	\item Plantea una recurrencia
+		\[
+			\begin{cases}
+				f_n = 3f_{n-1}+ 2f_{n-2} \quad f \geq 3\\
+				f_0 = 1\\
+				f_1 = 3\\
+				f_2 = 11 =
+				\underbrace
+				{
+					3^2
+				}_
+				{
+					\substack
+					{
+						\text{Patrones con $2$}\\
+						\text{banderas de $1m$}
+					}
+				}
+				+
+				\overbrace
+				{
+					2
+				}^
+				{
+					\substack
+					{
+						\text{Patrones con $1$}\\
+						\text{bandera de $2m$}
+					}
+				}
+			\end{cases}
+		\]
+	\item Resuelve la recurrencia y comparala con \ref{it:normal2}
+		\begin{align*}
+			\intertext{Ecuación carácterística}
+			f^n &= 3f^{n-1}+2f^{n-2}\\
+			f^n &= 3 \frac{f^n}{f} +2 \frac{f^n}{f^2}\\
+			1 &= \frac{3}{f} + \frac{2}{f^2}\\
+			f^2 &= 3f + 2\\
+			f^2 - 3f - 2 &= 0\\
+			\\
+			f^+ = r_1 &= \frac{3+\sqrt{17}}{2} \\
+			f^- = r_2 &= \frac{3-\sqrt{17}}{2}\\
+			\\
+			f_n^h &= A(r_1)^n + B(r_2)^n\\
+			f_n^h &=
+			A\left(
+				\frac{3+\sqrt{17}}{2}
+			\right)^n
+			+
+			f\left(
+				\frac{3-\sqrt{17}}{2}
+			\right)^n\\
+			\\
+			f_0 &= 1 = A + B\\
+			f_1 &= 3 =
+			A
+			\left(
+			\frac{3+\sqrt{17}}{2}
+			\right)^1
+			+
+			B
+			\left(
+			\frac{3-\sqrt{17}}{2}
+			\right)^1
+		\end{align*}
+\end{enumerate}
+\textbf{Para llevar}
+Un poste con $n$ metros de altura se quiere llenar con banderas de colores.
+Las banderas tienen un metro de alto y pueden ser rojas, verdes o azules.
+O de dos metros de alto blancas o negras.
+\begin{enumerate}
+	\item ¿De cuántas formas podemos poner las banderas sin que hayan
+		$2$ consecutivas?
+	\item ¿De cuántas formas podemos poner las banderas sin que hayan
+		$2$ banderas del mismo color consecutivas?
+\end{enumerate}
+
+\section{Otro torres de Hanoi}%
+\label{sec:otro_torres_de_hanoi}
+Los postes están puestos en un triángulo.
+
+\textbf{Los 9 billones de nombres de Dios}
+Arthur Clarke
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo}
+\end{figure}
+
+Queremos llevar los discos de $A$ a $C$.
+\begin{itemize}
+	\item No podemos mover más de $1$ disco por vez.
+	\item No puede haber un disco grande encima de uno pequeño.
+\end{itemize}
+
+\[
+	\begin{cases}
+		H_n = H_{n-1}+1+H_{n-1}\\
+		H_1 = 1
+	\end{cases}
+\]
+\[
+	\begin{cases}
+		H_n = 2H_{n-1} + 1\\
+		H_1 = 1
+	\end{cases}
+\]
+\begin{align*}
+	H^n &= 2H^{n-1}\\
+	H &= 2\\
+	\intertext{Parte homogénea}
+	H_n^h &= A*2^n
+	\intertext{Parte no-homogénea(Solución particular)}
+	H_n^p &= B*1^n = B\\
+	B*1^n &= 2B*1^n +1\\
+	B &= 2B+1 \quad B=-1
+	\intertext{Combinando ambas partes}
+	H_n &= A*2^n-1\\
+	\\
+	H_1 &= 1 = A*2^1-1\\
+	2 &= A*2\\
+	A &= 1\\
+	\\
+	H_n &= 2^n -1
+\end{align*}
+\textbf{Para llevar}
+\[
+	\begin{cases}
+		S_n = S_{n-1} + n^2\\
+		S-0 = 0
+	\end{cases}
+\]
+Con función generadora:
+\[
+	\begin{cases}
+		S_n = S_{n-1} + n \\
+		S_0 = 0
+	\end{cases}
+\]
+\begin{gather*}
+	\sum_{n=1}^\infty
+	S_nx^n =
+	\sum_{n=1}^\infty
+	\left(
+		S_{n-1}x^n+nx^n
+	\right)\\
+	S(x) - S_0 =
+	\sum_{n=1}^\infty
+	S_{n-1}x^n
+	+
+	\sum_{n=1}^\infty
+	nx^n\\
+	=
+	\sum_{n=1}^\infty
+	S_{n-1}x^{n-1}
+	+
+	\sum_{n=1}^\infty
+	nx^n\\
+	\\
+	S(x) - 0 = xS(x)+
+	x
+	\sum_{n=1}^\infty
+	nx^{n-1}<\\
+	\\
+	\frac{d}{dx}
+	\left(
+	\sum_{n=0}^\infty
+	x^n
+	\right)
+	=
+	\sum_{n=1}^\infty
+	\frac{d}{dx}
+	x^n =
+	\sum_{n=1}^\infty
+	nx^{n-1}\\
+	\frac{d}{dx}
+	\left(
+		\frac{1}{1-x}
+	\right)=
+	(-1)(1-x)^{-2}(-1)=
+	\frac{1}{(1-x)^2} \\
+	\frac{d}{dx}
+	(1-x)^{-1}
+\end{gather*}
+\begin{gather*}
+	S(x) = xS(x) + \frac{x}{(1-x)^2} \\
+	(1-x)S(x) = \frac{x}{(1-x)^2}\\
+	S(x) = \frac{x}{(1-x)^3}
+\end{gather*}
+Estamos buscando el coeficiente de $x^n$ en $S(x)$
+\[
+	\left(
+		S(x)
+	\right)
+	\left[
+		x^n
+	\right]
+	=
+	\frac{x}{(1-x)^3}
+	\left[
+		x^n
+	\right]
+\]
+\[
+	\left(
+		\sum_{n=2}^\infty
+		\frac{n(n-1)}{2}
+		x^{n-1}
+	\right) =
+	S(x) \quad
+	S(x)[x^k] = \frac{(k+1)(k+1-1)}{2} =
+	\boxed
+	{
+		\frac{(k+1)k}{2}
+	}
+\]
+Derivada otra vez
+\begin{gather*}
+	\frac{d}{dx}
+	\left(
+		\frac{1}{(1-x)^2}
+	\right)
+	=
+	(-2)(1-x)^{-3}(-1) = \frac{2}{(1-x)^3} \\
+	\frac{d}{dx}
+	\left(
+		\sum_{n=1}^\infty
+		nx^{n-1}
+	\right)
+	\underbrace
+	{
+		=
+	}_
+	{
+		\substack
+		{
+			nx^{1-1}\\
+			\text{es constante}\\
+			\text{respecto a $x$.}
+		}
+	}
+	\sum_{n=2}^\infty
+	n(n-1)
+	x^{n-2}
+\end{gather*}
+\begin{gather*}
+	\sum_{n=2}^\infty
+	\frac{n(n-1)}{2}
+	x^{n-2} = \frac{1}{(1-x)^3} \\
+	x\sum_{n=2}^\infty
+	\frac{n(n-1)}{2}
+	x^{n-2} = \frac{x}{(1-x)^3} = S(x)
+\end{gather*}
+\end{document}
+%}}}
