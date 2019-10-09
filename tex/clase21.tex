@@ -1,0 +1,230 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase21}{../ima/clase21}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Funciones generadoras}%
+
+\thispagestyle{fancy}
+
+Se usan para generar suceciones.(Creo)
+
+\section{Propiedades}%
+\label{sec:propiedades}
+
+\begin{align*}
+	\text{Si } A(x) &=
+	\sum_{n=0}^\infty a_nx^n\\
+	\text{y } B(x) &=
+	\sum_{n=0}^\infty b_nx^n\\
+	\text{y } c \in\mathbb{R}
+\end{align*}
+
+La función generadora de $\left(ca_n\right)^\infty_{n=0}$
+es $\sum_{n=0}^\infty ca_nx^n=cA(x)=(cA)(x)$
+
+La función generadora de $(a_n+b_n)^\infty_{n=0}$
+es $\sum_{n=0}^\infty ca_nx^n=A(x)+B(x)=(A+B)(x)$
+
+\textbf{Creo que es como una serie geométrica}
+\[
+	\overset
+	{
+		\text{Sucesión(Función)}
+	}
+	{
+		(1,1,1,\cdots) = (1)^\infty_{n=0}
+	}
+	\underset
+	{
+		1:1
+	}
+	{
+		\longleftrightarrow
+	}
+	\overset
+	{
+		\text{FGM}
+	}
+	{
+		\sum^\infty_{n=0}1*x^n
+	}
+	= \frac{1}{1-x}
+\]
+\[
+	(0,1,2,3,4,\cdots)
+	\longleftrightarrow
+	\sum_{n=0}^\infty
+	nx^n
+	=
+	\sum_{n=1}^\infty
+	nx^n
+	=
+	x\sum_{n=1}^\infty
+	nx^{n-1}
+	=
+	\frac{x}{(1-x)^2}
+\]
+\[
+	\left(
+		\binom{n}{0},
+		\binom{n}{1},
+		\binom{n}{2},
+		\cdots,
+		\binom{n}{n-1},
+		\binom{n}{n},
+		0,
+		0,
+		\cdots
+	\right)
+	\longleftrightarrow
+	(1+x)^n
+	= \sum_{j=0}^n \binom{n}{j}x^ji^{n-j}
+\]
+\[
+	(a+b)^n =
+	\sum_{k=0}^n
+	\binom{n}{k} a^k b^{n-k}
+\]
+\textbf{Sucesión geométrica multiplicada por una constante}
+\[
+	(c,c,c,\cdots)
+	\longleftrightarrow
+	\sum_{k=0}^\infty
+	cx^k
+	= \frac{c}{1-x}
+\]
+\textbf{¿Sucesión geométrica?}
+\[
+	(c^0,c^1,c^2,c^3,\cdots)
+	\longleftrightarrow
+	\sum_{k=0}^\infty
+	c^kx^k
+	= \frac{1}{1-cx}
+\]
+\textcolor{red}
+{
+	\bfseries
+	Idea: Usar Taylor para más series.
+}
+\[
+	\sum_{n=0}^\infty
+	\frac{x^n}{n!}
+	= e^x
+\]
+\textcolor{blue}
+{
+	\bfseries
+	Serie de Maclaurin: (Taylor centrada en uno)
+}
+\[
+	f(x) =
+	\sum_{k=0}^\infty
+	\frac{f^{(k)}(0)x^k}{k!}
+\]
+\textbf{Fracciones parciales}
+\[
+	F(x)=
+	\frac{1}{(1-x)}
+	\frac{2}{(1+x)^2}
+	=
+	\frac{A}{1-x}
+	+
+	\frac{B}{1+x}
+	+
+	\frac{C}{(1+x)^2}
+\]
+\[
+	\frac{A(1+x)^2+B(1-x)(1+x)+C(1-x)}{(1-x)(1+x)^2}
+	=
+	\frac{2}{(1-x)(1+x)^2}
+\]
+\[
+	A(1+2x+x^2)+B(1-x^2)+C(1-x)
+	=
+	2+0*x+0*x^2
+\]
+Sistema de ecuaciones:
+\begin{align*}
+	\begin{cases}
+		A+B+C &= 2\\
+		2A-C &= 0\\
+		A-B &= 0
+	\end{cases}
+	\Rightarrow
+	\substack
+	{
+		C = 2A\\
+		A = B
+	}
+	\Rightarrow
+	\substack
+	{
+		A = \frac{1}{2}\\
+		B = \frac{1}{2} \\
+		C = 1
+	}
+\end{align*}
+\[
+	F(x) = \frac{1}{2}
+	* \frac{1}{1-x}
+	+
+	\frac{1}{2}
+	*
+	\frac{1}{1+x}
+	+
+	1
+	*
+	\frac{1}{(1+x)^2}
+\]
+Coeficiente en $x^n$
+\begin{align*}
+	F(x)[x^n]
+	&= \frac{1}{2}
+	+
+	\frac{1}{2}
+	*(-1)^n
+	+
+	\frac{1}{(1+x)^2}
+	[x^n]\\
+	\frac{1}{2}
+	+
+	\frac{1}{2}
+	(-1)^n
+	-(n+1)(-1)^{n+1}
+\end{align*}
+
+Si $F(x)$ es la función generadora para $(f_0)_{n=0}^\infty$
+
+$F'(x)$ es la función generadora para $\left((n+1)f_{n+1}\right)_{n=0}^\infty$
+\[
+	F'(x)=
+	\frac{d}{dx}
+	\left(
+		\sum_{k=0}^\infty
+		f_kx^k
+	\right)
+	=
+	\sum_{k=1}^\infty
+	\frac{d}{dx}
+	(f_kx^k)
+	=
+	\sum_{k=1}^\infty
+	kf_kx^{k-1}
+	\overset
+	{
+		( n=k-1 )
+	}
+	{
+		=
+	}
+	\sum_{n=0}^\infty
+	(n+1)
+	f_{n+1}x^n
+\]
+\end{document}
+%}}}
