@@ -600,8 +600,20 @@ Espacios para cada torre: (3 torres, 9 cuadrados)
 	\right)\\
 	\\
 	S(x) &=
-	\sum_{n=2}^\infty
-	S_nx^n\\
+	\underbrace
+	{
+		\sum_{n=0}^\infty
+		S_nx^n
+	}_
+	{
+		\substack
+		{
+			\text{Creo que el $n$}\\
+			\text{se puede reemplazar}\\
+			\text{por otra variable que}\\
+			\text{en $0$.}
+		}
+	}\\
 	\\
 	S(x)-S_1x^1-S_0&=
 	\sum_{n=2}^\infty
@@ -611,9 +623,9 @@ Espacios para cada torre: (3 torres, 9 cuadrados)
 	8S_{n-2}x^n\\
 	S(x)-S_1x^1-S_0&=
 	2x
-	\sum_{n=2}^\infty
 	\underbrace
 	{
+		\sum_{n=2}^\infty
 		S_{n-1}x^{n-1}
 	}_
 	{
@@ -621,9 +633,9 @@ Espacios para cada torre: (3 torres, 9 cuadrados)
 	}
 	+
 	8x^2
-	\sum_{n=2}^\infty
 	\underbrace
 	{
+		\sum_{n=2}^\infty
 		S_{n-2}x^{n-2}
 	}_
 	{
