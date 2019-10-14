@@ -1,0 +1,415 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase23}{../ima/clase23}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Aún más generadoras}%
+
+\thispagestyle{fancy}
+
+\section{Un repaso de generadoras}%
+\label{sec:un_repaso_de_generadoras}
+
+\begin{align*}
+	\underset
+	{
+		f:\{0\}\ \cup \mathbb{N} \longrightarrow \mathbb{R}
+	}
+	{
+		\text{Sucesión}
+	}
+	&\quad
+	\quad
+	\text{Función generadora}\\
+	f_n =
+	\underset
+	{
+		f_n=1 \quad n \geq 0
+	}
+	{
+		(1,1,1,\cdots)
+	}
+	= (f_n)^\infty_{n=0}
+	&\overset
+	{
+		\text{FGO}
+	}
+	{
+		\longleftrightarrow
+	}
+	\frac{1}{1-x}\\
+	f_n =
+	\underset
+	{
+		f_n = r^n \quad n \geq 0
+	}
+	{
+		(1,r,r^2,r^3,\cdots)
+	}
+	= (f_n)^\infty_{n=0}
+	&\longleftrightarrow
+	\frac{1}{1-rx}
+\end{align*}
+
+Si $F(x)$ y $G(x)$ son las FGO de $f$ y $g$ y $c\in\mathbb{R}$ y
+$k\in\mathbb{N}\cup\{0\}$
+
+Entonces:
+\begin{gather*}
+	H(x)=F(x)+G(x)\text{ es la FGO de } h=f+g\\
+	\text{ es decir }
+	h_n = H(x)[x^n]=
+	\left(
+		F(x)+G(x)
+	\right)
+	[x^n] = f_n+g_n
+\end{gather*}
+
+Si $K(x)=cF(x)$ es la FGO $K=cf$
+\[
+	K_n=K(x)[x^n]=(cF(x))[x^n]=cf_n
+\]
+
+\subsection{Derivadas e integrales}%
+\label{sub:derivadas_e_integrales}
+
+\subsubsection{Derivadas}%
+\label{subsub:derivadas}
+
+
+\begin{align*}
+	DF(x) &= \frac{d}{dx} F(x)
+	= \frac{d}{dx}
+	\left(
+		\sum_{i=0}^\infty f_ix^i
+	\right)\\
+	&
+	\underset
+	{
+		\substack
+		{
+			\text{Derivada}\\
+			\text{de una}\\
+			\text{constante}\\
+			\text{es $0$}
+		}
+	}
+	{
+		=
+	}
+	\sum_{i=1}^\infty \frac{d}{dx} (f_ix^i)\\
+	&= \sum_{i=1}^\infty if_ix^{i-1}\\
+	&
+	\underset
+	{
+		j=i-1
+	}
+	{
+		=
+	}
+	\sum_{j=0}^\infty
+	(j+i)f_{j+1}x^j\\
+	\frac{d}{dx} F(x) = DF(x)[x^n]
+	&=(n+1)f_{n+1}\quad \forall n \geq 0
+\end{align*}
+\subsubsection{Integrales}%
+\label{subsub:integrales}
+\begin{align*}
+	IF(x) &= \int F(x)dx\\
+	&= \int
+	\left(
+		\sum_{i=0}^\infty f_ix^i
+	\right)dx\\
+	&= \sum_{i=0}^\infty
+	\left(
+		\int f_ix^idx
+	\right)+c\\
+	&= c+
+	\sum_{i=0}^\infty
+	\frac{f_i}{i+1}x^{i+1}\\
+	& \underset
+	{
+		j=i+1
+	}
+	{
+		=
+	}
+	c +
+	\sum_{j=1}^\infty
+	\frac{f_{j-1}}{j} x^j\\
+	\int F(x)dx = IF(x)[x^n]
+	&=
+	\begin{cases}
+		c &\text{si } n=0\\
+		\frac{f_{n-1}}{n} &\text{si } n > 0
+	\end{cases}
+\end{align*}
+
+\subsection{Algo con multiplicación}%
+\label{sub:algo_con_multiplicacion}
+
+\begin{gather*}
+	P(x)=F(x)G(x) \text{ es la FGO }
+	P_n = \sum_{j=0}^n f_j g_{n-j}
+	\underset
+	{
+		i=n-j
+	}
+	{
+		=
+	}
+	\sum_{i=0}^n f_{n-i}g_i\\
+\end{gather*}
+\begin{align*}
+	P(x) = F(x)G(x)&=
+	(
+		f_0,
+		f_1x^1,
+		f_2x^2,
+		\cdots
+	)
+	(
+		g_0,
+		g_1x^1,
+		g_2x^2,
+		\cdots
+	)
+	\\
+	&= f_0g_0+
+	(f_0g_1+f_1g_0)x^1
+	+ (f_0g_2+f_1g_1+f_2g_0)x^2
+	+\cdots\\
+	&+
+	(
+	f_{0}g_{n},
+	f_{1}g_{n-1},
+	f_{2}g_{n-2},
+	\cdots,
+	f_{n-2}g_{2},
+	f_{n-1}g_{1},
+	f_{n}g_{0},
+	)x^n + \cdots
+\end{align*}
+\[
+	P(x) [x^n]
+	= \sum_{j=0}^n
+	f_jg_{n-j} \longleftarrow \text{ Esto se demuestra con inducción}
+\]
+\begin{align*}
+	F(x)* \frac{1}{1-x} [x^n]
+	&= \sum_{j=0}^n f_j*1\\
+	&= \sum_{j=0}^n f_j\\
+	&=
+	\underbrace
+	{
+		f_0+f_1+f_2+\cdots+f_n
+	}_
+	{
+		\substack
+		{
+			n+1\text{ segundos}\\
+			(n+1\text{ términos})
+		}
+	}
+\end{align*}
+
+\subsection{Moviendo n}%
+\label{sub:moviendo_n}
+
+\[
+	\left(
+		x^kF(x)
+	\right)
+	[x^n] =
+	\begin{cases}
+		f_{n-k}\quad n\geq k\\
+		0\quad n < k
+	\end{cases}
+\]
+
+Si
+\(
+	\underbrace
+	{
+		f_n
+		\text{ tiene suficientes }
+	}_
+	{
+		k \text{ ceros}
+	}
+\)
+ceros al pricipio.
+\[
+	\frac{F(x)}{x^k} [x^n]
+	=f_{n+k} \quad \forall n \geq 0
+\]
+
+\begin{align*}
+	(a_0,a_1,a_2,a_3) &\longleftrightarrow A(x)\\
+	(
+	\overbrace
+	{
+		0,0,\cdots,0
+	}^
+	{
+		k \text{ ceros}
+	}
+	,a_0,a_1,a_2,\cdots
+	)
+	&\longleftrightarrow x^kA(x)\\
+\end{align*}
+\begin{align*}
+	(b_0,b_1,b_2,\cdots) &\longrightarrow B(x) &&
+	\text{y se que }b_0,b_1,\cdots,b_{k-1}=0\\
+	(b_k,b_{k+1},b_{k+2},\cdots) &\longleftarrow \frac{B(x)}{x^k}
+\end{align*}
+
+\section{Ejemplos generadores}%
+\label{sec:ejemplos_generadores}
+
+\textbf{
+	Queremos encontrar la FGO:
+}
+\begin{align*}
+	S_n &=
+	\sum_{i=0}^n
+	\frac{i}{i+1}\\
+	&= \sum_{i=0}^n \frac{i+1-1}{i+1} \\
+	%
+	&= \sum_{i=0}^n
+	\left(
+		1 + \frac{-1}{1-(-i)}
+	\right)\\
+	%
+	&= \sum_{i=0}^n 1
+	- \sum_{i=0}^n \frac{1}{1-(-i)}\\
+	%
+	&=
+	\overbrace
+	{
+		n+1
+	}^
+	{
+		\frac{1}{(1-x)^2}
+	}
+	-
+	\underbrace
+	{
+		\sum_{i=0}^n
+		\frac{1}{1-(-i)}
+	}_
+	{
+		t_n
+	}
+	%
+	\intertext{Integrando}
+	\int F(x)dx &= IF(x) =
+	c + \sum_{i=1}^n \frac{f_{i-1}}{i} x^i\\
+	\left(
+		\int F(x)dx
+	\right)[x^n]
+	&=
+	\begin{cases}
+		c &\text{si }n = 0\\
+		\frac{f_{n-1}}{n} &\text{si } n > 0
+	\end{cases}
+	\intertext{Forma cerrada para $\sum_{i=0}^n \frac{1}{1-(-i)} $}
+	\left(
+		\int \frac{1}{1-x} dx
+	\right)[x^n]
+	&=
+	\begin{cases}
+		c &\text{si }n = 0\\
+		\frac{1}{n} &\text{si } n > 0
+	\end{cases}\\
+	%
+	-\ln(1-x)[x^n] &=
+	\begin{cases}
+		c &\text{si }n = 0\\
+		\frac{1}{n} &\text{si } n > 0
+	\end{cases}
+	\intertext{Tomamos $c=0$}
+	%
+	\text{Generadoras}
+	&\quad\quad
+	\text{Sucesiones}\\
+	-\ln(1-x) &\longrightarrow
+	\left(
+		c,1,
+		\frac{1}{2},
+		\frac{1}{3},
+		\frac{1}{4},
+		\cdots
+	\right)\\
+	%
+	\frac{-\ln(1-x)}{x}
+	&\longrightarrow
+	\left(
+		1,
+		\frac{1}{2},
+		\frac{1}{3},
+		\frac{1}{4},
+		\cdots
+	\right)\\
+	%
+	\frac{1}{1-x}*
+	\left(
+		- \frac{\ln(1-x)}{x}
+	\right)
+	&\longrightarrow
+	\left(
+		1,
+		1+ \frac{1}{2},
+		1+ \frac{1}{2} + \frac{1}{3},
+		\cdots
+	\right)\\
+	\\
+	T(x) &= - \frac{\ln(1+x)}{x(1-x)}\\
+	\Aboxed
+	{
+	S(x) &=
+	\frac{1}{(1-x)^2}+
+	\frac{\ln{(1-x)}}{x(1-x)}
+	}
+\end{align*}
+
+\textbf{
+	Algo sobre alguién llamado Mario.
+}
+\begin{align*}
+	S_n &=
+	\sum_{k=0}^n
+	\frac{k}{k+1}\\
+	&=
+	\sum_{k=0}^{n-1}
+	\frac{k}{k+1} + \frac{n}{n+1} \quad n \geq 1 \\
+	&\begin{cases}
+		S_n &= S_{n-1} +
+		\underset
+		{
+			\substack
+			{
+				\text{No}
+			}
+		}
+		{
+			\frac{n}{n+1}
+		}
+		\quad n \geq 1\\
+		S_0 &= 0
+	\end{cases}\\
+	\sum_{n=1}^\infty S_nx^n &=
+	\sum_{n=1}^\infty S_{n-1}x^n
+	+ \sum_{n=1}^\infty
+	\left(
+		\frac{n}{n+1} x^n
+	\right)\\
+	S(x) - 0 &= xS(x)
+\end{align*}
+
+\end{document}
+%}}}
