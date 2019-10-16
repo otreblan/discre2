@@ -1,0 +1,252 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase24}{../ima/clase24}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Generadoras exponenciales}%
+
+\thispagestyle{fancy}
+
+\definicion
+\textbf{FGO:}
+
+Se usa el coeficiente de $x^n$ para llevar la cuenta
+\[
+	A(x)[x^n]=
+	\underbrace
+	{
+		a_n
+	}_
+	{
+		\substack
+		{
+			\text{Coeficiente}\\
+			\text{del $x^n$}
+		}
+	}
+	\qquad A(x)=\sum_{k=0}^\infty a_kx^k
+\]
+Algunas propiedades:
+\begin{align*}
+	(A+B)(x)[x^n] &= A(x)[x^n]+B(x)[x^n]\\
+	(cA)(x)[x^n] &= cA(x)[x^n]\quad c \in \mathbb{R}\\
+	(x^kA(x))[x^n] &= A(x)[x^{n-k}]\quad k\in\mathbb{N}^2\\
+	(A(x)B(x))[x^n] &=
+	\sum_{k=0}^\infty
+	a(x)[x^k]B(x)[x^{n-k}]\\
+	%
+	\left(
+		\dv{}{x}A(x)
+	\right)
+	[x^n] &= (n+1)
+	\left(
+		A(x)[x^{n+1}]
+	\right)\\
+	\dv{}{x}A(x) &= \dv{}{x} \sum_{k=0}^\infty a_kn^k\\
+	&= \sum_{k=0}^\infty \dv{}{x}a_kn^k\\
+	&= \sum_{k=1}^\infty
+	ka_kx^{k-1}\\
+	&=
+	\underbrace
+	{
+		\sum_{n=0}^\infty
+		(n+1)a_{n+1}x^n
+	}_
+	{
+		\substack
+		{
+			\text{Cambio de variable}\\
+			n=k-1
+		}
+	}
+	\\
+	%
+	\left(
+		\int A(x)dx
+	\right)
+	[x^n] &=
+	\begin{cases}
+		\frac{1}{n}
+		\left(
+			A(x)[x^{n-1}]
+		\right)
+		&n > 0\\
+		c &n=0
+	\end{cases}\\
+	\int A(x)dx &= c+ \int \sum_{k=0}^\infty a_kn^k dx\\
+	&= c + \sum_{k=0}^\infty \int a_kx^kdx\\
+	&= c + \sum_{k=0}^\infty \frac{a_k}{k+1} x^{k+1}\\
+	&= c +
+	\underbrace
+	{
+		\sum_{n=1}^\infty \frac{a_{n-1}}{n} x^n
+	}_
+	{
+		\substack
+		{
+			\text{Cambio de variable}\\
+			n=k+1
+		}
+	}
+\end{align*}
+
+\section{Problemas con generadoras}%
+\label{sec:problemas_con_generadoras}
+
+\begin{enumerate}
+	\item
+		\[
+			S_n = \sum_{k=0}^n k e^k\qquad n \geq 0
+		\]
+		\begin{itemize}
+			\item Encuentra $S(x)$. FGO de $\Big{(}S_n\Big{)}_{n=0}^\infty$
+			\item Encuentra una fórmula cerrada para $S_n$.
+		\end{itemize}
+		\begin{align*}
+			(1,3,3^2,3^3,\cdots) &\longleftrightarrow
+			\sum_{k=0}^\infty 3^kx^k = \frac{1}{1-3x}
+			\intertext{Derivada por alguna razón}
+			\dv{}{x}
+			\left(
+				\frac{1}{1-3x}
+			\right)
+			&= \sum_{k=1}^\infty k3^kx^{k-1}\\
+			&= \sum_{n=0}^\infty (n+1)3^{n+1}x^n
+			\intertext{Una serie}
+			(1*3^1,2*3^2,3*3^3,\cdots) &\longleftrightarrow
+			\frac{3}{(1-3x)^2}
+			\intertext{$x$ movido}
+			(0*3^0,1*3^1,2*3^2,3*3^3,\cdots) &\longleftrightarrow
+			\frac{3x}{(1-3x)^2}
+			=
+			\dv{}{x}
+			\left(
+				\frac{3x}{(1-3x)^2}
+			\right)
+			\intertext{Serie de series}
+			(0*3^0,0+1*3^1,0+1*3^1+2*3^2,\cdots)
+			&\longleftrightarrow
+			\underbrace
+			{
+				\frac{1}{1-x}
+			}_
+			{
+				\substack
+				{
+					\text{Esta parte}\\
+					\text{crea una nueva}\\
+					\text{serie usando la}\\
+					\text{serie anterior}\\
+					\text{como coeficientes}\\
+				}
+			}
+			*\frac{3x}{(1-3x)^2} \\
+			\Aboxed
+			{
+			S(x) &= \frac{3x}{(1-x)(1-3x)^2}
+		}
+		\end{align*}
+		Fracciones parciales
+		\begin{align*}
+			\frac{3x}{(1-x)(1-3x)^2} &=
+			\frac{A}{1-x}
+			+ \frac{B}{1-3x}
+			+ \frac{3C}{3(1-3x)^2}\\
+			3x &=
+			A(1-3x)^2
+			+B(1-x)(1-3x)
+			+C(1-x)\\
+			0x^0+3x^1+0x^2 &=
+			A(1-6x+9x^2)
+			+B(1-4x+3x^2)
+			+C(1-x)
+			\intertext{Sistema de ecuaciones}
+			&\begin{cases}
+				0 = A+B+C &x^0 \\
+				3 = -6A+4B-C &x^1 \\
+				0 = 9A+3B &x^2
+			\end{cases}\\
+			A &= \frac{3}{4} \\
+			B &= -\frac{9}{4} \\
+			C &= \frac{6}{4}\\
+			\\
+			S_n &=
+			A \left(
+				\frac{1}{1-x}
+			\right)[x^n]
+			+B \left(
+				\frac{1}{1-3x}
+			\right)[x^n]
+			+ \frac{C}{3}  \left(
+				\frac{3}{(1-3x)^2}
+			\right)[x^n]\\
+			\Aboxed
+			{
+			S_n &= A+B*3^n+C(n-1)*3^{n-1}
+			}
+		\end{align*}
+\end{enumerate}
+
+\section{Alias generadores}%
+\label{sec:alias_generadores}
+
+\begin{gather*}
+	\frac{1}{1-x} = \sum_{k=0}^\infty x^k
+\end{gather*}
+\begin{align*}
+	\$ &: \text{ Las sucesiones}\\
+	\mathcal{F} &: \text{ Las funciones generadoras}\\
+	fgo&: \$ \longrightarrow \mathcal{F}
+	\quad fgo\text{ es }|:|\\
+	fgo((a_n)_{n=0}^\infty) &=
+	\sum_{n=0}^\infty a_n x^n
+\end{align*}
+
+\section{Funciones generadoras exponenciales}%
+\label{sec:funciones_generadoras_exponenciales}
+
+\textbf{
+	La función generadora ordinaria,
+	para conteo no toma en cuenta el orden
+}
+Si queremos tomar en cuenta el orden necesitamos funciones
+generadoras exponenciales.
+\begin{align*}
+	fge &: \$ \longrightarrow \mathcal{F}\\
+	fge((a_n)_{n=0}^\infty) &=
+	\sum_{k=0}^\infty a_k \frac{x^k}{k!}
+\end{align*}
+
+\section{Generadoras para la casa}%
+\label{sec:generadoras_para_la_casa}
+
+De cuantas formas podemos ordenar las letras de:
+
+
+{
+	\centering%
+	\Huge
+	$P=$ANTI
+	\(
+		\underbrace
+		{
+			\text{DERI}
+		}
+	\)
+	\(
+		\overbrace
+		{
+			\text{VADA}
+		}
+	\)
+
+}
+Encuentra  una función generadora que resuelva el problema para
+cualquier sub-palabra de $P$.
+
+\end{document}
+%}}}
