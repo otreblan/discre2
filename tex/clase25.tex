@@ -1,0 +1,256 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase25}{../ima/clase25}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Mini clase 2}%
+
+\thispagestyle{fancy}
+
+\section{Algo con generadoras exponenciales}%
+\label{sec:algo_con_generadoras_exponenciales}
+
+{
+	\centering
+	\Huge
+	ANTIDERIVADA
+
+}
+\begin{itemize}
+	\item A: 3
+	\item N: 1
+	\item T: 1
+	\item I: 2
+	\item D: 2
+	\item E: 1
+	\item R: 1
+	\item V: 1
+\end{itemize}
+
+Resolver simultáneamente\\
+\# de formas de permutar las letras de cualquier sub-palabra de
+ANTIDERIVADA.
+De largo $K$
+\begin{align*}
+	\intertext{$K=12$}
+	\frac{12!}{3!(2!)^2(1!)^5} &=
+	\binom{12}{3,2,2,1,1,1,1,1}\\
+	&=
+	\binom{12}{3}
+	\binom{9}{2}
+	\binom{7}{2}
+	\binom{5}{1}
+	\binom{4}{1}
+	\binom{3}{1}
+	\binom{2}{1}
+	\binom{1}{1}\\
+	&=
+	\frac{12!}{3!\cancel{9!}}
+	*\frac{\cancel{9!}}{2!\cancel{7!}}
+	*\frac{\cancel{7!}}{2!\cancel{5!}}
+	*\frac{\cancel{5!}}{1!\cancel{4!}}
+	*\frac{\cancel{4!}}{1!\cancel{3!}}
+	*\frac{\cancel{3!}}{1!\cancel{2!}}
+	*\frac{\cancel{2!}}{1!\cancel{1!}}
+	*\frac{\cancel{1!}}{1!0!}
+	\intertext{$K=1$}
+	&
+	\overbrace
+	{
+		\left(
+			1
+			+ \frac{x}{1!}
+			+ \frac{x^2}{2!}
+			+ \frac{x^3}{3!}
+		\right)
+	}^
+	{
+		A
+	}
+	\overbrace
+	{
+		\left(
+			1
+			+ \frac{x}{1!}
+			+ \frac{x^2}{2!}
+		\right)^2
+	}^
+	{
+		D,I
+	}
+	\overbrace
+	{
+		\left(
+			1
+			+ \frac{x}{1!}
+		\right)^5
+	}^
+	{
+		N,I,E,R,V
+	}
+	\left[
+		\frac{x^1}{1!}
+	\right] = 8
+	\intertext{$K=2$}
+	&
+	\underbrace
+	{
+		2!
+	}_
+	{
+		\substack
+		{
+			\text{El orden}\\
+			\text{importa}
+		}
+	}
+	\Bigg{(}
+		\overbrace
+		{
+			\binom{8}{2}
+			\frac{1}{1!}
+			*\frac{1}{1!}
+			* \left(
+				\frac{1}{0!}
+			\right)^6
+		}^
+		{
+			\substack
+			{
+				\text{Letras en una palabra}\\
+				\text{de largo $2$ con $2$}\\
+				\text{letras diferentes}
+			}
+		}
+		+
+		\overbrace
+		{
+			\binom{3}{1}
+			* \frac{1}{2!}
+			* \left(
+				\frac{1}{0!}
+			\right)^7
+		}^
+		{
+			\substack
+			{
+				\text{Letras de palabras de}\\
+				\text{largo $2$ con 2 letras}\\
+				\text{repetidas}\\
+			}
+		}
+	\Bigg{)}
+	\frac{x^2}{2!}\\
+	&
+	2
+	\left(
+		\frac{8*7}{2}
+		+3*\frac{1}{2}
+	\right)=
+	56+3
+	= 59\
+	\intertext{$K=3$}
+	&3!
+	\Bigg{(}
+		\overbrace
+		{
+			\binom{8}{3}
+			* \left(
+				\frac{1}{1!}
+			\right)^3
+			* \left(
+				\frac{1}{0!}
+			\right)^3
+		}^
+		{
+			\substack
+			{
+				\text{Todas las letras son iguales}
+			}
+		}
+		+
+		\overbrace
+		{
+			\binom{3}{1}
+			\binom{5}{1}
+			* \frac{1}{2!}
+			* \frac{1}{1!}
+			* \left(
+				\frac{1}{0!}
+			\right)^6
+		}^
+		{
+			\substack
+			{
+				\text{Hay $2$ letras iguales}\\
+				\text{y una distinta solo}\\
+				\text{hay una disponible}
+			}
+		}\\
+		&+
+		\overbrace
+		{
+			\underbrace
+			{
+				\binom{3}{2}
+			}_
+			{
+				\substack
+				{
+					\text{Cuales $2$}\\
+					\text{participan}\\
+					\text{de A, D o I}
+				}
+			}
+			\underbrace
+			{
+				\binom{2}{1}
+			}_
+			{
+				\substack
+				{
+					\text{Cual de}\\
+					\text{ellos está}\\
+					\text{duplicada}
+				}
+			}
+			\frac{1}{2!}
+			* \frac{1}{1!}
+			* \left(
+				\frac{1}{0!}
+			\right)^6
+		}^
+		{
+			\substack
+			{
+				\text{Hay $2$ letras iguales}\\
+				\text{y una distinta es una}\\
+				\text{con más de una disponible}
+			}
+		}
+		+
+		\overbrace
+		{
+			\binom{1}{1}
+			* \frac{1}{3!}
+			* \left(
+				\frac{1}{0!}
+			\right)^7
+		}^
+		{
+			\substack
+			{
+				\text{Todas iguales}
+			}
+		}
+	\Bigg{)}
+	\frac{x^3}{3!} + \cdots\\
+	& 8*7*6+3*15+3*6+1 = 400
+\end{align*}
+
+\end{document}
+%}}}
