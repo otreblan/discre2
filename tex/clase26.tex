@@ -1,0 +1,331 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase26}{../ima/clase26}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Cosas con generatrices exponenciales y grafos}%
+
+\thispagestyle{fancy}
+
+\section{Algo con banderas}%
+\label{sec:algo_con_banderas}
+
+Un poste de $n$ metros con Banderas de $1$ metro de alto y de colores
+Rojo, Verde, Azul y Blanco.
+
+¿De cúantas formas podemos ordenarlas?
+
+\begin{itemize}
+	\item
+		\[4^n\]
+	\item
+		\begin{align*}
+			\begin{cases}
+				B_n &= 4B_{n-1} \quad n \geq 1\\
+				B_1 &= 4
+			\end{cases}
+			\leadsto
+			B^H_n &= C*4^n\\
+			B_1 &= 4 = C*4 \Longleftarrow C=1\\
+			B_n &= 4^n
+		\end{align*}
+\end{itemize}
+
+\begin{align*}
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^1}{1!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^3}{3!}
+		+ \cdots
+	\right)
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^1}{1!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^3}{3!}
+		+ \cdots
+	\right)\\
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^1}{1!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^3}{3!}
+		+ \cdots
+	\right)
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^1}{1!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^3}{3!}
+		+ \cdots
+	\right)
+	\left[
+		\frac{x^n}{n!}
+	\right]
+	\intertext{Multiplicando todo}
+	\Bigg{(}
+	\Bigg{(}
+		\binom{4}{4}
+		\left(
+			\frac{1}{0!}
+		\right)^4
+		x^{0+0+0+0}
+		+
+		\binom{4}{1}
+		\frac{1}{1!}
+		\binom{3}{3}
+		\left(
+			\frac{1}{0!}
+		\right)^3
+		x^{1+0+0+0}
+		+\\
+		\left(
+			\binom{4}{1}
+			\frac{1}{2!}
+			\binom{3}{3}
+			\left(
+				\frac{1}{0!}
+			\right)^3
+			x^{2+0+0+0}
+			+
+			\binom{4}{2}
+			\left(
+				\frac{1}{1!}
+			\right)^2
+			\binom{2}{2}
+			\left(
+				\frac{1}{0!}
+			\right)^2
+			x^{1+1+0+0}
+		\right)
+	\Bigg{)}
+	+ \cdots
+	\Bigg{)}
+	\left[
+		\frac{x^n}{n!}
+	\right]
+	=\\
+	\left(
+		e^x e^x e^x e^x
+	\right)
+	\left[
+		\frac{x^n}{n!}
+	\right]\\
+	= e^{4x}
+	\left[
+		\frac{x^n}{n!}
+	\right]=\\
+	\left(
+		\sum_{k=0}^\infty
+		4^k \frac{4^k}{k!}
+	\right)
+	\left[
+		\frac{x^n}{n!}
+	\right] = 4^n
+\end{align*}
+
+\textbf{Algo de propiedades}
+\begin{align*}
+	e^x &= \sum_{k=0}^\infty \frac{x^k}{k!} \quad x\in\mathbb{R}\\
+	e^{cx} &=
+	\sum_{k=0}^\infty \frac{(cx)^k}{k!}\\
+	&= \sum_{k=0}^\infty c^k \frac{x^k}{k!}
+\end{align*}
+
+\section{Ejercicio exponencial}%
+\label{sec:ejercicio_exponencial}
+
+Escriban una identidad interesante del tipo $\sum_{j=0}^\infty\binom{n}{j}=2^n$
+usando las ideas de \ref{sec:algo_con_banderas}
+
+\section{Algo con banderas 2}%
+\label{sec:algo_con_banderas_2}
+
+Un poste de $n$ metros debe llevar banderas de colores Rojo, Verde, Azul
+y Blanco.
+Las banderas miden un metro de alto y el poste debe cumplir con:
+
+Una cantidad par de banderas rojas y una cantidad impar de banderas verdes.
+
+\begin{align*}
+	&
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^4}{4!}
+		+ \frac{x^6}{6!}
+		+ \cdots
+	\right)
+	\left(
+		\frac{x^1}{1!}
+		+ \frac{x^3}{3!}
+		+ \frac{x^5}{5!}
+		+ \cdots
+	\right)
+	\left(
+		\frac{1}{0!}
+		+ \frac{x^1}{1!}
+		+ \frac{x^2}{2!}
+		+ \frac{x^3}{3!}
+		+ \cdots
+	\right)^2
+\end{align*}
+\begin{align*}
+	\intertext{Sumatoria de los pares}
+	\sum_{k=0}^\infty
+	\frac{x^{2k}}{(2k)!} &=
+	\sum_{j=0}^\infty
+	\frac{(x^j+(-x)^j)}{2} * \frac{1}{j!}\\
+	&= \frac{1}{2} \sum_{k=0}^\infty
+	\frac{x^j}{j!}
+	+ \frac{1}{2} \sum_{k=0}^\infty
+	\frac{(-x)^j}{j!}\\
+	&= \frac{1}{2} e^x
+	+ \frac{1}{2} e^{-x}\\
+	&= \frac{e^x+e^{-x}}{2} \\
+	&= \cosh{x}
+	\intertext{Sumatoria de los impares}
+	\sum_{k=0}^\infty
+	\frac{x^{2k+1}}{(2k+1)!} &=
+\end{align*}
+
+\section{Grafos}%
+\label{sec:grafos}
+
+Un grafo G es un par ordenado $(V,E)$ con $V$ un conjunto usualmente denominado
+``El conjunto de vértices'' y $E$ un subconjunto de
+\(
+	\underset
+	{
+		\substack
+		{
+			\text{Partes de $V$}\\
+			\text{tamaño 2.}
+		}
+	}
+	{
+		\mathbb{P}_2(V)
+	}
+\)
+denominado ``El conjunto de aristas''
+
+
+\textbf{Por ejemplo:}
+
+Si $V=\{9,3,\text{:v},*\}$
+$\mathbb{P}_2(V)=
+\left\{
+	\{9,3\}
+	,\{9,\text{:v}\}
+	,\{9,*\}
+	,\{3,\text{:v}\}
+	,\{3,*\}
+	,\{\text{:v},*\}
+\right\} $
+
+Un grafo $G$ prodría ser
+\[
+\left(
+	\overbrace
+	{
+		\{9,3,\text{:v},*\}
+	}^
+	{
+		V
+	}
+	,
+	\overbrace
+	{
+		\left\{
+			\{9,3\}
+			,\{\text{:v},*\}
+			,\{*,3\}
+		\right\}
+	}^
+	{
+		E \subseteq \mathbb{P}_2(V)
+	}
+\right)
+\]
+
+Otro grafo podría ser:
+\begin{align*}
+	H &= \left( V, \cancel{o} \right)\\
+	K &= \left( V, \mathbb{P}_2(V) \right)
+\end{align*}
+
+Observaciones: en el ejemplo
+\[
+	0 \leq |E| \leq \left| \mathbb{P}_2(V) \right|
+\]
+Si $V$ es finito $ \left| \mathbb{P}_2(V) \right| = \binom{|V|}{2}$
+
+$G,H,K$ son distintos
+\definicion
+(Se $G$ un grafo $(V,E)$ $G=(V,E)$ definimos $V(G)=V, E(G)=E$)
+
+Dos grafos $G$ y $H$ son iguales
+\[
+	\text{si }
+	\underset
+	{
+		\substack
+		{
+			\text{El conjunto}\\
+			\text{de vétices}\\
+			\text{de $G$}
+		}
+	}
+	{
+		V(G)
+	}
+	=
+	\underset
+	{
+		\substack
+		{
+			\text{El conjunto}\\
+			\text{de vétices}\\
+			\text{de $H$}
+		}
+	}
+	{
+		V(H)
+	}
+	\text{ y }
+	E(G) = E(H)
+\]
+
+\textbf{Observación:}
+\begin{itemize}
+	\item La igualdad es muy restrictiva.
+\end{itemize}
+
+Una representación gráfica de los grafos mencionados es:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-1}
+\end{figure}
+
+Lo que importa es quíen está conectado con quíen.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+\end{figure}
+
+\subsection{Tarea grafos}%
+\label{sub:tarea_grafos}
+
+Denme un buen dibujo de
+\[
+	\mathbb{K}([5])
+\]
+\end{document}
+%}}}
