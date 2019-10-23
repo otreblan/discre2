@@ -1,0 +1,76 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase27}{../ima/clase27}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Cosas}%
+
+\thispagestyle{fancy}
+
+\[
+	\underbrace
+	{
+		G=(V,E)
+	}_
+	{
+		\text{Conjunto de vértices}
+	}
+\]
+$V$ un conjunto
+\(
+	\underbrace
+	{
+		E\subseteq\mathbb{P}_2(V)
+	}_
+	{
+		\text{Conjunto de aristas}
+	}
+\)
+
+Un grafo
+
+\textbf{Variantes:}
+
+Grafo dirigido
+\[
+	G=(V,E)
+	\quad
+	\underbrace
+	{
+		E\subseteq V\times V
+	}_
+	{
+		\substack
+		{
+			\text{Conjunto de arcos,}\\
+			\text{tienen dirección}
+		}
+	}
+\]
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-4}
+\end{figure}
+
+
+\end{document}
+%}}}
