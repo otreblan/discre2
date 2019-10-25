@@ -1,0 +1,115 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase28}{../ima/clase28}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Más más grafos}%
+
+\thispagestyle{fancy}
+
+Sea $G=(V,E)$
+
+Un grafo:
+
+Representación
+
+Forma directa:
+
+Especificamos $V$, especificamos $E$ como conjuntos.
+
+Por ejemplo:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+
+\begin{align*}
+	V&=\{1,2,3,4,5,6,7,8\}\\
+	E&=\{
+		\{1,8\},
+		\{2,8\},
+		\{1,2\},
+		\{3,4\},
+		\{4,5\},
+		\{4,7\}
+	\}
+\end{align*}
+Matriz de adyacencia.
+
+(A la izquierda de la matriz deberían estar los números del 1 al 8)
+\begin{align*}
+	1\quad
+	2\quad
+	3\quad
+	4\quad
+	5\quad
+	6\quad
+	7\quad
+	8\quad\\
+	\begin{bmatrix}
+		0 & 1 & 0 & 0 & 0 & 0 & 0 & 1\\
+		1 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		0 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{bmatrix}
+\end{align*}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+\end{figure}
+
+\begin{gather*}
+	\text{Pero } H
+	\overset
+	{
+		\text{Isomorfo}
+	}
+	{
+		\cong
+	}
+	G\\
+	``\cong'' \subseteq G' \times
+	\overset
+	{
+		\substack
+		{
+			\text{El conjunto}\\
+			\text{de los grafos}
+		}
+	}
+	{
+		G'
+	}
+\end{gather*}
+
+Dos grafos son isomorfos si existe una biyección entre sus etiquetas que
+respecta las adyacencias.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo-3}
+\end{figure}
+
+Respeta adyacencias significa.
+\begin{gather*}
+	\{x,y\}\in E(G) \Longleftrightarrow \{\varphi(x),\varphi(y)\}\in E(H)\\
+	\forall x,y\in V(G)
+\end{gather*}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-4}
+\end{figure}
+
+\end{document}
+%}}}
