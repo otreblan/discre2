@@ -1,0 +1,222 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase29}{../ima/clase29}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Grafos sin levantar el lápiz}%
+
+\thispagestyle{fancy}
+
+\begin{align*}
+	G&=(V,E)\text{ un grafo. \dobledef{Finito}{Podemos suponer que $V$ es $[n]$}}\\
+	A&=ADY(G)\\
+	\\
+	%A_{ij} &=
+	%\begin{cases}
+		%aaa
+	%\end{cases}
+	A_{ij}&\in\{0,1\} \forall i\neq j\\
+	A_{ii}&= 0\quad\forall i \in V
+\end{align*}
+
+Algo sobre cambio de nombre a los nodos.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+\end{figure}
+
+\begin{align*}
+	A_{DY}(G_i)=
+	a\quad
+	b\quad
+	c\quad
+	d\quad
+	e\quad
+	f\quad
+	g\quad\\
+	\begin{bmatrix}
+		0 & 1 & 0 & 0 & 0 & 0 & 0\\
+		1 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 1 & 1 & 1\\
+		0 & 0 & 0 & 1 & 0 & 0 & 0\\
+		0 & 0 & 0 & 1 & 0 & 0 & 1\\
+		0 & 0 & 0 & 1 & 0 & 1 & 0
+	\end{bmatrix}\\
+	A_{DY}(H_i)=
+	1\quad
+	2\quad
+	3\quad
+	4\quad
+	5\quad
+	6\quad
+	7\quad\\
+	\begin{bmatrix}
+		0 & 0 & 0 & 0 & 1 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 1 & 0 & 1 & 1\\
+		0 & 0 & 1 & 0 & 0 & 0 & 1\\
+		1 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0\\
+		0 & 0 & 1 & 1 & 0 & 0 & 0
+	\end{bmatrix}
+\end{align*}
+
+Observación:
+\begin{align*}
+	A_{DY}(G_i) &\neq A_{DY}(H_i)\\
+	\text{pero } G_I &\cong H_i
+\end{align*}
+
+Es decir, existe un reordenamiento $P$ de filas y columnas de $A_{DY}(G_i)$
+llamemosla $B$ que hacen que $A_{DY}(G_i)=B$
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-3}
+\end{figure}
+
+\section{Algo con dominós}%
+\label{sec:algo_con_dominos}
+
+En el juego de dominó doble $n$ hay piezas rectangulares.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo-4}
+\end{figure}
+
+\begin{itemize}
+	\item ¿Cuántas piezas tiene el dominó si hay una
+		copia de cada pieza posible?
+		\begin{align*}
+			\frac{(n+1)^2-(n+1)}{2}
+			+(n+1)
+			&=
+			\binom{n+2}{2}
+		\end{align*}
+	\item Dibuja un grafo que represente el dominó \dobledef{doble $4$.}
+		{Dominó doble 4}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-5}
+\end{figure}
+
+Euler (Recorrer el grafo pasando por todas las aristas solo una vez)
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-6}
+\end{figure}
+
+¿Podemos hacer esto en un dominó doble-3?.
+
+No porque es grado de todos los vértices es impar.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo-7}
+\end{figure}
+
+Algo extraño (Los números son el grado de cada vértice)
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-8}
+\end{figure}
+
+Dado $G$ un grafo y $x$ un vértice en el grafo.
+\begin{align*}
+	d(x) &=
+	\left|
+		\underbrace
+		{
+			\{y\in V\}: \{x,y\}\in E
+		}_
+		{
+			\text{$V_x$: es el vecindario de $x$.}
+		}
+	\right|
+	\text{Es el grado de $x$.}\\
+	2|E| &= \sum_{x\in V}d(x)
+\end{align*}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-9}
+\end{figure}
+
+\dobledef{Un grafo cualquiera}
+{Con al menos dos vértices}
+tiene a lo mucho un número par de vértices de grado impar.
+($\dot{2}$: múltiplo de 2)
+\begin{align*}
+	2|E| &=
+	\sum_{x\in V}d(x)
+	=
+	\underset
+	{
+		d(x)\in \dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}
+	d(x)
+	+
+	\underset
+	{
+		d(x)\notin \dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}d(x)\\
+	\underset
+	{
+		d(x)\notin \dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}
+	d(x)
+	&=
+	2|E|
+	-
+	\underset
+	{
+		d(x)\in \dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}
+	d(x)
+	\text{Tiene que ser par}
+\end{align*}
+Todo grafo de 2 vértices o más tiene al menos 2 vértices del mismo grado.
+
+%TODO
+{
+	\centering
+	\bfseries
+
+	\#TODO
+
+	Un grafo extraño.
+
+	Acepto pull requests.
+
+	\url{https://github.com/otreblan/discre2}
+
+}
+\end{document}
+%}}}
