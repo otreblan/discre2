@@ -1,0 +1,303 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase30}{../ima/clase30}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Grafos y sub-grafos}%
+
+\thispagestyle{fancy}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+
+Demuestra que $H$ y $G$ son isomórfos o di las razones por las que no lo son.
+
+\section{Grado}%
+\label{sec:grado}
+
+\begin{align*}
+	G&=(V,E)\\
+	\\
+	d_G(x)&=
+	\left|
+		V_x
+	\right|\\
+	\\
+	\overset
+	{
+		\substack
+		{
+			\text{Vecindad de}\\
+			\text{vértices de $x$}
+		}
+	}
+	{
+		\underset
+		{
+			\substack
+			{
+				\text{Los vértices que}\\
+				\text{están conectados}\\
+				\text{directamente a $x$}
+			}
+		}
+		{
+			V_x
+		}
+	}
+	&= \{y:\{x,y\}\in E\}\\
+	\\
+	\overset
+	{
+		\substack
+		{
+			\text{Vecindad de}\\
+			\text{aristas de $x$}
+		}
+	}
+	{
+		\underset
+		{
+			\substack
+			{
+				\text{Las aristas que}\\
+				\text{inciden sobre $x$}
+			}
+		}
+		{
+			E_x
+		}
+	}
+	&= \{e\in E:enx\neq\varnothing\}
+\end{align*}
+Si $G$ es un grado simple, sin bucles y no-dirigido.
+\[
+	|V_x| = |E_x|
+\]
+
+En un grafo con bucles, cada bucle aporta 2 al grado del vértice donde está.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+\end{figure}
+\section{Teoremas de grafos}%
+\label{sec:teoremas_de_grafos}
+
+En un grafo $G=(V,E)$ finito:
+\begin{enumerate}
+	\item\label{item:grados}
+		\[
+			\overbrace
+			{
+				\sum_{x\in V} d(x)
+			}^
+			{
+				\substack
+				{
+					\text{Sumatoria de todos}\\
+					\text{los grados}
+				}
+			}
+			=
+			\overbrace
+			{
+				2|E|
+			}^
+			{
+				\substack
+				{
+					\text{Dos veces el}\\
+					\text{número de aristas.}
+				}
+			}
+		\]
+		\subitem \textbf{Demostración:}
+			Cuando sumamos cada grado estamos contando cada arista 2 veces,
+			una por cada vértice que la toca.
+		\item\label{item:vert_par}
+		El número de vértices de grado impar es par.
+	\item En $G=(V,E)$ un grafo finito.
+		Tal que $|V| > 1$ existen al menos 2 vértices del mismo grado.
+		\subitem \textbf{Demostración:}
+			Supongamos que $G$ no tiene vértices aislados.\\
+			Claramente $1\leq d(x) \leq |V| - 1$\\
+			Por hoyo-polluelo, como hay
+			\(
+				\overbrace
+				{
+					|V|-1 \text{ grados}
+				}^
+				{
+					\text{Hoyos}
+				}
+			\)
+			diferentes y
+			\(
+				\overbrace
+				{
+					|V| \text{ vértices}
+				}^
+				{
+					\text{Polluelos}
+				}
+			\)
+			,al menos 2 vértices comparten el mismo grado.\\
+			Si $G$ tiene vértices aislados $0\leq d(x)\leq |V|-2$.\\
+			Y por hoyo-polluelo de nuevo al menos 2 vértices comparten grados.
+\end{enumerate}
+Demostración del teorema \ref{item:grados}:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-3}
+\end{figure}
+
+Demostración del teorema \ref{item:vert_par}:
+
+Sabemos por T\ref{item:grados} que:
+\[
+	\sum_{x\in V} d(x) = 2|E|
+\]
+Podemos separar la suma $\sum_{x\in V}d(x)$ en 2 términos.
+\[
+	\overbrace
+	{
+		\underset
+		{
+			d(x)\in\dot{2}
+		}
+		{
+			\sum_{x\in V}
+		}d(x)
+	}^
+	{
+		\substack
+		{
+			\text{Sumatoria de los}\\
+			\text{grados pares.}
+		}
+	}
+	+
+	\overbrace
+	{
+		\underset
+		{
+			d(x)\notin\dot{2}
+		}
+		{
+			\sum_{x\in V}
+		}d(x)
+	}^
+	{
+		\substack
+		{
+			\text{Sumatoria de los}\\
+			\text{grados impares.}
+		}
+	}
+	=2|E|
+\]
+
+Supongamos que hay una cantidad impar de vértices de grado impar.
+Eso significa que
+\(
+	\underset
+	{
+		d(x)\notin\dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}d(x)
+\)
+es impar.
+
+Como
+\(
+	\underset
+	{
+		d(x)\in\dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}d(x)
+\)
+es par eso implica que
+\(
+	\underset
+	{
+		d(x)\notin\dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}d(x)
+	+
+	\underset
+	{
+		d(x)\in\dot{2}
+	}
+	{
+		\sum_{x\in V}
+	}d(x)
+\)
+es impar y esto es una contradicción pues sabemos que la suma es $2|E|$,
+un número par.
+
+\section{Conectitud y sub-grafos}%
+\label{sec:conectitud_y_sub_grafos}
+
+\definicion
+$G=(V,E)$ un grafo finito.
+\begin{align*}
+	\triangle(G)&\coloneqq\max_{x\in V}(d(x)) && \text{Grado máximo}\\
+	\delta(G)&\coloneqq \min_{x\in V}(d(x)) && \text{Grado mínimo}
+\end{align*}
+Observación:(teoremas fáciles)
+
+\[
+	0\leq \delta(G) \leq d(x) \leq \triangle(G) \leq |V| - 1
+\]
+
+Si $\delta(G)=\triangle(G)=d\Longrightarrow d(x)=d$ es constante
+y diremos que $G$ es un grado $d-$REGULAR.
+
+\definicion
+Si $G$ es 0-REGULAR.
+Entonces $G\cong \phi_n$ para algún $n\in \mathbb{N}^*$.
+
+Donde
+\(
+	\underbrace
+	{
+		\phi_n=([n].\varnothing)
+	}_
+	{
+		n\text{ vértices aislados}
+	}
+\)
+para $n\geq 1$,
+o
+\(
+	\phi =
+	\underbrace
+	{
+		(\varnothing,\varnothing)
+	}_
+	{
+		\text{El grafo vacío}
+	}
+\)
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-4}
+\end{figure}
+
+\end{document}
+%}}}
