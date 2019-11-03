@@ -1,5 +1,8 @@
 \ProvidesPackage{main}[2019/09/20]
 
+\usepackage{silence}
+\WarningFilter{latex}{You have requested release}
+\WarningFilter{filehook}{}
 \usepackage[pdfa, pdfusetitle, unicode=true]{hyperref}
 \usepackage[spanish]{babel}
 \usepackage[margin=2.5cm, a4paper]{geometry}
@@ -42,7 +45,7 @@
 \usepackage{physics}
 \usepackage{amssymb}
 \usepackage{cancel}
-\usepackage{circuitikz}
+\usepackage[oldvoltagedirection]{circuitikz}
 \usepackage{multirow}
 \allowdisplaybreaks
 
