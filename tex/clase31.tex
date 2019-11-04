@@ -1,0 +1,315 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase31}{../ima/clase31}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Ruedas y apareamientos}%
+
+\thispagestyle{fancy}
+
+Cantidad de grafos diferentes (No iguales) etiquetados sobre
+$V=[n]$ son $2^\binom{n}{2}$ pues $|\mathbb{P}_2(V)|=\binom{n}{2}$
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+
+\[
+	G=
+	(
+		\{a,b,c,d,e,f\},
+		\{
+			\{a,b.c\},
+			\{b,c,f\},
+			\{d,e,f\}
+		\}
+	)
+\]
+
+Teorema 1:
+
+\[
+	\sum_{x\in V}
+	d(x)=2|E|
+\]
+
+Teorema 2:
+Número de grados impar es par
+
+Teorema 3:
+Si $|V|>1$ hay al menos 2 vértices del mismo grado.
+
+\section{Cosas de grafos}%
+\label{sec:cosas_de_grafos}
+
+Si $G$ es finito:
+\begin{align*}
+	\delta(G)&=\min_{x\in V}d(x)\\
+	\Delta(G)&=\max_{x\in V}d(x)\\
+	\\
+	\text{sec.grad}:G&\longrightarrow (\mathbb{Z}^*)^{|V(G)|}\\
+	\text{sec.grad}(G)&=
+	(d_1,d_2,\cdots,d_{|V(G)})\\
+	\text{donde }d_i&=
+	\overset
+	{
+		\text{con $x_i\in V$}
+	}
+	{
+		d(x_i)
+	}
+	\text{  y  }
+	d_i \leq d_j \quad\forall i \leq j
+\end{align*}
+Es decir la secuencia de grados es el vector con los grados ordenados de menor
+a mayor.
+
+\definicion
+Si $\delta(G)=\Delta(G)=d\Longrightarrow d(x)$ es constante y $G$ es regular
+o ($d-$regular)
+
+Ejemplo:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+\end{figure}
+
+\begin{align*}
+	\delta(G_1)=0 && |V(G_1)| &= 10\\
+	\Delta(G_1)=3 && |E(G_1)| &= 10
+\end{align*}
+\[
+	\text{sec.grados}(G_1)=(0,1,2,2,2,2,2,3,3,3)
+\]
+$G_1$ no es regular.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-3}
+\end{figure}
+
+\begin{align*}
+	|V(G_2)|&=6 && |E(G_2)|=12\\
+	\delta(G_2)&=4=\Delta(G_2)
+\end{align*}
+$G_2$ es 4-regular o regular de grado 4.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-4}
+\end{figure}
+
+\begin{align*}
+	|V(G_3)|&= 11 \\
+	|E(G_3)|&= \frac{10*3+10}{2} \\
+	&= 20\\
+	\\
+	\delta(G_3) &= 3\\
+	\Delta(G_3) &= 10
+\end{align*}
+
+Hay $2^\binom{11}{2}$ grafos etiquetados de 11 vértices con $V(G)=[11]$
+$G_3$ no es regular.
+\[
+	\text{sec.grados}(G_3) = (3,3,3,3,3,3,3,3,3,3,10)
+\]
+Si $\omega_n$ de $n$.
+\begin{align*}
+	|V(\omega_n)|&=n+1\\
+	|E(\omega_n)|&
+	\overset
+	{
+		?
+	}
+	{
+		=
+	}
+	2n
+	=
+	\frac{3n+n}{2}
+	=\sum_{x\in V(\omega_n)} d(x)
+	\\
+	\delta(\omega_n)&=3\\
+	\Delta(\omega_n)&=n\\
+	\text{sec.grados}(\omega_n) &=
+	(
+		\underbrace
+		{
+			\overbrace
+			{
+				3,\cdots,3
+			}^
+			{
+				n\text{ veces}
+			}
+			,n
+		}_
+		{
+			n+1\text{ vértices}
+		}
+	)
+\end{align*}
+$\omega_3$ es una rueda regular.
+$\omega_n$ no es regular si $n > 3$
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-5}
+\end{figure}
+
+``$\omega_2$'' no es un grafo
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-6}
+\end{figure}
+
+``$\omega_1$'' tampoco es un grafo
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-7}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo-8}
+\end{figure}
+
+Vemos que podemos decir si
+\begin{align*}
+	\Delta(G) &= 0\quad \text{y}\quad |V(G)|=n\\
+	G&\cong([n],\varnothing)=\phi_n\\
+	\phi_0 &= (\varnothing,\varnothing)\\
+	\phi_4 &= ([4],\varnothing)=
+\end{align*}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo-9}
+\end{figure}
+
+$\phi_n$ es 0-regular
+\begin{align*}
+	\delta(\phi_n) &= \Delta(\phi_n)=0\\
+	\text{sec.grados}(\phi_n)&=
+	(
+		\underbrace
+		{
+			0,\cdots,0
+		}_
+		{
+			n\text{ veces}
+		}
+	)
+\end{align*}
+
+Si $|V(G)|=n$ y $\Delta(G)=1$
+
+Dos casos:
+\begin{itemize}
+	\item $\delta(G)=0$ el grafo tiene puntos aislados.
+		Si le quitamos los puntos aislados debe quedar un grafo 1-regular
+		con una cantidad par de vértices de grado 1. (Como el de abajo)
+	\item $\delta(G)=1$ el grafo no tiene puntos aislados.
+		$G$ es 1-regular y $n$ debe ser par.
+\end{itemize}
+
+¿Cómo es un grafo $G$ finito con $\delta(G)=\Delta(G)=1$?
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-10}
+\end{figure}
+
+\begin{align*}
+	\mathbb{A}_\frac{n}{3} &= ([n],\quad)\\
+	E(\mathbb{A}_n) &=
+	\{
+		\{a,a+1\},
+		a \notin \dot{2},
+		a\in[n-1]
+	\}\\
+	&=
+	\{
+		\{a,a+1\}:
+		a\notin \dot{2},
+		a \in [n]
+	\}
+	%\{
+		%\{1,2\},
+		%\{3,4\},
+		%\cdots,
+		%\{n-1,n\}
+	%\}
+	%=\{
+		%\{a,a+1\},
+		%a \notin \dot{2},
+		%a \in [n]
+	%\}\\
+	%|E(\mathbb{A}_n)| &= \frac{n}{2}
+\end{align*}
+
+¿Cuantos apareamientos diferentes de $\frac{n}{2}$ hay?
+\[
+	\overbrace
+	{
+		\binom{n}{ \frac{n}{2} }
+	}^
+	{
+		\substack
+		{
+			\text{El lado}\\
+			\text{izquierdo}
+		}
+	}
+	\overbrace
+	{
+		\left(
+			\frac{n}{2}
+		\right)
+		!
+	}^
+	{
+		\substack
+		{
+			\text{Las sobras}
+		}
+	}
+\]
+$\mathbb{A}_2$:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-13}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-11}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo-12}
+\end{figure}
+
+\section{Tarea de grafos}%
+\label{sec:tarea_de_grafos}
+
+\begin{enumerate}
+	\item Define por comprensión un conjunto de aristas para $\omega_n$
+		la rueda de $n$.
+	\item Determina el número de $\mathbb{A}_{\frac{n}{2}}$
+		los apareamientos de $\frac{n}{2}$ para $n$ par.
+\end{enumerate}
+
+\end{document}
+%}}}
