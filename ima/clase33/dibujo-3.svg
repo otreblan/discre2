@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="dibujo-3.svg">
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect844"
+       is_visible="true"
+       steps="1"
+       threshold="0.00645161"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false"
+       simplifyindividualpaths="false"
+       simplifyJustCoalesce="false" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="648.34409"
+     inkscape:cy="939.37049"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="741"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       r="1.7008927"
+       cy="31.530056"
+       cx="96.559486"
+       id="circle850"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="51.026787"
+       y="23.912201"
+       id="text1227"><tspan
+         sodipodi:role="line"
+         id="tspan1225"
+         x="51.026787"
+         y="23.912201"
+         style="stroke-width:0.26458332">$\phi_6$</tspan></text>
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="circle1229"
+       cx="113.94639"
+       cy="35.687794"
+       r="1.7008927" />
+    <circle
+       r="1.7008927"
+       cy="60.067257"
+       cx="108.46574"
+       id="circle1231"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="circle1233"
+       cx="130.95532"
+       cy="68.571724"
+       r="1.7008927" />
+    <circle
+       r="1.7008927"
+       cy="35.876785"
+       cx="132.08925"
+       id="circle1235"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <circle
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.39999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="circle1237"
+       cx="148.15324"
+       cy="63.469048"
+       r="1.7008927" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 113.94639,35.687793 -5.48065,24.379462 22.48958,8.504468 17.19792,-5.102677 -16.06399,-27.592261 -1.13393,32.694938"
+       id="path1239"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="147.2655"
+       y="43.093948"
+       id="text1243"><tspan
+         sodipodi:role="line"
+         id="tspan1241"
+         x="147.2655"
+         y="43.093948"
+         style="stroke-width:0.26458332">$G$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:1.36111736px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="382.04965"
+       y="20.651287"
+       id="text1247"
+       transform="scale(0.42869838,2.3326424)"><tspan
+         sodipodi:role="line"
+         id="tspan1245"
+         x="382.04965"
+         y="20.651287"
+         style="stroke-width:0.26458332">$\phi_6\subseteq G$</tspan></text>
+    <text
+       id="text1251"
+       y="25.538843"
+       x="373.20505"
+       style="font-style:normal;font-weight:normal;font-size:1.39335489px;line-height:1.25;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       transform="scale(0.43885192,2.2786729)"><tspan
+         style="stroke-width:0.26458332"
+         y="25.538843"
+         x="373.20505"
+         id="tspan1249"
+         sodipodi:role="line">$\mathbb{K}_3\subseteq G$</tspan></text>
+  </g>
+</svg>

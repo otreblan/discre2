@@ -1,0 +1,280 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase33}{../ima/clase33}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Paseos}%
+
+\thispagestyle{fancy}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo}
+\end{figure}
+
+\[
+	\text{Si } G=(V,E)\qquad \overline{G}=(V_1\mathbb{P}_2 \diagdown E)
+\]
+\begin{align*}
+	G &= (V_G,E_G)\\
+	H &= (V_H,E_H)\\
+	F &= G \cup H = (V_G \cup V_H, E_G \cup E_H)\\
+	G \sqcup H &\leftarrow \text{ Unión disjunta}
+\end{align*}
+
+Dado $G=(V,E)$ un grafo, diremos que $H$ es un subgrafo de $G$.
+\[
+	H \subseteq G
+\]
+Siempre que $V(H)\subseteq V(G) \wedge E(H) \subseteq E(G)$
+
+\textbf{OBSERVACIÓN:}
+De manera disimulada vamos a incluir la idea de isomorfismo dentro de la idea
+de subgrafo.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-2}
+\end{figure}
+
+En sentido esctricto:
+\[
+	H \subseteq G \quad \text{pues} \quad 1 \notin V(G)
+\]
+
+Pero en general diremos
+\[
+	H
+	\underset
+	{\text{\textasciitilde}}
+	{
+		\subset
+	}
+	G
+\]
+Lo que realmente estamos diciendo es hay un $H'\cong H$ con $H'\subseteq G$
+
+Por ejemplo:
+
+Las ruedas con más de 3 vértices tienen triángulos como subgrafos.
+
+\textbf{OBSERVACIÓN:}
+\[
+	G \subseteq G \forall G
+\]
+\[
+	\phi_0 \subseteq \phi_{|V(G)|}
+	\underset
+	{
+		{\text{\textasciitilde}}
+	}
+	{
+		\subset
+	}
+	G
+\]
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-3}
+\end{figure}
+
+$n\in \mathbb{B}^2$
+\[
+	\mathbb{Q}_n =
+	\left(
+		\{0\}
+		\cup
+		[2^n-1],
+		\left\{
+			\{x,y\}:
+			\underset
+			{
+				\substack
+				{
+					\text{Difieren}\\
+					\text{solo en}\\
+					\text{un bit}
+				}
+			}
+			{
+				x\text{ y }y
+			}
+		\right\}
+	\right)
+\]
+$\mathbb{Q}_n$ es el $n$-cubo
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-4}
+\end{figure}
+
+\section{Cosas del grafo cubo}%
+\label{sec:cosas_del_grafo_cubo}
+
+\begin{align*}
+	|V(\mathbb{Q}_n)|    &= 2^n\\
+	|E(\mathbb{Q}_n)|    &= n 2^{n-1}\\
+	\delta(\mathbb{Q}_n) &= n\\
+	\Delta(\mathbb{Q}_n) &= n
+	\intertext{$\mathbb{Q}_n$ es $n$-regular.}
+	\sum_{x \in V(\mathbb{Q}_n)} d(x)
+	= \sum_{x \in V(\mathbb{Q}_n)} n
+	&= n
+	\overbrace
+	{
+		\left(
+			\sum_{x\in V(\mathbb{Q}_n)} 1
+		\right)
+	}^
+	{
+		|V(\mathbb{Q}_n)|
+	}
+	= n2^n
+	= 2|E(\mathbb{Q}_n)|
+\end{align*}
+
+\definicion
+Dado $G=(V,E)$ diremos que $H$ es un subgrafo inducido por $\omega \subseteq V$
+en $G$ y denotaremos $H=G[\omega]$
+\[
+	\text{Si } H=(\omega,
+	\{
+		\{x,y\}\in E(G):
+		x\in\omega \wedge y \in \omega
+	\}
+	)
+\]
+$H$ es un subgrafo de $G$ con todas sus aristas con ambos extremos en $\omega$.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-5}
+\end{figure}
+
+Hay estrellas como subgrafos inducidos de la rueda $\omega_n$
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-6}
+\end{figure}
+
+\definicion
+
+\dobledef{Un paseo}{en $G$} de largo $n$ es una secuencia alternate de
+vértices y aristas de $G$ de maneras que comenzamos y terminamos en un vértice
+y las aristas del paseo conectan con los extremos respectivos.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-7}
+\end{figure}
+
+\[
+	\omega =
+	(
+		\underset
+		{
+			\substack
+			{
+				\text{Inicio}\\
+				\text{del}\\
+				\text{paseo}
+			}
+		}
+		{
+			2
+		}
+		,
+		\overset
+		{
+			\substack
+			{
+				\text{El largo del paseo es el}\\
+				\text{número de aristas que usa.}
+			}
+		}
+		{
+			e_3
+			,
+			4
+			,
+			e_5
+			,
+			5
+			,
+			\underset
+			{
+				\substack
+				{
+					\text{Los extremos}\\
+					\text{de $e_5$ son}\\
+					\text{4 y 5}
+				}
+			}
+			{
+				e_5
+			}
+			,
+			4
+			,
+			e_4
+		}
+		,
+		\overset
+		{
+			\substack
+			{
+				\substack
+				{
+					\text{Fin}\\
+					\text{del}\\
+					\text{paseo.}
+				}
+			}
+		}
+		{
+			3
+		}
+	)
+\]
+En un paseo podemos repetir arístas y vértices.
+
+Si el inicio$=$fin el paseo es cerrado, en caso contrario es abierto.
+
+\definicion
+
+Un paseo que no repite aristas se conoce como un sendero.
+
+\definicion
+Un sendero que no repite vértices salvo posiblemente el primero y el último se
+conoce como camino.
+
+\definicion
+Un sendero cerrado es un circuito.
+
+\definicion
+Un camino cerrado es un ciclo.
+
+\definicion
+$G=(V,E)$ es conexo si entre todo par de vértices de $G$ existe un paseo que
+comienza en uno y termina en el otro.
+
+\section{Tarea de paseos}%
+\label{sec:tarea_de_paseos}
+
+Demostrar que si hay un paseo de $G$ entre $x$ y $y$ entonces hay un camino
+entre $x$ y $y$.
+
+Si miramos el subgrafo correspondiente al camino.
+
+Podemos definir la distancia entre $x$ y $y$ como la consitud del camino más
+corto entre $x$ y $y$.
+
+\end{document}
+%}}}
