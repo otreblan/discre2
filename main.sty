@@ -30,7 +30,12 @@
 % Definiciones dobles
 \newcommand{\dobledef}[2]
 {%
-	#1 \textbf{\textcolor{red}{(#2)}}%
+	#1 %
+	{%
+		\bfseries%
+		\boldmath%
+		\textcolor{red}{(#2)}%
+	}%
 }
 
 % Partes que usa Renom

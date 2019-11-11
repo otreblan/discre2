@@ -1,0 +1,381 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase34}{../ima/clase34}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Paseos y más definiciones}%
+
+\thispagestyle{fancy}
+
+\section{Algo sobre la clase pasada}%
+\label{sec:algo_sobre_la_clase_pasada}
+
+Un paseo es una secuencia de vértices y aristas que comienza y termina en un
+vértice tal que:
+
+\begin{align*}
+	\omega &=
+	(
+		x_1,e_1,
+		x_2,e_2,
+		x_3,e_3,
+		\cdots,
+		x_n,e_n,x_{n-1}
+	)\\
+	e_i &= \{x_i,x_{i+1}\}\in E(G)\quad \forall i\in[n]
+\end{align*}
+
+Notar que esta definición se puede ajustar a versiones diferentes de grafos,
+cambiando lo que sea necesario \emph{(Mutatis mutandis)}.
+
+Por ejemplo:
+
+Un camino dirigido es:
+
+\begin{align*}
+	(
+		x_1,e_1,
+		x_2,e_2,
+		x_3,\cdots,
+		x_n,e_n,x_{n+1}
+	)\\
+	e_i = (x_i, x_{i+1})\in E(G)
+\end{align*}
+
+
+\section{Paseos}%
+\label{sec:paseos}
+
+El largo del paseo es el número de aristas en el.
+
+\begin{align*}
+	\omega &=
+	(
+		x_1,e_1,
+		x_2,e_2,
+		x_3,\cdots,
+		x_n,e_x,x_{n+1}
+	)\\
+	\text{largo}(\omega) &= n
+\end{align*}
+
+\begin{itemize}
+	\item Si
+	\(
+		\overbrace
+		{
+			x_1
+		}^
+		{
+			\text{Inicio}
+		}
+		=
+		\overbrace
+		{
+			x_{n+1}
+		}^
+		{
+			\text{Fin}
+		}
+	\)
+	diremos que el paseo es cerrado.
+
+	\item Un paseo que no repite aristas es un sendero.
+	\item Un sendero cerrado es un circuito.
+	\item Un sendero que no repite vértices
+		(salvo posiblemente el primero) es un camino.
+	\item Un camino cerrado es un ciclo.
+	\item Un \dobledef{camino}{ciclo} que visita todos los vértices de $G$ es
+		un \dobledef{Camino}{Ciclo} Hamiltoniano.
+		\dobledef{Exactamente una vez.}{Salvo el primero.}
+	\item Un \dobledef{sendero}{circuito} que visita todas las aristas de $G$
+		es un \dobledef{Sendero}{Circuito} de Euler.
+		Exactamente una vez.
+\end{itemize}
+
+\observacion
+\begin{itemize}
+	\item ¿Cómo es un Camino de Euler?
+	\item ¿Cómo es un grafo con un Camino de Euler?
+	\item ¿Cuándo es un Sendero de Euler un Camino Hamiltoniano?
+	\item ¿Cómo es un grafo que tiene un Camino de Hamilton que también es un
+		Sendero de Euler?
+	\item ¿Cómo es un grafo que tiene un Camino de Hamilton y un Sendero de
+		Euler?
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo}
+\end{figure}
+
+\begin{align*}
+	\omega_1 &=
+	(
+		\overbrace
+		{
+			1,
+			\underbrace
+			{
+				2,
+				3,
+				4,
+				2,
+			}_
+			{
+				\substack
+				{
+					\text{Vértices}\\
+					\text{internos}
+				}
+			}
+			5
+		}^
+		{
+			\text{Extremos}
+		}
+	)
+	&& \substack
+	{
+		\text{Un paseo. Un Sendero.}\\
+		\text{No es un camino pues}\\
+		\text{repite ``2'' un vértice interno.}
+	}
+	\\
+	\omega_2 &= (1,2,3,4)
+	&& \substack
+	{
+		\text{ Un \dobledef{camino}{abierto}.}
+	}
+	\\
+	\omega_3 &= (1,2,3,4,2,5,1)
+	&& \substack
+	{
+		\text{ Un circuito de Euler.}
+	}
+\end{align*}
+
+\section{Tarea de paseos 2}%
+\label{sec:tarea_de_paseos_2}
+
+\begin{enumerate}
+	\item Muestra por inducción que \dobledef{$Q_n$}{el $n$-cubo}
+		siempre tiene al menos un Camino Hamiltoniano.
+	\item Recuerda que si $G=(V,E)$ es tal que
+		$d(x) \in \dot{2} \quad \forall x \in V$
+
+		Entonces $G$ tiene un Circuito de Euler.
+		\subitem Es decir
+		\(
+			\underset
+			{
+				n\in\mathbb{N}
+			}
+			{
+				Q_{2n}
+			}
+		\)
+		tiene Caminos Hamiltonianos y Circuitos de Euler.
+\end{enumerate}
+
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-2}
+\end{figure}
+
+\definicion
+Un grafo $G=(V,E)$ es conexo si $\forall x,y \in V$ existe un paseo entre $x$ y
+$y$.
+
+Usualmente un paseo de esa forma de denota.
+\[
+	x\mathbb{W}y
+\]
+
+\[
+	x\mathbb{W} y =
+	\underbrace
+	{
+		x\mathbb{W}_1y\mathbb{W}_2z
+	}_
+	{
+		\mathbb{W}
+	}
+\]
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-3}
+\end{figure}
+
+
+\observacion
+
+La relación
+
+$x\mathbb{C}y$: $x$ está conectado a $y$ mediante algún paseo en $G$.
+
+Es:
+\begin{itemize}
+	\item Reflexiva.
+	\item Simétrica.
+	\item Transitiva.
+\end{itemize}
+
+$\mathbb{C}$ define una relación de equivalencia sobre los vértices de $G$.
+
+\definicion
+
+$G$ es conexo si $\forall x,y\in V \Rightarrow x\mathbb{C}y$
+
+Es decir, todos los vértices de $G$ están en la misma clase de equivalencia.
+
+\definicion
+Dado $G=(V,E)$ $nc(G)$ es el número de clases de equivalencia de conectitud
+en $G$.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-4}
+\end{figure}
+
+{
+	\Huge
+	\bfseries
+	\centering
+	\textcolor{red}
+	{
+		CUIDADO
+	}
+
+}
+
+Si el grafo es dirigido la conectitud es más dificil de ver.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.9\linewidth]{dibujo-5}
+\end{figure}
+
+\definicion
+Si
+\(
+	\overset
+	{
+		\text{finito}
+	}
+	{
+		G
+	}
+\)
+es conexo. Entonces:
+\begin{align*}
+	\text{dist}(x,y) &= \min{|E(x\mathbb{P}y)|}\\
+	\text{dist}_{G_1}(1,4) &= 3\\
+	\text{dist}_{G_2}(1,8) &= \infty\\
+	\text{dist}_{G_2}(1,6) &= 2= \text{dist}_{H}(6,1)
+\end{align*}
+
+Se sobrecarga la idea de distancia para incluir $\infty$ como distancia entre
+vértices en distintas componentes conexas.
+
+\section{Tarea parte 3}%
+\label{sec:tarea_parte_3}
+
+Si $\text{dist}_{G}(x,y)=k\qquad k\in\mathbb{N}^*=\{0\}\cup\mathbb{N}$
+
+\begin{itemize}
+	\item ¿Qué podemos decir sobre $\text{dist}_H(x,y)$ si $H\subseteq G$?
+		$x,y\in V(H)$
+	\item ¿Qué podemos decir sobre $\text{dist}_F(x,y)$ si $F=G[w]$?
+		Para algún $w$ con $x\in w, y\in w$.
+		$x,y\in V(F)\quad w\subseteq V(G)$
+\end{itemize}
+
+Calcula $nc(G)$ para los grafos que ya definimos
+\[
+	\mathbb{K}_n, \omega_n, \mathbb{S}_n, \mathbb{A}_n, \cdots
+\]
+
+\definicion
+$\mathbb{K}_{n,m}$: el grado bipartito completo
+
+\begin{align*}
+	V(\mathbb{K}_{n,m})=
+	\{
+		(i,j):
+		&\text{ con }i\in [2],\\
+		&j \in[n]\text{ si } i=1,\\
+		&j\in[m]\text{ si }i=2
+	\}
+\end{align*}
+\begin{align*}
+	E(\mathbb{K}_{n,m})=\{\{i,j\},\{k,l\}:i\neq k\}
+\end{align*}
+
+$\mathbb{K}_{1,n}$:
+\begin{align*}
+	V(\mathbb{K}_{i,n}) &=
+	\{
+		(1,1),
+		(2,1),
+		(2,2),
+		\cdots,
+		(2,n)
+	\}\\
+	E(\mathbb{K}_{i,n}) &=
+	\{
+		\{(1,1),(2,1)\},
+		\{(1,1),(2,2)\},
+		\{(1,1),(2,3)\},
+		\cdots,
+		\{(1,1),(2,n)\}
+	\}
+\end{align*}
+
+\[
+	\mathbb{K}_{1,n} \cong \mathbb{S}_n
+\]
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.4\linewidth]{dibujo-6}
+\end{figure}
+
+\[
+	\mathbb{K}_{1,n}
+	\cong
+	\mathbb{K}_{n,1}
+\]
+
+$\mathbb{K}_{2,3}$
+
+\[
+	V(\mathbb{K}_{2,3})=
+	\{
+		(1,1),
+		(1,2),
+		(2,1),
+		(2,2),
+		(2,3),
+	\}
+\]
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-7}
+\end{figure}
+
+\subsection*{Demuestra}%
+\begin{align*}
+	\overline{\mathbb{K}}_{n,m} &\cong \mathbb{K}_n \sqcup \mathbb{K}_m\\
+	\overline{\mathbb{K}}_{n,m} \cup \mathbb{K}_{n,m} &\cong \mathbb{K}_{n+m}
+\end{align*}
+
+\end{document}
+%}}}
