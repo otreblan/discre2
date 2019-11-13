@@ -1,0 +1,144 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase35}{../ima/clase35}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Repaso de grafos}%
+
+\thispagestyle{fancy}
+
+\definicion
+
+\begin{itemize}
+	\item Paseo:
+
+		Una secuencia de vértices
+		\begin{gather*}
+			\omega = (V_1,V_2,V_3,\cdots,V_{n-1},V_n,V_{n+1})\\
+			\{V_i, V_{i+1}\} \in E(G)\quad \forall i \in[n]
+		\end{gather*}
+	\item Sendero:
+
+		Un paseo que no repite aristas si es cerrado en un circuito.
+	\item Camino:
+
+		Un sendero que no repite vértices si es cerrado es un ciclo.
+
+	\item Largo:
+
+		Número de aristas por las que pasa.
+	\item Un sendero es euleriano si visita todas las aristas de $G$
+		exactamente una vez.
+	\item Un camino es hamiltoniano si visita todos los vértices de $G$
+		exactamamente una vez.
+\end{itemize}
+
+\definicion
+$G=(V,E)$ es bipartito si existen conjuntos $A$ y $B$ tales que
+$A\cap B = \varnothing \wedge A \cup B = V$
+
+Tales que las aristas de $G$ tienen un extremo en $A$ y otro en $B$.
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-1}
+\end{figure}
+Al parecer no hay aristas entre los vértices dentro de $A$ con los de $A$.
+Ni desde $B$ con los de $B$.
+
+Todo grafo bipartito es coloreable con 2 colores o menos.
+
+\begin{align*}
+	&\mathbb{K}_{n,m}\quad\text{es bipartito}\\
+	&\mathbb{A}_n\quad\text{es bipartito}\\
+	&\mathbb{S}_n\quad\text{es bipartito}\\
+	&\mathbb{Q}_n\quad\text{es bipartito}\\
+\end{align*}
+
+\teorema
+Si $G$ tiene un ciclo impar como subgrafo entonces $G$ no es bipartito.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-2}
+\end{figure}
+
+\demostracion
+Supongamos que $G$ es bipartito, podemos separar
+$V(G)=A\cup B, A\cap B=\varnothing$ de manera que las aristas de $G$ tienen un
+extremo en $A$ y otro en $B$.
+Esto induce una partición de los vértices de $\mathbb{C}_{2k+1}$
+\begin{gather*}
+	V(\mathbb{C}_{2k+1})=X \cup Y\\
+	\text{con } X\cap Y = \varnothing\\
+	X \subseteq A \wedge Y\subseteq B
+\end{gather*}
+
+Es decir las aristas de $\mathbb{C}_{2k+1}$ deben tener un extremo en $X$ y el
+otro en $Y$.
+Hay $2k+1$ aristas.
+
+Digamos que $1\in X\rightarrow 2\in Y \Rightarrow 3\in X \Rightarrow \cdots
+2k+1\in \mathbb{X}$
+
+Pero $\{1,2k+1\}\in\mathbb{E}
+(\mathbb{C}_{2k+1})
+\subseteq E(G)\Rightarrow\Leftarrow$
+
+\definicion
+\begin{align*}
+	\text{diam}(G) &= \max_{x,y} \text{ dist}(x,y)\\
+	\text{dist}(G) &= \min_{xPy}
+	\underbrace
+	{
+		| E(xPy) |
+	}_
+	{
+		\text{Largo del camino}
+	}
+\end{align*}
+
+$E(xPy)$ Conjunto de aristas del camino entre $x$ y $y$.
+
+\begin{align*}
+	\text{diam}(\mathbb{K}_n) &=
+	\begin{cases}
+		1&n>1\\
+		0 &n=1
+	\end{cases}
+	\\
+	\text{diam}(\mathbb{S}_n) &=
+	\begin{cases}
+		1 & n=1\\
+		2 &n>1
+	\end{cases}
+	\\
+	\text{diam}(\mathbb{A}_n) &=
+	\begin{cases}
+		\infty &n>1\\
+		1 &n=1
+	\end{cases}\\
+	\text{diam}(\mathbb{P}_n) &= n-1\\
+	\text{diam}(\omega_n) &=
+	\begin{cases}
+		2 &n >3\\
+		1 &n =3
+	\end{cases}\\
+	\text{diam}(\phi_n) &=
+	\begin{cases}
+		\infty &n >1\\
+		0 &n =1
+	\end{cases}\\
+	\text{diam}(\mathbb{C}_n) &=
+	\begin{cases}
+		\frac{n}{2} &n\in \dot{2}\\
+		\lfloor \frac{n}{2} \rfloor &n \notin \dot{2}
+	\end{cases}
+	= \lfloor \frac{n}{2} \rfloor
+\end{align*}
+
+\end{document}
+%}}}
