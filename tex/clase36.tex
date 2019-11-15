@@ -1,0 +1,244 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase36}{../ima/clase36}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Coloración}%
+
+\thispagestyle{fancy}
+
+Un grafo $G$ es bipartito si existen conjuntos $A$ y $B$ tales que
+$V(G)=A\cup B \quad A\cap B=\varnothing$ y todas las aristas de $G$ tienen un
+extremo en $A$ y $B$.
+
+\begin{align*}
+	\text{dist}_G (x,y) &= \min_{xPy}|E(xPy)|\\
+	\text{diam} (x,y) &= \max_{x,y}|dist(x,y)|
+\end{align*}
+
+\section{Coloraciones}%
+\label{sec:coloraciones}
+
+\definicion
+Una $m$-coloración(propia) de los vértices de un grafo es una función
+$f:V(G)\longrightarrow[m]$ tal que los extremos de las aristas de $G$ son de
+colores diferentes.
+
+Es decir si $\{x,y\}\in E(G)\quad f(x) \neq f(y) \quad\forall \{x,y\}\in E(G)$
+
+\begin{figure}[H]
+	\centering
+	\boldmath
+	\includesvg[width=0.6\linewidth]{dibujo-1}
+\end{figure}
+
+\teorema
+Si $G$ es bipartito entonces $G$ no tiene ciclos impares.
+
+\teorema
+Si $G$ es bipartito entonces existe una 2-coloración de los vértide de $G$.
+
+\teorema
+Si $G$ admite una 2-coloración entonces $G$ es bipartito.
+
+$\mathbb{K}_n$ admite una $n$-coloración.
+
+$\mathbb{K}_n$ no admite ninguna $m$-coloración con $m<n$
+
+\definicion
+
+$\chi(G)$: número cromático de $G$.
+
+Es el mínimo número de colores con los que se puede hallar una coloración
+propia de $G$.
+
+$G$ debe admitir una $\chi(G)$-coloración y no debe admitir coloraciónes con
+menos colores.
+
+\begin{align*}
+	\chi(\mathbb{Q}_3) &= 2
+\end{align*}
+
+\begin{figure}[H]
+	\centering
+	\boldmath
+	\includesvg[width=0.6\linewidth]{dibujo-2}
+\end{figure}
+
+\teorema
+\[
+	\chi(G) > 1 \text{ si }|E(G)|\geq 1
+\]
+Colorario:
+\[
+	\chi(\phi_n)=1
+\]
+
+\begin{align*}
+	|E(G)|\geq 1 &\Rightarrow \chi(G)>1\\
+	\neg(\chi(G)>1) &\Rightarrow \neg(|E(G)|\geq 1)\\
+	\chi(G) \leq 1 &\Rightarrow |E(G)|<1\\
+	\\
+	\chi(G)=1 &\qquad |E(G)|=0
+\end{align*}
+
+\definicion
+\dobledef
+{
+	Un grafo es $k$-partito si existe una $k$-coloración de sus vértices.%
+}
+{%
+	Sin embargo: $|V(G)|\geq k$%
+}
+
+De manera equivalente deben existir. $k$ conjuntos $A_i$ con $i\in[k]$ tales
+que:
+\[
+	\bigcup_{i=1}^k = V(G) \text{ y } A_i\cap A_j=\varnothing\quad\forall i\neq j
+\]
+y las aristas de $G$ tienen extremos en conjuntos distintos.
+
+\begin{figure}[H]
+	\centering
+	\boldmath
+	\includesvg[width=0.6\linewidth]{dibujo-3}
+\end{figure}
+
+\teorema
+\dobledef{$\text{cono}(G)$ solo es bipartito si $G=\phi_n$}{Para crear un cono
+hay que tomar un grafo $G$, agregarle un vértice y añadir vértices entre
+todos los vértices de $G$ y el nuevo vértice.}
+
+\conjetura
+\[
+	\chi(\text{cono}(G))=\chi(G)+1
+\]
+
+\subsection*{Conjetura}%
+\label{sub:conjetura}
+
+\[
+	\chi(\text{cono}(G))\leq\chi(G)+1
+\]
+
+\demostracion
+De manera trivial coloreamos $G$ con $\chi(G)$ colores y el vértice adicional
+con el color nuevo.
+
+\[
+	\substack
+	{%
+		\text{¿Podría}\\
+		\text{esto ser}\\
+		\text{verdad?}
+	}
+	\quad
+	\chi(\text{cono}(G)) < \chi(G)
+\]
+No. Por lo tanto
+\[
+	\chi(\text{cono}(G)) \geq \chi(G)
+\]
+
+¿Será que podemos decir $\chi(\text{cono}(G))=\chi(G)+1$ siempre?
+
+\begin{enumerate}
+	\item $\chi(\text{cono}(G))\leq \chi(G)+1$
+	\item $\chi(\text{cono}(G))\geq \chi(G)$
+	\item Hay grafos donde $\chi(\text{cono}(G))\neq\chi(G)$
+\end{enumerate}
+
+Sea $f$ una coloración de $\text{cono}(G)$ con el mínimo número posible de
+colores (son $\chi(\text{cono}(G))$ colores)
+
+¿De qué color es el
+\(
+	\underset
+	{
+		x_0
+	}
+	{
+		\text{vértice}
+	}
+\)
+de $\text{cono}(G)$?
+
+El vértice de $\text{cono}(G)$ es de un color diferente a todos los colores de
+los vértices con la coloración propia que da $f$.
+
+Esto quiere decir que $f(x)\neq f(x_0)\quad\forall x\in V(G)$ por lo que $f$
+colorea a $G$ con $\chi(\text{cono}(G))-1$.
+
+\begin{align*}
+	\chi(\text{cono}(G)) - 1 &\geq \chi(G)\\
+	\chi(\text{cono}(G)) &\geq \chi(G)+1\\
+\end{align*}
+
+Usando \nameref{sub:conjetura}:
+\[
+	\chi(\text{cono}(G)) = \chi(G)+1
+\]
+
+\begin{align*}
+	V(G_n) &=
+	\left\{
+		\underbrace
+		{
+			\overbrace
+			{
+				x_{n-1}x_{n-2}\cdots x_2 x_1 x_0
+			}^
+			{
+				\substack
+				{
+					\text{Secuencias en}\\
+					\text{ternario}\\
+					\text{con $n$ trits.}\\
+				}
+			}
+		}_
+		{
+			\text{$n$-trits}
+		}
+		:
+		\underset
+		{
+			i\in[n-1]\cup\{0\}
+		}
+		{
+			x_i \in\{0,1,2\}
+		}
+		\right\}\\
+		E(G_n) &=
+		\left\{
+			\{\vec{x},\vec{y}\}:
+			\substack
+			{
+				\text{Si $\vec{x}$ y $\vec{y}$}\\
+				\text{difieren}\\
+				\text{exactamente}\\
+				\text{en unn trit.}\\
+			}
+		\right\}
+\end{align*}
+
+
+\begin{figure}[H]
+	\centering
+	\boldmath
+	\includesvg[width=0.4\linewidth]{dibujo-4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\boldmath
+	\includesvg[width=0.9\linewidth]{dibujo-5}
+\end{figure}
+
+
+\end{document}
+%}}}
