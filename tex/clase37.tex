@@ -1,0 +1,39 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase37}{../ima/clase37}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Mini clase grafos}%
+
+\thispagestyle{fancy}
+
+\dobledef{Si $\mathbb{K}_w$ es subgrafo de $G$ entonces $\chi(G)\geq w$}
+{$w\in\mathbb{N}$}
+
+Si $\neg(\chi(G)\geq w)$ entonces $\neg(\mathbb{K}_w\text{ es subgrafo de }G)$
+
+Si $\chi(G)< w$ entonces $\mathbb{K}_w$ no es subgrafo de $G$.
+
+\begin{align*}
+	G &\cong \overline{G}\\
+	|V(G)| &= |V(\overline{G})| = n\\
+	|E(G)| &= |E(\overline{G})|\\
+	|E(G)| + |E(\overline{G})| &= 2 |E(G)| =\\
+	\binom{n}{2} &= |E(\mathbb{K}_n)|\\
+	\\
+	|E(G)| &= \frac{1}{2} \binom{n}{2} =\\
+	\frac{1}{2} \frac{n(n-1)}{2}  &= \frac{n(n-1)}{4}\\
+	n &\in\dot{4}\\
+	(n-1) &\in\dot{4}
+\end{align*}
+
+Algo con matrices
+
+Acepto pull request's
+
+\end{document}
+%}}}
