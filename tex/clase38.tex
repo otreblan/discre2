@@ -1,0 +1,60 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase38}{../ima/clase38}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Cosas extrañas}%
+
+\thispagestyle{fancy}
+
+\definicion
+
+El número de clique de un grafo es el $n$ tal que $\mathbb{K}_n$ es subgrafo
+de $g$ y $n$ es lo más grande posible.
+\[
+	\text{clique}(G) = \max n
+\]
+
+\definicion
+
+Un grafo $g$ es planar si tiene una representación plana.
+
+\definicion
+
+Un a representación plana de un grafo es plana si es un dibujo del grafo donde
+las aristas son curvas en el plano que solo tocan vértices en sus extremos.
+
+\begin{figure}[H]
+	\boldmath
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo}
+\end{figure}
+
+\begin{align*}
+	g &\cong \mathbb{K}_4\\
+	h &\cong \mathbb{K}_4
+\end{align*}
+
+La representación de $g$ es plana.
+
+La representación de $h$ es plana.
+
+$\mathbb{K}_4$ es planar.
+
+\subsection*{Ejemplo}%
+$\mathbb{K}_5$ no es planar.
+
+$\mathbb{K}_{3,3}$ no es planar.
+
+Demostrar que un grafo ``general'' no es planar es ``dificil''.
+
+\teorema
+Kuratowsky: $G$ es planar si no tiene a $\mathbb{K}_5$ o $\mathbb{K}_{3,3}$
+como menor.
+
+\end{document}
+%}}}
