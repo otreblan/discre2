@@ -1,0 +1,150 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase39}{../ima/clase39}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Planaridad}%
+
+\thispagestyle{fancy}
+
+$G$ es planar si admite una representación plana (Si las aristas no se cruzan).
+
+\teorema
+$G$ es planar si no a tiene a $\mathbb{K}_5$ o $\mathbb{K}_{3,3}$ como menor.
+
+\definicion
+$H$ es un menor de $G$ si se puede obtener $H$ a partir de $G$ mediante
+operaciones sucesivas de:
+\begin{itemize}
+	\item Eliminación de vértice.
+	\item Eliminación de aristas.
+	\item Retracción de aristas.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-1}
+\end{figure}
+
+\begin{align*}
+	H &= ((V\setminus \{x,y\})\cup \{*\}
+	(E\setminus\{e\in E:x\in\vee y \in e\}) \cup
+	\{\{*,z\}:z\in(N_x\cup N_y)\setminus\{x,y\}\})
+\end{align*}
+
+Ejemplo:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.7\linewidth]{dibujo-2}
+\end{figure}
+
+$H$ es un menor de $G$. $H\cancel{\subseteq} G$
+
+Ejemplo 2:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo-3}
+\end{figure}
+
+$H$ es un menor de $G$ $H \cancel{\subseteq} G$
+
+\begin{figure}[H]
+	\boldmath
+	\centering
+	\includesvg[width=0.3\linewidth]{dibujo-4}
+\end{figure}
+
+\[
+	\mathbb{K}_5 \subseteq G
+\]
+$\mathbb{K}_5$ es un menor de $G$.
+
+¿Es $\mathbb{S}_4$ un menor de $\mathbb{K}_9$?
+
+Sí.
+
+¿Es $\mathbb{C}_4$ un menor de $\mathbb{Q}_5$?
+
+Sí.
+
+Si solo se vale usar retracción de aristas.
+¿Qué grafos ``terminan'' en un único vértice?
+
+Los conexos.
+
+Si $G$ es planar entonces
+\[
+	\chi(G) \leq 4
+\]
+Si $\neg(\chi(G) \leq 4)$ entonces $\neg(G \text{ es planar})$.
+
+Si $\chi(G)>4$ entonces $G$ no es planar.
+
+\textbf{(Una versión más antigua)}
+Si $G$ es planar.
+Entonces $\chi(G)\leq 6$
+
+Bosquejo:
+
+Si $G$ es planar y tiene todas las aristas que podría tener, es una
+triangularización del plano.
+
+\begin{figure}[H]
+	\boldmath
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-5}
+\end{figure}
+
+\teorema
+\begin{align*}
+	|\text{caras}| + |V| &= |E| + 2\\
+	14 + 9 &= 21 +2\\
+	23 &= 23
+\end{align*}
+
+\subsection*{Cosas}%
+\begin{align*}
+	\sum_{x\in V} d(x) &= 2|E|\\
+	%\sum_{x\in V} d(x) &= 2(|\text{caras}|+|V|-2)
+	3|\text{caras}| &= 2|E|
+\end{align*}
+
+$G$ planar:
+
+$T_r$ es una triangularización del plano.
+\begin{align*}
+	|E(G)| \leq |E(T_r)|
+\end{align*}
+
+\section{Tarea planar}%
+\label{sec:tarea_planar}
+
+Cuando $G$ es suficientemente grande.
+Si $G$ es una triangularización entonces $G$ tiene al menos un vértice con
+grado 5 o más.
+
+\begin{align*}
+	\sum_{x\in V}d(x) &= 2|E|\\
+	\sum_{x\in V}\delta(G) &\leq \sum_{x\in V}d(x) \leq\sum_{x\in V}\Delta(G)\\
+	\sum_{x\in V}\Delta(G) &= |V|\Delta(G)\\
+	\\
+	2|E|=\sum_{x\in V} d(x) &\leq \sum_{x\in V}\Delta(G) = |V|\Delta(G)\\
+	\frac{2|E|}{|V|} &\leq  \Delta(G)\\
+	|E| &\leq \frac{(|V|-1)|V|}{2}
+\end{align*}
+
+\begin{figure}[H]
+	\boldmath
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-6}
+\end{figure}
+
+
+\end{document}
+%}}}
