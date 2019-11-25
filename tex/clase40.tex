@@ -1,0 +1,163 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase40}{../ima/clase40}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Árboles}%
+
+\thispagestyle{fancy}
+
+\section*{Tarea:}%
+Dado $G$ un grafo planar suficientemente grande demostrar que $G$ tiene al
+menos un vértice de grado 5 o menos.
+\begin{align*}
+	\text{grande}(G) &\Rightarrow \delta(G) \leq 5
+\end{align*}
+
+\textbf{Demostración por inducción:}
+
+Si $G$ es planar $\chi(G) \leq 6$.
+
+Pueden usar que si $G$ es planar entonces $|C|+|V|=|E|+2$.
+
+Si $G$ es una triangularización del plano entonces todas las caras son
+triángulos y $3|C|=2|E|$
+
+\definicion
+Un grafo es un árbol si es conexo y \dobledef{acíclico}{no tiene ciclos}.
+
+\ejemplo
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo}
+\end{figure}
+
+\begin{figure}[H]
+	\boldmath
+	\bfseries
+	\centering
+	\includesvg[width=\linewidth]{dibujo-2}
+\end{figure}
+Al parecer se puede armar un árbol con $n$ vértices añadiendo un vértice y
+una arista a un árbol con $(n-1)$ vértices.
+
+Códigos de Prüfer.
+Conteo de árboles etiquetados.
+
+\conjetura
+Si $T$ es un árbol entonces $|E(T)|=|V(T)|-1$
+
+Por inducción sobre $|E|$ caso base:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-3}
+\end{figure}
+
+Hipótesis inductiva:
+
+Si $T$ es un árbol con menos de $n$ vértices entonces $|E(T)|= |V(T)|-1$
+
+Sea $G$ un árbol con $n$ vértices queremos ver que $|E(G)|=|V(G)|-1=n-1$
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-5}
+\end{figure}
+
+\begin{align*}
+	V(T_x) &=
+	\{
+		z\in V(G):
+		zPx\text{ no pasa por $y$}
+	\}
+\end{align*}
+
+Por hipótesis inductiva $E(T_x)=|V(T_x)|-1$ pues $|V(T_x)| < n$
+(Y también con $T_y$)
+
+Finalmente
+\begin{align*}
+	|V(G)| &= |V(T_x)| + |V(T_y)|\\
+	|E(G)| &= |E(T_x)| + |E(T_y)| +1\\
+	|E(G)| &= |V(T_x)| - 1 + |V(T_y)| - 1 + 1\\
+	|E(G)| &= |V(G)| - 1
+\end{align*}
+
+\dobledef{Si $G$ es un árbol}{Suficientemente grande}:
+\begin{itemize}
+	\item \dobledef{$G$ es maximalmente acíclico.}
+		{Si le añadimos una arista cualquiera formámos algún ciclo.}
+	\item \dobledef{$G$ es minimalmente conexo.}
+		{Si le quitamos una arista cualquiera deja de ser conexo.}
+	\item Planar.
+	\item \dobledef{Bipartito.}{Pues no tiene ciclos. En consecuecia no tiene
+		de ciclos de longitud impar.}
+\end{itemize}
+
+Si $G$ es planar y conexo entonces:
+\[
+	|C| + |V| = |E| +
+	\underset
+	{
+		\substack
+		{
+			\text{Característica}\\
+			\text{de Euler.}
+		}
+	}
+	{
+		2
+	}
+\]
+
+\begin{itemize}
+	\item Si $G$ no tiene ciclos:
+		\[
+			|C| = 1 \quad
+			\left(
+				\substack
+				{
+					\text{Es un árbol}\\
+					\text{}\\
+					|E| = |V|-1
+				}
+			\right)
+		\]
+
+	\item Si $G$ tiene ciclos, entonces:
+		\[
+			|C| > 1
+		\]
+		Y existen aristas que son frontera entre 2 caras distintas.
+		Y están sobre un ciclo.
+		Si quitamos la arista frontera, pierdo una cara y una arista sin
+		desconectar el grafo.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.5\linewidth]{dibujo-6}
+\end{figure}
+
+
+\tarea
+Si $T$ es un árbol con más de 1 vértice entonces $\delta(T)=1$
+
+Si $\delta(G)\leq 2$ entones $G$ tiene al menos un ciclo.
+
+SI $G$ es un árbol entonces hay un único camino entre $x$ y $y$ para todo
+$x,y \in G$.
+
+\end{document}
+%}}}
