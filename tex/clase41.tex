@@ -1,0 +1,182 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase41}{../ima/clase41}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Más árboles}%
+
+\thispagestyle{fancy}
+
+\section{Repaso árboles}%
+\label{sec:repaso_arboles}
+
+Un árbol es un grafo conexo y acíclico.
+
+\teorema
+Si $T$ es un árbol $|E(T)|=|V(T)|-1$
+
+\teorema
+Si $T$ es un árbol entonces:
+\begin{itemize}
+	\item $T$ es minimalmente conexo.
+	\item $T$ es maximalmente acíclico.
+	\item $T$ es bipartito.
+	\item $T$ es planar.
+\end{itemize}
+
+\teorema
+Si $T$ es un árbol existe un único camino entre $x$ y $y$
+para todo $x,y \in V(T)$
+
+\teorema
+Si $G=(V,E)$ es planar entonces $|C|+|V|=|E|+2$
+
+\teorema
+Si $T$ es un árbol y $x\in V(T)$ con $d(x)=1$ diremos que $x$ es una hoja.
+
+\teorema
+Si $G$ es planar, podemos definir.
+El $\text{dual}(G)$ es planar.
+Y se define.
+\dobledef
+{
+	Los vértices del $\text{dual}(G)$ son las caras de $G$ y hay una ``arista''
+	entre dos caras si comparten una aristas en $G$.
+}
+{
+	Cuidado, podría no ser un grafo.
+}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.6\linewidth]{dibujo-3}
+\end{figure}
+
+\begin{figure}[H]
+	\bfseries
+	\boldmath
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-4}
+\end{figure}
+
+\begin{figure}[H]
+	\bfseries
+	\boldmath
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-5}
+\end{figure}
+
+\conjetura
+
+¿El $\text{dual$(\text{dual$(G)$})=G$}$?
+
+\[
+	\text{NO}
+\]
+
+¿Cuando es $\text{dual$(\text{dual$(G)$})=G$}$?
+
+Cuando las caras de la cosa isomorfa a  $\text{dual$(G)$}$ son las mismas.
+
+\textbf{Recorrido de un árbol.}
+
+Un árbol con raíz o enraizado es un par $(x,T)$ con $x\in V(T)$
+
+\ejemplo
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-6}
+\end{figure}
+
+Hay otras definiciones asociadas a árboles.
+
+Árbol dirigido:
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-7}
+\end{figure}
+
+\definicion
+Un bosque es un grafo acíclico.
+
+\teorema
+Un bosque es un ``conjunto de árboles''.
+\[
+	G=\bigsqcup_{i=1}^{\text{nc}(G)} T_i \quad \text{con $T_i$ un árbol.}
+\]
+
+Si dibujamos un árbol enraizado con la raíz arriba y los vértices organizados
+en niveles y aristas solo entre niveles consecutivos.
+
+(¿Se puede siempre?)
+(¿De cuántas maneras podemos pintarlo?)
+
+El número de niveles es la altura del árbol.
+
+(¿Sería más sensato pensar en el número de niveles menos 1?)
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-8}
+\end{figure}
+
+Si tenemos un árbol enraizado pintado de la manera que describrimos en la
+imágen.
+
+Hay varias formas de recorrerlo:
+\begin{itemize}
+	\item Pre orden:
+		\subitem Primero la raíz y entonces sus sub-árboles de izquierda
+			a derecha en pre orden.
+			\[
+				T:\quad 6,3,8,2,1,5,4,9,7
+			\]
+	\item Post orden:
+		\subitem De izquierda a derecha los sub-árboles en post orden y
+			finalmente la raíz.
+			\[
+				T:\quad 8,1,2,3,4,9,7,5,6
+			\]
+\end{itemize}
+
+\definicion
+Un árbol enraizado es $k$-ario si cada vértice tiene exactamente $k$ hijos o
+ninguno.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=\linewidth]{dibujo-9}
+\end{figure}
+
+Si $T$ es $k$-ario:
+
+Cuando la diferencia entre el nivel mínimo y el nivel máximo de dos hojas
+es menor o igual que 1 diremos que el árbol es balanceado.
+
+¿Tiene sentido pensar en esa idea de ``balanceo'' en árboles generales?
+
+¿Cuál es la altura de un árbol $k$-ario balanceado?
+
+\section{Más tareas de árboles}%
+\label{sec:mas_tareas_de_arboles}
+
+¿Qué es una cara en un grafo planar?
+
+\end{document}
+%}}}
