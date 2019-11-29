@@ -1,0 +1,186 @@
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+\documentclass[../main.tex]{subfiles}
+
+\graphicspath{{ima/clase42}{../ima/clase42}}
+
+% Aquí empieza el documento{{{
+\begin{document}
+\chapter{Árboles requiem}%
+
+\thispagestyle{fancy}
+
+\begin{itemize}
+	\item Árbol: $T$ un grafo acíclico y conexo.
+	\item Árbol enraizado:
+		\(
+			(
+			\underset
+			{
+				\text{Raiz}
+			}
+			{
+				x
+			}
+			,T)
+		\)
+		con $x\in V(T)$
+	\item Árbol $k$-ario: Un árbol donde todos los vértices que tienen
+		descendientes tienen $k$ descendientes.
+	\item Recorrido en pre-orden:
+		\begin{itemize}
+			\item $1^{\text{ro}}$ la raiz
+			\item $2^{\text{do}}$ después los sub-árboles de izquierda a
+				derecha en pre-orden.
+		\end{itemize}
+	\item Recorrido en post-orden:
+		\begin{itemize}
+			\item $1^{\text{ro}}$ los subárboles de izquierda a derecha
+				en post-orden.
+			\item $2^{\text{do}}$ último la raíz.
+		\end{itemize}
+\end{itemize}
+
+\section{Si el árbol es binario}%
+\label{sec:si_el_arbol_es_binario}
+(2 hijos o ninguno)
+
+\subsection{Recorrido en orden}%
+\label{sub:recorrido_en_orden}
+
+\begin{itemize}
+	\item $1^{\text{ro}}$ \nameref{sub:recorrido_en_orden} del sub-árbol
+		izquierdo.
+	\item $2^{\text{do}}$ la raíz.
+	\item $3^{\text{ro}}$ \nameref{sub:recorrido_en_orden} del sub-árbol derecho.
+\end{itemize}
+
+\[
+	1,2,14,15,16,17,18,13,3,12,4,5,10,11,7,6,8,19,9
+\]
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-1}
+\end{figure}
+
+Dado un recorrido en orden de un árbol binario.
+¿Podemos reconstruir el árbol binario?
+
+\[
+	(((a+b)*c)+(d*e)*((g+h)+(e+f)))
+\]
+
+\begin{figure}[H]
+	\bfseries
+	\boldmath
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-2}
+	\caption{Árbol 1}%
+	\label{fig:arbol_1}
+\end{figure}
+
+\[
+	\left(
+		\left(
+			\left(
+				\left(
+					\left(
+						a +
+						\left(
+							b*c
+						\right)
+					\right)
+					+
+					\left(
+						\left(
+							d*e
+						\right)
+						*g
+					\right)
+				\right)
+				+ h
+			\right)
+			+ e
+		\right)
+		+ f
+	\right)
+\]
+
+\begin{figure}[H]
+	\bfseries
+	\boldmath
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-3}
+	\caption{Árbol 2}%
+	\label{fig:arbol_2}
+\end{figure}
+
+
+\section{Notación polaca inversa}%
+\label{sec:notacion_polaca_inversa}
+
+Patrón del \nameref{fig:arbol_1}:
+\[
+	ab+c*de*+gh+ef++*
+\]
+
+¿Cuántos patrones diferentes podemos hacer con los símbolos $\{a,b,c,*,+\}$
+usándolos exactamente una vez?
+
+¿A cuantas expresiones matemáticamente distintas corresponden?
+
+\section{Cosas con árboles}%
+\label{sec:cosas_con_arboles}
+
+Sea $G$ un grafo conexo:
+\teorema
+\dobledef
+{%
+	Existe $T$ un árbol que es subgrafo de $G$ e incluye todos sus vértices.%
+}
+{%
+	Un árbol de expansión.%
+}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-4}
+\end{figure}
+
+\demostracion
+Quita una arista sobre un ciclo hasta que no haya ciclos.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-5}
+\end{figure}
+
+\subsection{BFS}%
+\label{sub:bfs}
+Búsqueda en amplitud o por anchura.
+
+\url{https://es.wikipedia.org/wiki/Búsqueda_en_anchura}
+
+\subsection{DFS}%
+\label{sub:dfs}
+Búsqueda en profundidad.
+
+\url{https://es.wikipedia.org/wiki/Búsqueda_en_profundidad}
+
+¿Son el árbol \nameref{sub:bfs} y \nameref{sub:dfs} únicos?
+
+\subsection{Dijkstra}%
+\label{sub:dijkstra}
+
+\url{https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra}
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\linewidth]{dibujo-6}
+\end{figure}
+
+
+\end{document}
+%}}}
