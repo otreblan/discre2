@@ -1,17 +1,3 @@
-% https://tex.stackexchange.com/questions/513051/filehook-error-with-memoir-after-update-texlive-2019-in-oct-15/513152#513152
-\RequirePackage{etoolbox}
-\makeatletter
-\patchcmd\load@onefilewithoptions
-  {\expandafter\let\csname\@currname.\@currext-h@@k\endcsname\@empty
-   \let\CurrentOption\@empty% Anchor point to make sure we're patching the right place
-  }{}{}{\errmessage{This patch is no longer necessary}%
-        \newcommand\gobblesix[6]{}\gobblesix}
-\patchcmd\load@onefilewithoptions
-  {\InputIfFileExists}
-  {\expandafter\let\csname\@currname.\@currext-h@@k\endcsname\@empty
-   \InputIfFileExists}{}{\FAILED}
-\makeatother
-\PassOptionsToPackage{force}{filehook}
 \documentclass[12pt, twoside]{book}
 \usepackage{main}
 
